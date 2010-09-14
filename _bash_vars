@@ -1,0 +1,8 @@
+export FOGUS_HOME=$HOME/fogus
+git config --global user.name "fogus"
+git config --global user.email mefogus@gmail.com
+
+
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ls='ls -G'

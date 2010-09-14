@@ -1,0 +1,27 @@
+. ~/.bash_vars
+
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# PS1error='$( ret=$? ; test $ret -gt 0 && echo "\[\e[41;93m\]   [$ret]   \[\e[0m\]" )'
+# PS1user='$( test `whoami` == root && echo "\[\e[101m\]root:" )\[\e[0m\]'
+# PS1color='\[\e[1;37;44m\]' # color of working directory
+# PS1="$PS1error$PS1color\w\[\e[0m\] $PS1user$ "
+# export PS1
+  
+PROMPT_COMMAND='PS1="\[\033[0;33m\][\!]\`if [[ \$? = "0" ]]; then echo "\\[\\033[32m\\]^_^"; else echo "\\[\\033[31m\\]O_O"; fi\`[\u.\h: \`if [[ `pwd|wc -c|tr -d " "` > 18 ]]; then echo "\\W"; else echo "\\w"; fi\`]\$\[\033[0m\] "; echo -ne "\033]0;`hostname -s`:`pwd`\007"'
+     
+export DISPLAY=:0.0
+export EDITOR=/usr/bin/emacs
+
+alias hist='history|egrep'
+alias e='emacs -nw -fg white -bg black'
+alias ll='ls -l'
+
+export CDPATH=.:$FOGUS_HOME
+
+pushd .
+
+cd $FOGUS_HOME
+. fogus.sh
+popd
