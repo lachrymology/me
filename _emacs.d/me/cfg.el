@@ -2,6 +2,10 @@
 ;; ========== Major and Minor modes ==========
 ;; ===========================================
 
+(require 'color-theme)
+(load-theme 'zenburn)
+(color-theme-zenburn)
+
 (autoload 'zencoding-mode "zencoding-mode.el" "Major mode for ZenCoding" t)
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 
