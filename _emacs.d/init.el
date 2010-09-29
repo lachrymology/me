@@ -26,4 +26,5 @@
 (yas/load-directory (concat emacs-root "modes/snippets"))
 
 (server-start)
-(shell)
+(shell "*shell-main*")
+(shell "*shell-irb*")
