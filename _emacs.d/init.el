@@ -14,7 +14,8 @@
            (add-to-list 'load-path (concat emacs-root p))))
   (add-path "me")          ;; all my personal elisp code
   (add-path "modes")
-  (add-path "modes/scala-mode"))
+  (add-path "modes/scala-mode")
+  (add-path "modes/slime"))
 
 (load-library "settings")  ;; my personal display settings
 (load-library "keys")      ;; key bindings
@@ -27,4 +28,3 @@
 
 (server-start)
 (shell "*shell-main*")
-(shell "*shell-irb*")

@@ -2,12 +2,26 @@
 ;; ========== Major and Minor modes ==========
 ;; ===========================================
 
+;; ========== SLIME ==========
+
+(eval-after-load "slime" 
+  '(progn (slime-setup '(slime-repl))))
+
+(require 'slime)
+(slime-setup) 
+
+;; ========== Turn on Zenburn Themeage ==========
+
 (require 'color-theme)
 (load-theme 'zenburn)
 (color-theme-zenburn)
 
+;; ========== Turn on Zencoding mode ==========
+
 (autoload 'zencoding-mode "zencoding-mode.el" "Major mode for ZenCoding" t)
 (add-hook 'sgml-mode-hook 'zencoding-mode)
+
+;; ========== Turn on Textile mode ==========
 
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
@@ -53,6 +67,7 @@
 (setq c-default-style
   '((c-mode . "stroustrup") (awk-mode . "awk") (other . "gnu")))
 
+;; ========== Turn on Paredit mode ==========
 
 (autoload 'paredit-mode "paredit"
       "Minor mode for pseudo-structurally editing Lisp code." t)
