@@ -2,6 +2,11 @@
 ;; ========== Major and Minor modes ==========
 ;; ===========================================
 
+(require 'mazemax)
+
+(require 'eslide)
+(custom-set-faces '(eslide-slideshow-normal-text ((t (:height 1000 :family "Courier New")))))
+
 ;; ========== SLIME ==========
 
 (eval-after-load "slime" 
