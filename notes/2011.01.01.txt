@@ -1,0 +1,10 @@
+Javaspaces
+----------
+
+    (def S (space ::simple))
+    
+    (write! S (create-message :content "Hello Cleveland"))
+    
+    (read!  S (create-template nil))
+    ;=> "Hello Cleveland"
+
