@@ -1,3 +1,26 @@
+
+
+2011.01.06
+==========
+
+*Flavors : A non-hierarchical approach to object-oriented programming by Cannon*
+---------------------------------------------------------
+
+A *Flavor* is analogous to a class.
+
+> combining specific implementations of different protocols under control of meta-protocols
+
+Open system
+
+> Flavors provides more flexibility than other oop systems...
+> ... conventions become more important
+
+
+*Datalog: Deductive database programming by Jay McCarthy*
+---------------------------------------------------------
+
+<http://planet.plt-scheme.org/package-source/jaymccarthy/datalog.plt>
+
 2011.01.05
 ==========
 
