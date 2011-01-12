@@ -1,3 +1,219 @@
+2011.01.12
+==========
+
+*Language Virtualization for Heterogeneous Parallel Computing by Chafi, DeVito, Odersky, ...*
+---------------------------------------------------------------------------------------------
+
+*The need for DSLs*
+
+> One way to capture application-specific knowledge for a whole class of applications and simplify application 
+> development at the same time is to use a domain specific language (DSL). A DSL is a concise programming 
+> language with a syntax that is designed to naturally express the semantics of a narrow problem domain
+
+*The following is incorrect (or maybe just not specific enough)*
+
+> Using DSLs naturally divides the application development process into two phases. First, a DSL developer 
+> designs a DSL for a specific domain. Then, a much larger number of domain experts make use of the DSL to 
+> develop applications.
+
+This approach is a recipe for failure.  The domain experts **must** be involved in the design of the
+DSL.  The DSL developer is a fool in the domain by comparison.  But they do say:
+
+> The ideal DSL developer would be a domain expert, a parallelism expert, and a language and compiler 
+> expert. Such developers are rare and so there is a need to simplify the process of developing DSLs for 
+> parallelism.
+
+Uhhhhh. What?  Maybe multiple people would work too. You think?
+
+Argh!  They list numerous properties of virtualizable languages (langs facilitating internal DSLs along the
+same footing as external DSLs):
+
+1. expressiveness -- natural to domain experts 
+    - prediction: they will say that Lispy DSLs with parens are too confusing for domain experts
+2. performance -- producing optimal (in domain-specific ways) code
+3. safety -- nebulous term, but effectively type safety along domain-specific vectors *only*
+4. effort -- makes no sense to me
+
+No where do they mention robustness, error handling, etc.  This is a huge problem for internal DSLs at the moment.  Adding
+any kind of error reporting mucks up the implementation making it a huge mess.  The problem is that you are effectively mapping the 
+semantics of a domain onto the semantics of the host language forms.  This is nice in some ways, but it is very very difficult to 
+distinguish between a semantic error occurring at the host-level and one at the domain-level.  This is the downfall of 
+general-purpose languages as DSL hosts.  What might work better is a special-purpose language meant for creating DSLs.
+
+### Performance
+
+They mention:
+
+> Performance implies that programs in the embedded language must be amenable to extensive static and dynamic analysis, 
+> optimization, and code generation, just as programs in a stand-alone implementation would be.
+
+But that phrasing is limiting.  That's not to say that it's not powerful, just limiting.  The term static-analysis is key.
+
+Interesting...
+
+> Optimizing matrix operations is one of the classic examples of the use of C++ expression templates [48, 49] and is 
+> used by many systems such as Blitz++ [50], A++ [35, 36], and others. 
+
+A nice use-case for something like Clojail:
+
+> On the other hand, language embeddings in Lisp can be too seamless in that they do not distinguish between 
+> the embedded DSL and the hosting framework.
+
+OK.  So I was wrong.  They never mentioned parentheses.  I'm too cynical :p
+
+### L@@k
+
+- J. Dean and S. Ghemawat. Mapreduce: Simplified data processing on large clusters. In OSDI, pages 137–150, 2004
+- C. Elliott, S. Finne, and O. De Moor. Compiling embedded languages. Journal of Functional Programming, 13(03):455– 481, 2003.
+- S. Gorlatch. Send-receive considered harmful: Myths and realities of message passing. ACM Trans. Program. Lang. Syst., 26(1):47–56, 2004.
+- P. Hudak. Modular domain specific languages and tools. In Software Reuse, 1998. Proceedings. Fifth International Conference on, pages 134–142, 1998.
+- G. L. S. Jr. Parallel programming and parallel abstractions in fortress. In IEEE PACT, page 157. IEEE Computer Society, 2005.
+- K. Kennedy, B. Broom, A. Chauhan, R. Fowler, J. Garvin, C. Koelbel, C. McCosh, and J. Mellor-Crummey. Telescoping languages: A system for automatic generation of domain languages. Proceedings of the IEEE, 93(3):387–408, 2005. This provides a current overview of the entire Telescoping Languages Project.
+- D. Leijen and E. Meijer.	Domain specific embedded compilers. In DSL: Proceedings of the 2 nd conference on Domain-specific languages: Austin, Texas, United States. Association for Computing Machinery, Inc, One Astor Plaza, 1515 Broadway, New York, NY, 10036-5701, USA„ 1999.
+- T. Sheard and S. Jones. Template meta-programming for Haskell. ACM SIGPLAN Notices, 37(12):60–75, 2002.
+- *A. van Deursen, P. Klint, and J. Visser. Domain-specific languages: an annotated bibliography.	SIGPLAN Not., 35(6):26–36, 2000.*
+- T. Veldhuizen. Expression templates, C++ gems, 1996.
+
+
+*Determinism in Partially Ordered Production Systems by Hellerstein and Hsu*
+----------------------------------------------------------------------------
+
+*implied-inference-ordered systems (iio)*
+
+### L@@K
+
+- *Towards a theory of declarative knowledge* by Apt, Blair and Walker
+- *Programming expert systems in OPS5* by Brownston
+- *Production system conflict resolution strategies* by Forgy
+- *Pattern-directed inference systems* by Waterman and Hayes-Roth
+
+
+2011.01.07
+==========
+
+*Implementation of a “Lisp comprehension” macro by Lapalme*
+-----------------------------------------------------------
+
+Origins (an "of course they were" moment)
+
+> List com- prehensions have been introduced by David Turner in KRC, where they were 
+> called ZF-expressions
+
+Miranda's LC spec:
+
+    [ <expression> | <qualifier1> , . . . , <qualifiern> ]
+
+### L@@K
+
+- S. L. Peyton-Jones. The Implementation of Functional Languages. Prentice-Hall, 1987.
+- Research Software Limited. Miranda System Manual. 1987.
+- D. A. Turner. Functional Programming and Its Applications, chapter Re- cursion Equations as a Programming Language, pages 1–28. Cambridge University Press, 1982.
+- D. A. Turner. SASL language manual. UKC computing lab. report, The University of Kent at Canterbury, nov 1983.
+
+Less concise Lisp comprehension:
+
+<pre><code>
+(defmacro bind-map (shape effect list)
+  (let ((item (gensym)))
+    `(loop for ,item in ,list 
+	collecting
+	  (destructuring-bind ,shape ,item
+	    (funcall (lambda () ,effect))))))
+
+
+;;; when you have stupid builtins like PAIRLIS that return
+;;; results of a certain shape (i.e. and association list instead
+;;; of a proper list, you can use bind-map to get the shape you want)
+;
+;(bind-map (num . string) 
+;	  (list string num) 
+;	  (pairlis (list 1 2 3) 
+;		   (list "one" "two" "three")))
+;
+;=> (("three" 3) ("two" 2) ("one" 1))
+;
+;(bind-map (first second third)
+;	  second
+;	  (list (list 1 2 3)
+;		(list 4 5 6)
+;		(list 7 8 9)))
+;
+;=> (2 5 8)
+;	  
+;(bind-map (operator (type comment))
+;	  comment
+;	  '((+ (:binop "addition"))
+;	    (- (:binop "subtraction"))
+;	    (- (:unop  "negation"))))
+;
+;=> ("addition" "subtraction" "negation")
+</code></pre>
+
+
+*Contracts for Higher-Order Functions by Findler and Leeleisen*
+---------------------------------------------------------------
+
+Bigloo Scheme uses contracts
+
+> With one exception, higher-order languages have mostly ignored assertion-style contracts. 
+> The exception is Bigloo Scheme
+> ...
+> These constraints are used to generate more efficient code when the compiler can prove 
+> they are correct and are turned into runtime checks when the compiler cannot prove 
+> them correct.
+
+*Think how this might be accomplished in Clojure*
+
+The **gist** of contracts
+
+> If x is not in the proper range, f’s caller is blamed for a contractual violation. 
+> Symmetrically, if f’s result is not in the proper range, the blame falls on f itself.
+
+HOFs
+
+> higher-order functions complicate blame assignment.
+
+Using [Trammel](https://github.com/fogus/trammel)
+
+    (defconstrainedfn sqrt
+      [x] [(>= x 0) => (>= % 0)]
+      (Math/sqrt x))
+
+    (defn bigger-than-zero? [n] (>= n 0))
+    
+    (defconstrainedfn sqrt
+      [x] [bigger-than-zero? => bigger-than-zero?]
+      (Math/sqrt x))
+
+> The contract on sqrt can be strengthened by relating sqrt’s result to its argument.
+
+Which can be done easily in Trammel:
+
+    (defconstrainedfn sqrt
+      [x] [bigger-than-zero? => bigger-than-zero? (<= (Math/abs (- x (* % %))) 0.01)]
+      (Math/sqrt x))
+
+Types vs. Contracts
+
+> Although contracts can guarantee stronger properties than types about program execution, their 
+> guarantees hold only for particular program executions. In contrast, the type checker’s weaker 
+> guarantees hold for all program executions.
+
+*TODO: Is the `wrap` function useable in Trammel?*
+
+Module boundaries
+
+> Contracts are most effective at module boundaries, where they serve the programmer by improving the 
+> opportunities for modular rea- soning. That is, with well-written contracts, a programmer can study 
+> a single module in isolation when adding functionality or fixing defects.
+
+### L@@K
+
+- Felleisen, M., R. B. Findler, M. Flatt and S. Krishnamurthi. How to Design Programs. MIT Press, 2001.
+- Flatt, M. Composable and compilable macros: You want it when? In Proceedings of ACM SIGPLAN International Con- ference on Functional Programming, 2002.
+- Leroy, X. The Objective Caml system, Documentation and User’s guide, 1997.
+- Luckham, D. Programming with specifications. Texts and Monographs in Computer Science, 1990.
+- Rosenblum, D. S. A practical approach to programming with assertions. IEEE Transactions on Software Engineering, 21(1):19–31, Janurary 1995.
 
 
 2011.01.06
