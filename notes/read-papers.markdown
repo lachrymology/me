@@ -1,3 +1,238 @@
+2011.01.14
+==========
+
+*Dynamically Scoped Functions as the Essence of AOP by Costanza*
+----------------------------------------------------------------
+
+### Benefits
+
+> dynamically scoped variables turn out to be very useful when there is a need to influence the behavior of 
+> parts of a program with- out having to clutter the parameter lists of the functions called directly and/or 
+> indirectly.
+
+*which is Stallman's thinking also*
+
+### symbol macros emulating global lexicals
+
+> In those rare cases in which a lexically scoped global variable is actually needed, because it is important 
+> to be able to rebind it lexically, define-symbol-macro can be used to emulate it.
+
+**TODO: understand this more** refs [1,18]
+
+> Common Lisp provides means to declare dynamically scoped local variables.
+
+**TODO: So does Clojure... possible blog post. L@@k when it is useful** ref [3]
+
+### AOP impl
+
+- The decision for lexical or dynamic scope is to be made alongside the local definition of a function. (a la `(binding ...)`)
+
+    (defn f [x] (println x))
+    (defn g [x] (f x))
+    
+    (let [h (fn [x] (g x))]
+      (binding [f (fn [x] (print (inc x)))]
+        (h 5)))
+    ; 6
+
+    + **TODO: implement dflet in Clojure**
+
+- Dynamically scoped function definitions is not enough. We also provide a way to refer to the previous definition of a function by way of an implicit local call-next-function definition.
+    + something like:
+
+    (let [h (fn [x] (g x))]
+      (dflet [(f [x] (call-next-fn (+ 1 x)))]
+        (h 5)))
+
+    + This let's the canonical AOP example occur
+
+    (defn f [x] (println x))
+    
+    (dflet [(f [x] (println "entering f")
+                   (call-next-fn)
+                   (println "leaving  f"))]
+      (f 5))
+
+### Nutshell statement
+
+- A dflet captures specific join points in the control flow of a program, and its definitions cross-cut the program at each invocation of the original functions.
+- A dflet has dynamic extent: As soon as the control flow enters a dflet, the new function definitions are activated and on return, they are deactivated again.
+- So with dflet, there is no need to add constructs for statically reasoning about the control flow of a program
+
+### Translation
+
+    (defun f (x) (* x x))
+
+translates into
+
+    (defvar *f* (lambda (x) (* x x))) 
+    
+    (defun f (&rest args) (apply *f* args))
+
+Using a new `defdynfun`
+
+### multidflet
+
+    (defmacro multidflet ((functions &body def) &body body)
+      ‘(dflet ,(mapcar 
+                (lambda (function)
+                  ‘(,function (&rest args) ,@def)) 
+                functions)
+      ,@body))
+
+### L@@k
+
+- J. Baker and W. Hsieh. Runtime Aspect Weaving through Metaprogramming. In: AOSD 2002 - Pro- ceedings. ACM Press, 2002.
+- R. Filman and D. Friedman.	Aspect-Oriented Programming is Quantification and Obliviousness. Workshop on Advanced Separation of Concerns, OOPSLA 2000, Minneapolis, USA.
+- T. Bradshaw. Maintaining dynamic state, 2001. http://www.tfeb.org/lisp/hax.html#DYNAMIC- STATE
+- D. Hanson and T. Proebsting. Dynamic Variables. In: PLDI 2001 - Proceedings. ACM Press, 2001.
+- R. Lammel. A Semantical Approach to Method Call Interception. In: AOSD 2002 - Proceedings. ACM Press, 2002.
+- K. Pitman (ed.). Common Lisp HyperSpec, 2001. http://www.lispworks.com/reference/HyperSpec/
+- D. Tucker and S. Krishnamurthi. Pointcuts and Ad- vice in Higher-Order Languages. In: AOSD 2003 - Proceedings. ACM Press, 2003.
+- W. De Meuter. Monads as a theoretical foundation for AOP. In: International Workshop on Aspect- Oriented Programming at ECOOP, 1997.
+- J. Lewis, J. Launchbury, E. Meijer, M. Shields. Implicit Parameters: Dynamic Scoping with Static Types. In: POPL 2000 - Proceedings. ACM Press, 2000.
+
+
+
+*Using Domain Specific Language For Modeling And Simulation: Scalation As A Case Study By Miller, Han, and Hybinette*
+---------------------------------------------------------------------------------------------------------------------
+
+Wow... has a lot of citations.
+
+> This paper considers two issues in the development of simulations: (i) narrowing the gap between model and program 
+> and (ii) using an embedded Domain Specific Language (DSL) rather than a General Purpose Language (GPL) or Simulation 
+> Programming Language (SPL).
+
+### Scala is good for DSLs because...
+
+- Operator overloading
+- Type inference
+- Type alias
+- First-class functions
+- Functional programming
+- Default args
+- Parser combinator lib
+
+No mention of implicits?
+
+### L@@k
+
+- Dubochet, G. 2006. On Embedding Domain-specific Languages with User-friendly Syntax. In Proceedings of the 1st Workshop on Domain-Specific Program Development, 19–22. Nantes, France.
+- Miller, J. A., G. T. Baramidze, A. P. Sheth, and P. A. Fishwick. 2004. Investigating Ontologies for Simulation Modeling. In ANSS ’04: Proceedings of the 37th Annual Symposium on Simulation, 55–71. Washington, DC, USA: IEEE, Inc. Available via: <http://www.cs.uga.edu/~jam/DeMO>.
+- Nance, R. E. 1996. A History of Discrete Event Simulation Programming Languages. In History of Programming Languages—II, 369–427. New York, NY, USA: ACM.
+- Smith, J. B. 2006. Practical OCaml. Berkeley, California, USA: Apress.
+- 
+
+*A Java Fork/Join Framework by Doug Lea*
+----------------------------------------
+
+*3rd or 4th reading -- classic*
+
+Problems hosting fj on Java threads:
+
+> he java.lang.Thread class (as well as POSIX pthreads, upon which Java threads are often based) are 
+> suboptimal vehicles for supporting fork/join programs
+
+- fj tasks never need to block except at aggregate levels (i.e. waiting on sub-tasks)
+    + so thread book-keeping is wasteful
+- fj tasks are often very small
+    + so creating and destroying threads can be prohibitively costly by comparison
+
+Based on the design of Cilk.
+
+### Dequeues
+
+Dequeues reduce contention when stealing.
+
+> Because the deque array is accessed by multiple threads, sometimes without full synchronization, yet 
+> individual Java array elements cannot be declared as volatile, each array element is actually a fixed 
+> reference to a little forwarding object maintaining a single volatile reference.
+
+### GC
+
+> In many ways, modern GC facilities are perfect matches to fork/join frameworks: These programs can generate enormous 
+> numbers of tasks, nearly all of which quickly turn into garbage after they are executed.
+
+Generational GC meshes well with parallelism.
+
+### Locality
+
+Worker threads that consume the tasks they create are more efficient than stealing.  Some tasks are more suited to locality than others.  
+
+### L@@k
+
+- Frigo, Matteo, Charles Leiserson, and Keith Randall. The Implementation of the Cilk−5 Multithreaded Language. In Proceedings of 1998 ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI), 1998.
+
+
+2011.01.13
+==========
+
+*How to Make Lisp More Special by Costanza*
+-------------------------------------------
+
+Kinda boring
+
+### L@@K
+
+- Henry Baker. Shallow Binding in Lisp 1.5. Communications of the ACM 21, 7	(July	1978),	565-569.	Available: http://home.pipeline.com/∼hbaker1/Shallow- Binding.html
+- <ftp://ftp.parc.xerox.com /pub/pcl/archive>
+- Pascal Costanza. Dynamically Scoped Functions as the Essence of AOP. ECOOP 2003 Workshop on Object-Oriented Language En- gineering for the Post-Java Era, Darm- stadt, Germany, July 22, 2003. ACM Sig- plan Notices 38, 8 (August 2003). Available: http://www.pascalcostanza.de/dynfun.pdf
+
+
+*Aspects of PROLOG History: Logic Programming and Professional Dynamics by Rouchy*
+----------------------------------------------------------------------------------
+
+### Parallel
+
+- *and-parallelism* - when more than one sub-goal solves a query, some sub-goals are executed in parallel
+    + list processing
+- *or-parallelism*  - when more than one clause solves a query, some cluases are executed in parallel
+    + backtracking expert systems
+       - language parsing
+       - optimisation problems
+       - deductive dbs
+- *unification parallelism*
+    Unify(Arg1, Arg2) = 
+      If (Arg1 is a complex term f(t1, …, tn) and 
+          Arg2 is a complex term g(s1, …, sm)) 
+      then 
+        If (f is equal to g and n is eqaul to m) then 
+          unify (t1, s1), 
+          unify (t2, s2), 
+          …, 
+          unifiy (tn, sn) 
+        Else 
+          Fail
+
+### 5th gen
+
+- GHCs
+- Parallel Inference Machine (PIM)
+- Kernel0 (KL0) language was Prolog
+- Kernel1 (KL1) language was (to be?) based on GHCs
+
+### Prolog embedded in Lisp
+
+> They (Mellish and Hardy 1982) critically advance that providing PROLOG with convenient
+> connection to LISP is a complete solution.
+
+### L@@k
+
+- K. Clark and Gregory (1986) ‘PARLOG: A parallel implementation of PROLOG, ACM Trans. On Programming Languages Systems, vol. 8, no. 1: 1- 49.
+- J. Chassin de Kergommeaux, Philippe Codognet (1994) ‘Parallel Logic Programming Systems’, ACM Computing Surveys, vol. 26, no. 3, September 1994: 295-336.
+- A. Colmerauer (1985) ‘PROLOG in 10 figures’, Communications of the ACM, December, volume 28, number 12: 1296-1310.
+- A. Colmerauer & P. Roussel (1992) ‘The Birth of PROLOG’ ACM SIGPLAN Notices, volume 28, no. 3, March 1993 and In Thomas J. Bergin and Richard G. Gibson, (eds.) (1996) History of Programming Languages, ACM Press/Addison- Wesley: 331-367.
+- J. Cohen (1988) ‘A View of the Origins and Development of PROLOG’, Communications of the ACM, vol. 31, no. 1, 26-36.
+- R. Ennals (1982) Beginning micro-PROLOG, Ellis Horwood and Heinemann, Chichester and London.
+- R. Ennals, J. Briggs & D. Brough (1984) ‘What the naïve user wants from PROLOG’ in J.A. Campbell (ed.) Implementations of PROLOG, Ellis Horwood Limited, Chichester: 376-386.
+- K. Fuchi, R. Kowalski, K. Furukawa, K. Ueda, K. Kahn, T. Chikayama, E. Tick (1993) ‘Launching New Era’, Communications of the ACM, vol. 36, no. 3, March 1993: 49-100.
+- C. Hewitt and G. Agha (1988) ‘Guarded Horn clause languages: are they deductive and Logical?’ International Conference on Fifth Generation Computer Systems, Ohmsha 1988. Tokyo. Also in Artificial Intelligence at MIT, Vol. 2. MIT Press 1991.
+- R. Kowalski (1988) ‘The early years of Logic Programming’, Communications of the ACM, January.
+- J. McCarthy. (1958) ‘Programs with common sense’, Symposium on Mechanization of Thought Processes,	National	Physical	Laboratory, Teddington, England.
+- J. A. Robinson and E. E. Silbert (1982b) ’LOGLISP:	Motivation,	Design	and Implementation’ in K. L. Clark & S-A. Tarnlund (eds.) (1982) Logic Programming, Academic Press, New York.
+- E. Shapiro (Ed.) (1987) Concurrent Prolog: Collected Papers, vol. 1 & 2, MIT Press, Cambridge, MA.
+
+
 2011.01.12
 ==========
 
