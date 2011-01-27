@@ -1,3 +1,214 @@
+2011.01.26
+==========
+
+*Generalized Combinators in Functional Languages and Their Applications by Jozef de Man* 
+----------------------------------------------------------------------------------------
+
+Uses a variant of SASL
+
+`foldr` and `foldl` have the same results when the function used is both associative and commutative.
+
+    (defn iota [t nxt stop y]
+      (take-while stop (iterate #(t (nxt %)) y)))
+    
+    (iota identity inc #(< % 10) 1)
+    
+    (def upto (fn [end start]
+                (iota identity inc #(< % end) start)))
+    
+    (def downto (fn [end start]
+                  (iota identity dec #(> % end) start)))
+    
+    (upto 10 1)
+    (downto 10 20)
+    
+    (defn to [start end]
+      (if (<= start end)
+        (upto end start)
+        (downto end start)))
+    
+    (to 10 20)
+    (to 20 10)
+    (to 5 -5)
+
+Fun fun fun.
+
+### L@@k
+
+- Backus, J.W. "Functional Level Programs as Mathematical Objects" in Proc. ACM	Conf. on Functional Programming Languages and Computer Architecture, Portsmouth, NH (Oct 1981).
+- Burstall, R.M., Darlington, J.A. "A transformation system for	developing recursive programs" Journal of the ACM 24,l (Jan 1977).
+- Burstall, R.M., HOPE: An experimental applicative language
+- Turner, David, A New Implementation Technique for Applicative Languages
+- Wadler, Applicative Style programming, Program transformation, and List Operators
+
+
+*Design by Contract: A Simple Technique for Improving the Quality of Software by Bolstad*
+-----------------------------------------------------------------------------------------
+
+> In Defensive Programming every error and/or failure should be caught and handled by the software. There 
+> is no distinction between an error (a correctness problem) and a failure (a robustness problem). In 
+> DbC, there is a clear distinction between these two concepts. It is the responsibility of the 
+> programmer to fix all correctness errors.
+
+### Hoare Triples
+
+    {P}        instructions {Q}
+    requires                ensures
+    :pre                    :post
+
+Summarized as:
+
+> Any execution of A started in a state satisfying P will terminate in a state satisfying Q.
+
+### L@@k
+
+- [Hoare69] Hoare, C.A.R., “An Axiomatic Basis for Computer Programming”, in Communications of the ACM, vol. 12, no. 10, October 1969.
+
+
+*An inference engine for function free logic programs by Stefan Bottcher*
+-------------------------------------------------------------------------
+
+Describes a language PROTOS-L that:
+
+> PROTOS-L is similar to DATALOG embedded in a typed logic programming language.
+
+Provides:
+
+- access to relational databases
+- a module concept (based on MODULA-2, TEL, and DBPL)
+- a type concept including subtypes and polymorphisim
+- supports the programming of deductive databases
+
+### 2 modes of operation
+
+1. Database body - provides set-oriented processing
+2. Program body - via bactracking
+
+### L22k
+
+- [Bancilhon and Ramakrishnan, 19861 F. Bancilhon and R. Ramakrishnan. An amateur's introduction to recursive query processing. In Proceedings of the ACM SIGMOD International Conference on Management of Data, Washington D.C., 1986.
+- [Bottcher, 1990bI S. Bottcher.	Integrating a deductive database system with a Warren Abstract Machine. In N. Cercone, F. Gardin, and G. Valle, editors, PTOC.Computational Intelligence 111 - The International Conference on Compuiational Intelligence 90, Milan, Italy, 1990. (to appear).
+- [Hulin, 19891 G. Kulin. Parallel processing of recursive queries in distributed architectures. In Proceedings of ihe lbhInternational Conference on Very Large Data Bases, Amsterdam, 1989.
+- [Warren, 19831 D.	Warren.	An Abstract PROLOG Instruction Set. Technical Report 309, SRI, 1983.
+
+*Datalog vs. First-order Logic by Ajtai and Gurevich*
+-----------------------------------------------------
+
+Datalog v Prolog in a nutshell
+
+> (Pure) datalog may be seen as pure prolog without function symbols (of positive arity).
+
+2011.01.20
+==========
+
+*Curry: A truly functional-logic language by Hanus and Kuchen*
+--------------------------------------------------------------
+
+### Problems of current logic languages
+
+- nondeterminism
+- non-declarative cuts
+- non-declarative i/o
+
+
+
+*Evaluating Haskell in Haskell by Matthew Naylor*
+-------------------------------------------------
+
+Combinator reduction for Haskell
+
+### L@@k
+
+- Jan Martin Jansen, Pieter Koopman, and Rinus Plasmeijer. Efficient interpretation by transforming data types and patterns to functions. In Trends in Functional Programming, volume 7. Intellect (2007)
+- Lennart Augustsson. Small – a small interactive functional system. Technical Re- port 28, Programming Methodology Group, University of Goteborg and Chalmers University of Technology (1986).
+- M. Hanus, H. Kuchen, and J.J. Moreno-Navarro. Curry: A truly functional-logic language. In ILPS’95 Post Conference Workshop on Declarative Languages for the Future. Portland State University and ALP, Melbourne University (1995).
+
+
+
+*SKIM - The S, K, I Reduction Machine by Clarke, Gladstone, MacLean, and Norman*
+--------------------------------------------------------------------------------
+
+Combinators used as an intermediate form for applicative languages and the machines that run them.
+
+Describes the Small language (for symbolic algebra)
+  - first-class function
+  - call-by-need
+  - robust error handling
+
+> Experience with the initial interpretive implementation of Small rapidly convinced us that any loss in 
+> expressive power that may result from removing imperative constructs from a language is more than 
+> balanced by the convenience of having normal order evaluation and higher order functions.
+
+### Combinators
+
+> In its most primitive form combinatory logic is built up using just the two symbols S and K, which 
+> represent functions satisfying 
+
+    K x y : x
+    S f g x = f x (g x)
+
+and `I` would be:
+
+    I = S K K
+
+### L@@k
+
+- [I] Turner, D. A. "A new implementation technique for applicative languages" Software Practise & Experience, 1979
+- [2] Norman, A. C. and Moore, P. M. A. ',The design of a vector-based algebra system"	Proc. EUROSAM 79, 1979 (Springer Lecture Notes in Computer Science 71, ed: E. Ng)
+- [8] Fitch, J.P. and Norman, A. C. "Implementing LISP in a high-level language" Software Practise and Experience, 1977
+
+
+
+*LISP, Programming and Implementation by Sussman*
+-------------------------------------------------
+
+Implements an `eval` and `apply`.  Looks a lot like pg's impl.
+
+### L@@k
+
+- *Viewing control structures as patterns of passing messages* by Hewitt, 1977
+- *The History of Lisp* by McCarthy
+- *The dream of a lifetime: a lazy scoping mechanism* by Sussman and Steele, 1979
+- *Continuation-based program transformation strategies* by Mitchell Wand, 1977
+
+
+
+*Recursion equations as a programming language by D. Turner*
+------------------------------------------------------------
+
+This paper is a good basis for a presentation.
+
+This paper desccribes the Kent Recursive Calculator (KRC).
+
+KRC is preceeded by SASL.
+
+    [1..]
+
+is the way to express all natural numbers... is `inc` the default operation for the transition?
+
+### L@@k
+
+- *Can programming be liberated from the Von Neumann style?* by John Backus, 1978
+- *SKIM - S, K, I reduction machine* by Clarke, Gladstone, Norman, and Maclean, 1980
+- *The varieties of dataflow computers* by Dennis, 1979
+- *Assigning meanings to programs* by Floyd, 1967
+- *A lazy evaluator* by Henderson and Morris, 1976
+- *A guide to CSP* by Kuo, Linck, and Saadat, 1978
+
+2011.01.18
+==========
+
+*How to tell truths that might hurt? by Edsger W. Dijkstra*
+-----------------------------------------------------------
+
+Computing science seems to suffer from the unwillingness to tell harsh truths.
+
+> With respect to COBOL you can really do only one of two things:
+> fight the disease or pretend it does not exist.
+
+*good quote/ref for JoC*
+
+
 2011.01.14
 ==========
 
