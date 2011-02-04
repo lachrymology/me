@@ -1,3 +1,57 @@
+2011.02.04
+==========
+
+*Program Transformation by Darlignton* 
+--------------------------------------
+
+Functional programs can often be transformed via algebra rather than some ad-hoc complex way.
+
+Every paper cites Backus!
+
+### L@@k
+
+- *Proving theorems about Lisp functions* by Boyer and Moore
+- *Design considerations for a fp language* by Burstall
+- *The control facilities of IC-Prolog* by Clark and McCabe
+- *Predicate Logic: a calculus for the derivation of programs* by Clark and Sickel
+- *Logic as a computer language* by Kowalski
+- *Using annotations to make recursion equations behave* by Shwarz
+
+
+
+2011.01.28
+==========
+
+*Purely functional operating systems by Peter Henderson*
+--------------------------------------------------------
+
+Awesome!
+
+
+*Real programming in functional languages by James Morris*
+----------------------------------------------------------
+
+Whoa!  In the first paragraph the author manages to offend Backus, McCarthy, Landis, etc. by calling them meta-programmers!
+
+### L@@k
+
+- *Recursive programming techniques* by Burge
+- *CONS should not evaluate its arguments* by Friedman and Wise
+- *The Lisp70 pattern matching system* by Tesler
+- *TUNIS: A UNIX like operating system written in EUCLID* by Holt
+
+
+*Notes on using types and type abstractions in fp by Guttag*
+------------------------------------------------------------
+
+TODO: Explore further the idea of *axioms*.
+
+### L@@k
+
+- *The Simula 67 common base language* by Dahl, Nygaard, Myhrhuag
+- *The next 700 programming languages* by Landin
+
+
 2011.01.26
 ==========
 
