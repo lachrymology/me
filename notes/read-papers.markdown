@@ -1,3 +1,58 @@
+2011.02.07
+==========
+
+*Computer architecture for functional programming*
+--------------------------------------------------
+
+A list of fun languages to explore:
+- FP          [Backus]
+- SASL        [27]
+- Id          [2]
+- VAL         [1]
+- Prolog      [7]
+- Lucid 3     [3]
+
+### Categories of languages
+
+- imperative
+- single assignment (fp)
+- applicative (fp)
+- logic
+- actor (oop)
+
+### L@@k
+
+1. *VAL - a value oriented algorithmic language* by Ackerman, 1978
+2. *Asynchronous programming language and computing machine* by Arvind, 1978
+3. *LUCID: a non-procedural language with iteration* by Ashcroft and Wadge, 1977
+4. *Reduction languages for reduction machines* by 1975
+5. *A view of dataflow* by Gostelow and Thomas, 1979
+6. *The Smalltalk-76 programming system design and implementation* by Ingalls
+7. *Algortihms = Logic + Control* by Kowalski, 1979
+8. *Principal components of a data flow computer* by Treleaven, 1980
+9. *Recursive machines* by Wilner, 1980
+
+
+*Interpreters for functional programming by David Wise*
+-------------------------------------------------------
+
+Describes something called "ribcage environments".  
+
+I really need to re-read this for wzrdzkül.
+
+### L@@k
+
+- *Recursive programming techniques* by Burge, 1975  (re-read)
+- *Managing reentrant structures using reference counts* by Bobrow, 1980
+- *A method for overlapping and erasure of lists* by Collins, 1960
+- *CONS should not evaluate its arguments* by Friedman, 1976
+- *Functional combination* by Friedman, 1978
+- *An interpretive model for a language based on suspended construction* by Johnson, 1977
+- *A correspondence between ALGOL 60 and Church's lambda notation* by Landin, 1965
+- *Definitional interpreters for higher-order programming languages* by Reynolds, 1972
+- *Correct and optimal implementation of recursion in a simple programming language* by Vuillemin, 1974
+
+
 2011.02.04
 ==========
 
