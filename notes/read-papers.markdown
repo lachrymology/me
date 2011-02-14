@@ -1,10 +1,158 @@
+2011.02.14
+==========
+
+*Design by Contract: The Lessons of Ariane by Bertrand Meyer*
+-------------------------------------------------------------
+
+> The only realiztic test is launch
+
+One of the principles of design by contract, as earlier columns have said, is that any software element that has such a fundamental constraint should state it explicitly, as part of a mechanism present in the language.
+
+
+*Reality: A cousin twice removed by Bertrand Meyer*
+---------------------------------------------------
+
+Modelling the "real world" is a myth!
+
+> reality is in the eye of the beholder
+
+> software is at best only a model of a model of some part of reality
+
+Allegory of the cave.
+
+
+*Why your next project should use Eiffel by Bertrand Meyer*
+-----------------------------------------------------------
+
+Too bad no one did.  My life as an OOP developer would have been much nicer.
+
+- static typing
+- assertions
+- exceptions
+- gc
+- inheritance (even multiple)
+- late binding
+
+### L@@k
+
+- "short-form" classes?  How to extend this to Clojure functions and types?
+- Eiffel's runtime engine (few thousand lines of C)
+- 
+
+*The many faces of inheritance by Bertrand Meyer*
+-------------------------------------------------
+
+### 3 bad inheritances
+
+1. has-a inheritance
+2. taxomania - useless intermediate nodes
+3. convenience inheritance - I need a method now
+
+### 12 types of inheritance
+
+1. subtype inheritance - base describes an incomplete specification, deferred until extension
+2. view inheritance - A and B are the same abstraction, but viewed from different angles (?)
+3. restriction inheritance - B is a more restrictive class of A (e.g. Ellipse <- Circle). constraints are deferred until extension
+4. extension inheritance - B introduces feature not found in A
+5. functional variation inheritance - B redefines some features of A (breaks Liskov)
+6. type variation inheritance - B redefines some features of A at the signature level only
+7. uneffecting inheritance - B redefines some of A's concretions to be abstract (i.e. deferrals)
+8. reification inheritance - B extends A but not fully.  Leaves room for more deferral
+9. structure inheritance - A defines a property (e.g. Comparable), and B represents a concretion possessing that property
+10. implementation inheritance - no deferrals in either A nor B
+11. constant inheritance - A provides a set of logically related constants
+12. machine inheritance - A provides a set of logically related methods
+
+
+*The reusability challenge by Bertrand Meyer*
+---------------------------------------------
+
+*What is  an  object-oriented environment? by Bertrand Meyer* 
+-------------------------------------------------------------
+
+Describes EiffelBench
+
+LoL
+
+> In environments supporting the most popular analysis methods, the little clouds and bubbles which 
+> seem to be the main selling points of these tools accurately reflect the vagueness surrounding the 
+> methods' theoretical foundations and practical usefulness.
+
+
+*Design by contract: building bug-free O-O software by Bertrand Meyer*
+----------------------------------------------------------------------
+
+> When quality is pursued, productivity follows
+
+The law of excluded miracles:
+
+> it is amazing to see how far just stating what a module should do goes towards helping to ensure that it does it.
+
+
+*Introduction to Agda by Daniel Peebles*
+----------------------------------------
+
+Cool fixity syntax decl.  How to expand on this?
+
+    def _! <- |n|
+      factorial n.
+    
+    5!
+    -- 120
+    
+    def if_then_else_ <- |condition, then-part, else-part|
+      if condition:
+        ,then-part
+        ,else-part
+    
+    if true then
+      42
+      36
+    
+    -- 42
+
+Lambda op syntax
+
+Sequential source code with optional code blocks.
+
+### GADTs (Generalized Algebraics Data Types)
+
+### Dependent Types
+
+- Types depend on values
+- Phantom types
+- Type of second component determined by value of first!
+
+
+2011.02.08
+==========
+
+*An Axiomatic Basis for Computer Programming by Hoare*
+------------------------------------------------------
+
+> The first requirement in valid reasoning about a pro- gram is to know the properties of the elementary operations which it invokes
+
+whoa!
+
+> he proven result of the first part of a program is identical with the precondition under which the second part of the program 
+> produces its intended result, then the whole program will produce the intended result, provided that the precondition of the 
+> first part is satisfied.
+
+
+
 2011.02.07
 ==========
+
+*Developing DSLs using combinators. A design pattern by Barrientos and Lopez*
+-----------------------------------------------------------------------------
+
+Explore further how currying reduces parens.
 
 *Computer architecture for functional programming*
 --------------------------------------------------
 
 A list of fun languages to explore:
+
 - FP          [Backus]
 - SASL        [27]
 - Id          [2]
