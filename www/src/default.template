@@ -1,0 +1,21 @@
+--- pipeline:erb,tags,blocks,head
+<html> 
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang:}">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>fogus</title>
+    <meta name="description" content="Trammel - a contracts-programming library for Clojure"/>
+    <meta name="author" content="Fogus"/>
+    <meta name="generator" content="webgen - http://webgen.rubyforge.com/"/>
+    <meta name="robots" content="index,follow,archive"/>
+
+    <link rel="icon" href="http://blog.fogus.me/images/labyrinth.ico" type="image/x-icon"/>
+    <link href="{relocatable: default.css}" rel="stylesheet" type="text/css"/>
+  </head>
+  <body> 
+    <webgen:block name="content"/>
+  </body> 
+</head> 
+</html> 

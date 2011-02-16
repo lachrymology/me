@@ -195,12 +195,12 @@ Explore further how currying reduces parens.
 
 A list of fun languages to explore:
 
-- FP          [Backus]
-- SASL        [27]
-- Id          [2]
-- VAL         [1]
-- Prolog      [7]
-- Lucid 3     [3]
+- FP          (Backus)
+- SASL        (27)
+- Id          (2)
+- VAL         (1)
+- Prolog      (7)
+- Lucid 3     (3)
 
 ### Categories of languages
 
@@ -361,7 +361,7 @@ Summarized as:
 
 ### L@@k
 
-- [Hoare69] Hoare, C.A.R., “An Axiomatic Basis for Computer Programming”, in Communications of the ACM, vol. 12, no. 10, October 1969.
+- Hoare, C.A.R., “An Axiomatic Basis for Computer Programming”, in Communications of the ACM, vol. 12, no. 10, October 1969.
 
 
 *An inference engine for function free logic programs by Stefan Bottcher*
@@ -452,9 +452,9 @@ and `I` would be:
 
 ### L@@k
 
-- [I] Turner, D. A. "A new implementation technique for applicative languages" Software Practise & Experience, 1979
-- [2] Norman, A. C. and Moore, P. M. A. ',The design of a vector-based algebra system"	Proc. EUROSAM 79, 1979 (Springer Lecture Notes in Computer Science 71, ed: E. Ng)
-- [8] Fitch, J.P. and Norman, A. C. "Implementing LISP in a high-level language" Software Practise and Experience, 1977
+- Turner, D. A. "A new implementation technique for applicative languages" Software Practise & Experience, 1979
+- Norman, A. C. and Moore, P. M. A. ',The design of a vector-based algebra system"	Proc. EUROSAM 79, 1979 (Springer Lecture Notes in Computer Science 71, ed: E. Ng)
+- Fitch, J.P. and Norman, A. C. "Implementing LISP in a high-level language" Software Practise and Experience, 1977
 
 
 
@@ -527,41 +527,42 @@ Computing science seems to suffer from the unwillingness to tell harsh truths.
 > In those rare cases in which a lexically scoped global variable is actually needed, because it is important 
 > to be able to rebind it lexically, define-symbol-macro can be used to emulate it.
 
-**TODO: understand this more** refs [1,18]
+**TODO: understand this more** refs (1,18)
 
 > Common Lisp provides means to declare dynamically scoped local variables.
 
-**TODO: So does Clojure... possible blog post. L@@k when it is useful** ref [3]
+**TODO: So does Clojure... possible blog post. L@@k when it is useful** ref (3)
 
 ### AOP impl
 
 - The decision for lexical or dynamic scope is to be made alongside the local definition of a function. (a la `(binding ...)`)
 
-    (defn f [x] (println x))
-    (defn g [x] (f x))
-    
-    (let [h (fn [x] (g x))]
-      (binding [f (fn [x] (print (inc x)))]
-        (h 5)))
-    ; 6
+      (defn f [x] (println x))
+      (defn g [x] (f x))
+      
+      (let [h (fn [x] (g x))]
+        (binding [f (fn [x] (print (inc x)))]
+          (h 5)))
+      ; 6
 
     + **TODO: implement dflet in Clojure**
 
 - Dynamically scoped function definitions is not enough. We also provide a way to refer to the previous definition of a function by way of an implicit local call-next-function definition.
     + something like:
 
-    (let [h (fn [x] (g x))]
-      (dflet [(f [x] (call-next-fn (+ 1 x)))]
-        (h 5)))
+          (let [h (fn [x] (g x))]
+            (dflet [(f [x] 
+                      (call-next-fn (+ 1 x)))]
+              (h 5)))
 
     + This let's the canonical AOP example occur
 
-    (defn f [x] (println x))
-    
-    (dflet [(f [x] (println "entering f")
-                   (call-next-fn)
-                   (println "leaving  f"))]
-      (f 5))
+          (defn f [x] (println x))
+          
+          (dflet [(f [x] (println "entering f")
+                         (call-next-fn)
+                         (println "leaving  f"))]
+            (f 5))
 
 ### Nutshell statement
 
@@ -685,7 +686,7 @@ Kinda boring
 ### L@@K
 
 - Henry Baker. Shallow Binding in Lisp 1.5. Communications of the ACM 21, 7	(July	1978),	565-569.	Available: http://home.pipeline.com/∼hbaker1/Shallow- Binding.html
-- <ftp://ftp.parc.xerox.com /pub/pcl/archive>
+- <ftp://ftp.parc.xerox.com/pub/pcl/archive>
 - Pascal Costanza. Dynamically Scoped Functions as the Essence of AOP. ECOOP 2003 Workshop on Object-Oriented Language En- gineering for the Post-Java Era, Darm- stadt, Germany, July 22, 2003. ACM Sig- plan Notices 38, 8 (August 2003). Available: http://www.pascalcostanza.de/dynfun.pdf
 
 
@@ -796,8 +797,8 @@ But that phrasing is limiting.  That's not to say that it's not powerful, just l
 
 Interesting...
 
-> Optimizing matrix operations is one of the classic examples of the use of C++ expression templates [48, 49] and is 
-> used by many systems such as Blitz++ [50], A++ [35, 36], and others. 
+> Optimizing matrix operations is one of the classic examples of the use of C++ expression templates (48, 49) and is 
+> used by many systems such as Blitz++ (50), A++ (35, 36), and others. 
 
 A nice use-case for something like Clojail:
 

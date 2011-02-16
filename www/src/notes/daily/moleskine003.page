@@ -1,0 +1,153 @@
+---
+title: Moleskine 3 - First half of June 2008
+filemdate: 2008.05.22
+--- 
+
+Kick-ass js Toolkit
+===================
+1.  [Taffy DB](http://taffydb.com)
+2.  [jquery](http://jquery.com)
+3.  [Greybox-redux](http://jquery.com/demo/grey)
+4.  [jquery UI](http://ui.jquery.com)
+5.  [js2-mode.el](http://code.google.com/p/js2-mode)
+6.  Chilli source highlighter
+
+Where is Broccoli going?
+========================
+
+    {
+       fn itt (@lst func)
+       {
+            for $e in @lst
+                :func $e;
+       }
+    }
+    
+    .bind $func
+    {
+        fn ($elem)
+            :print $elem;
+    };
+
+## Chaining
+
+    ::foo arg1 
+          ::bar arg2 
+                ::baz;
+          ;
+    ;
+    
+    ::foo ::bar ::baz;;;
+
+## Symbols
+
+- scope decl `{}`
+- funcall `::;`
+- list `()`
+- hash? `[]`
+- `<>` ?
+
+## From [Fowler's Syntactic Noise](http://martinfowler.com/bliki/SyntacticNoise.html)
+
+
+Thoughts on gor
+===============
+[object-relational impedance mismatch][ormimp]
+
+
+Transgressional Fiction
+========================
+- William S. Burroughs 	Naked Lunch, Junkie
+- Hubert Selby Jr. 		Last Exit to Brooklyn, Requiem for a Dream
+- Emile Zola			
+- Fyodor Dostoyevsky
+- Knut Hamsun		Hunger
+- Gordon Lish
+- Henry Miller			Tropic of Cancer, Tropic of Capricorn
+- Alan Ginsberg
+- J.G. Ballard			Crash
+- Kathy Acker
+- Charles Bukowski
+- Douglas Coupland	Generation X
+- Bret Easton Ellis		American Psycho, Lunar Park
+- Irvine Welsh			Trainspotting
+- Chuck Palahniuk		Choke, Fight Club
+- Craig Clevenger		The Contortionist's Handbook
+- Luke Rhinehart		Dice Man
+- Georges Bataille
+
+Splatterpunk
+- Clive Barker			Books of Blood
+- Craig Spector		The Light at the End
+- David Schow			The Kill Riff
+- Joe R. Lansdale		The Nightrunners
+- Rex Miller			Slob
+- Kathe Koja			The Cipher
+- Jack Ketchum			Off Season
+
+## Writing tips from Chuck Palahniuk ##
+Number One: Two years ago, when I wrote the first of these essays it was about my "egg timer method" of writing. You never saw that essay, but here's the method: When you don't want to write, set an egg timer for one hour (or half hour) and sit down to write until the timer rings. If you still hate writing, you're free in an hour. But usually, by the time that alarm rings, you'll be so involved in your work, enjoying it so much, you'll keep going. Instead of an egg timer, you can put a load of clothes in the washer or dryer and use them to time your work. Alternating the thoughtful task of writing with the mindless work of laundry or dish washing will give you the breaks you need for new ideas and insights to occur. If you don't know what comes next in the story… clean your toilet. Change the bed sheets. For Christ sakes, dust the computer. A better idea will come.
+
+Number Two: Your audience is smarter than you imagine. Don't be afraid to experiment with story forms and time shifts. My personal theory is that younger readers distain most books - not because those readers are dumber than past readers, but because today's reader is smarter. Movies have made us very sophisticated about storytelling. And your audience is much harder to shock than you can ever imagine.
+
+Number Three: Before you sit down to write a scene, mull it over in your mind and know the purpose of that scene. What earlier set-ups will this scene pay off? What will it set up for later scenes? How will this scene further your plot? As you work, drive, exercise, hold only this question in your mind. Take a few notes as you have ideas. And only when you've decided on the bones of the scene - then, sit and write it. Don't go to that boring, dusty computer without something in mind. And don't make your reader slog through a scene in which little or nothing happens.
+
+Number Four: Surprise yourself. If you can bring the story - or let it bring you - to a place that amazes you, then you can surprise your reader. The moment you can see any well-planned surprise, chances are, so will your sophisticated reader.
+
+Number Five: When you get stuck, go back and read your earlier scenes, looking for dropped characters or details that you can resurrect as "buried guns." At the end of writing Fight Club, I had no idea what to do with the office building. But re-reading the first scene, I found the throw-away comment about mixing nitro with paraffin and how it was an iffy method for making plastic explosives. That silly aside (… paraffin has never worked for me…) made the perfect "buried gun" to resurrect at the end and save my storytelling ass.
+
+Number Six: Use writing as your excuse to throw a party each week - even if you call that party a "workshop." Any time you can spend time among other people who value and support writing, that will balance those hours you spend alone, writing. Even if someday you sell your work, no amount of money will compensate you for your time spent alone. So, take your "paycheck" up front, make writing an excuse to be around people. When you reach the end of your life - trust me, you won't look back and savor the moments you spent alone.
+
+Number Seven: Let yourself be with Not Knowing. This bit of advice comes through a hundred famous people, through Tom Spanbauer to me and now, you. The longer you can allow a story to take shape, the better that final shape will be. Don't rush or force the ending of a story or book. All you have to know is the next scene, or the next few scenes. You don't have to know every moment up to the end, in fact, if you do it'll be boring as hell to execute.
+
+Number Eight: If you need more freedom around the story, draft to draft, change the character names. Characters aren't real, and they aren't you. By arbitrarily changing their names, you get the distance you need to really torture a character. Or worse, delete a character, if that's what the story really needs.
+
+Number Nine: There are three types of speech - I don't know if this is TRUE, but I heard it in a seminar and it made sense. The three types are: Descriptive, Instructive, and Expressive. Descriptive: "The sun rose high…" Instructive: "Walk, don't run…" Expressive: "Ouch!" Most fiction writers will only use one - at most, two - of these forms. So use all three. Mix them up. It's how people talk.
+
+Number Ten: Write the book you want to read.
+
+Number Eleven: Get author book jacket photos taken now, while you're young. And get the negatives and copyright on those photos.
+
+Number Twelve: Write about the issues that really upset you. Those are the only things worth writing about. In his course, called "Dangerous Writing," Tom Spanbauer stresses that life is too precious to spend it writing tame, conventional stories to which you have no personal attachment. There are so many things that Tom talked about but that I only half remember: the art of "manumission," which I can't spell, but I understood to mean the care you use in moving a reader through the moments of a story. And "sous conversation," which I took to mean the hidden, buried message within the obvious story. Because I'm not comfortable describing topics I only half-understand, Tom's agreed to write a book about his workshop and the ideas he teaches. The working title is "A Hole In The Heart," and he plans to have a draft ready by June 2006, with a publishing date set in early 2007.
+
+Number Thirteen: Another Christmas window story. Almost every morning, I eat breakfast in the same diner, and this morning a man was painting the windows with Christmas designs. Snowmen. Snowflakes. Bells. Santa Claus. He stood outside on the sidewalk, painting in the freezing cold, his breath steaming, alternating brushes and rollers with different colors of paint. Inside the diner, the customers and servers watched as he layered red and white and blue paint on the outside of the big windows. Behind him the rain changed to snow, falling sideways in the wind.
+
+The painter's hair was all different colors of gray, and his face was slack and wrinkled as the empty ass of his jeans. Between colors, he'd stop to drink something out of a paper cup.
+
+Watching him from inside, eating eggs and toast, somebody said it was sad. This customer said the man was probably a failed artist. It was probably whiskey in the cup. He probably had a studio full of failed paintings and now made his living decorating cheesy restaurant and grocery store windows. Just sad, sad, sad.
+
+This painter guy kept putting up the colors. All the white "snow," first. Then some fields of red and green. Then some black outlines that made the color shapes into Xmas stockings and trees.
+
+A server walked around, pouring coffee for people, and said, "That's so neat. I wish I could do that…"
+
+And whether we envied or pitied this guy in the cold, he kept painting. Adding details and layers of color. And I'm not sure when it happened, but at some moment he wasn't there. The pictures themselves were so rich, they filled the windows so well, the colors so bright, that the painter had left. Whether he was a failure or a hero. He'd disappeared, gone off to wherever, and all we were seeing was his work.
+
+
+
+HD-DVD disc access key
+=======================
+09 F9 11 02 9D 74 E3 5B D8 41 56 C5 63 56 88 C0
+As I can understand some of you are interested in how I retrieved the Media and Processing Keys. I will tell what i did.
+
+Most of the time I spend studying the AACS papers. A good understanding of how things worked have helped me greatly in knowing what to find in the first place (and how to recognize something). I may write an explanation of (my understanding) of how AACS works in particular the subset-difference technique (which is by far the hardest to understand) at a later date if you guys want to.
+
+But anyway. Since the moment I found the Volume ID (which was much simpler than I had thought) my thought was to try to find the Media Key. But after some discussion I thought it might be better to go directly for the Device Keys (bad mistake). After looking at files created and changed by software player and trying to recognize Device Keys in memory dumps I was starting to get worried a bit. I wasn't making any progress.
+
+So I went back to my original idea: do a bottom-up approach. So first I tried to find the Media Key. One of the logical things to do even before that was to search for the Verify Media Key Record in memory. But it wasn't there. I then started to work on a little proggy that would scan a memdump and see everything as a Media Key: thus trying to verify it with the Verify Media Key Record. No luck.
+
+This was frustrating: all kinds of information was in the memdump but not the Media Key (I sort of assumed/hoped it would). I made several memdumps at different moments but nada, nothing. After throwing it all away I remembered I still had a "corrupt" memdump from WinHex (it failed to finish it because WinHex said the memory had changed). It was really small compared to the others so I didn't have much hope. But when running it with my proggy: voila! I found it. Which finally gave me hope I was going in the right direction.
+
+There were just two major problems left: how do you detect the Processing Key and if its not in memory how do you find it at all? Well since I now knew how things worked I knew the Processing Key had to be combined with a C-value to produce the Media Key. The problem was there are 513 C-values in the MKB! Searching the memory (several megabytes) for a Processing Key and assuming just one C-value would take minutes (if not hours depending on the size of the dump). So doing them all would take very long. And that while I didn't even know for sure there was a Processing Key in memory to begin with. I made a proggy that did this but using my favorite "corrupt" memdump I didn't find any Processing Key in the first megabyte (not for any C-value). It didn't look good.
+
+But then I realized why I first didn't find the Media Key: it was removed from memory after the Volume ID was retrieved and the VUK calculated. I also saw that in my "corrupt" memdump the VUK, Vol ID, Media Key and the Title Key MAC were all closely clustered in memory: in the first 50kb (of the entire multi megabyte file!) but there were large empty parts around it. Almost as if it was cleaned up.
+
+This gave me an idea: what I wanted to do is "record" all changes in this part of memory during startup of the movie. Hopefully I would catch something insteresting. In the end I did something a little more effiecient: I used the hd dvd vuk extractor (thanks ape!) and adapted it to slow down the software player (while scanning its memory continously) and at the very moment the Media Key (which I now knew: my bottom-up approach really paid off here) was detected it halted the player. I then made a memdump with WinHex. I now had the feeling I had something.
+
+And I did. Not suprisingly the very first C-value was a hit. I then checked if everyting was correct, asked for confirmation and here we are.
+
+Hope you enjoyed the ride. I'm thinking about a concept of proof proggy which does all the steps (from Processing Key to C-value to Media Key to Volume ID to VUK). It would require a Volume ID as input (which might be retrieved/guessed in another program or extension whatever). But the most important part is done: we have a Processing Key.
+
+I'm also thinking about doing a full explanation of the AACS protection system (or at least the subset-difference technique). But only if there is any demand for it .
+
+
+[ormimp]: http://en.wikipedia.org/wiki/Object-Relational_impedance_mismatch

@@ -1,0 +1,340 @@
+---
+title: Moleskine 2 - Second half of May 2008
+filemdate: 2008.05.09
+--- 
+
+[Broccoli v0.1.2 released](https://sourceforge.net/projects/broccoli-lang/)
+
+{menu: }
+
+Thinking about Scala
+====================
+Scala at the core allows mutable and immutable objects based with the following observation:
+>Objects can be mutable or immutable. The latter is preferred when it’s possible, since it needs no concurrency control. Also, these days it’s faster to make new objects and allow them to be efficiently GC’ed, than incur the GC overhead
+
+Incurring GC overhead
+*It is important that I understand what this means.*
+
+1.  Traits 
+
+    are like interfaces **except** they can provide default method impls.  mixin capability
+    
+2.  Singletons
+ 
+    are used instead of statics
+
+3.  Actors
+
+    used to provide async messaging
+
+Scala has two *interesting* things:
+1. Implicits 
+Once again we are bashed over the head with globals and side-effects.
+
+2. Pattern matching (algebraic types)
+
+> But the more powerful you make a type system, the more you run into hard-to-understand stuff at the edges, and if you make it even more powerful, the edges start moving in toward the center.
+
+
+While reading [Steve Yegge's thoughts on dynamic languages][yegge1]
+====================================================================
+> C++you've got your virtual method dispatch, which is what C++ you know, sort of evangelists, that's the first thing they go after, like in an interview, "tell me how a virtual method table works!" Right? Out of all the features in C++, they care a lot about that one, because it's the one they have to pay for at run time, and it drives them nuts! It drives them nuts because the compiler doesn't know, at run time, the receiver's type.
+
+> If you call foo.bar(), foo could be some class that C++ knows about, or it could be some class that got loaded in afterwards. And so it winds up this polymorphism winds up meaning the compiler can compile both the caller and the callee, but it can't compile them together. So you get all the overhead of a function call. Plus, you know, the method lookup. Which is more than just the instructions involved. You're also blowing your instruction cache, and you're messing with all these, potentially, code optimizations that could be happening if it were one basic-block fall-through.
+
+> So what he (Urs) does, is he has these counters at hot spots in the code, in the VM. And they come in and they check the types of the arguments (or operands). And they say, all right, it looks like a bunch of them appear to be class B, where we thought it might be class A.
+
+> So what we're gonna do is generate this fall-through code that says, all right, if it's a B Ð so they have to put the guard instruction in there; it has to be correct: it has to handle the case where they're wrong, OK? But they can make the guard instruction very, very fast, effectively one instruction, depending on how you do it. You can compare the address of the intended method, or you can maybe do a type-tag comparison. There are different ways to do it, but it's fast, and more importantly, if it's right, which it is 80-90% of the time, it falls through (i.e., inlines the method for that type - Ed.), which means you maintain your processor pipeline and all that stuff.
+
+> The syntax of a language, unless it's Scheme, gives you a lot of clues about the semantics, right? That's actually the one place, maybe, where lots of syntax actually wins out (over Scheme).
+
+> So javac, the Java compiler: what does it do? Well, it generates bytecode, does some optimizations presumably, and maybe tells you some errors. And then you ship it off to the JVM. And what happens to that bytecode? First thing that happens is they build a tree out of it, because the bytecode verifier has to go in and make sure you're not doing anything (illegal). And of course you can't do it from a stream of bytes: it has to build a usable representation. So it effectively rebuilds the source code that you went to all that effort to put into bytecode.
+
+> But that's not the end of it, because maybe javac did some optimizations, using the old Dragon Book. Maybe it did some constant propagation, maybe it did some loop unrolling, whatever.
+
+> The next thing that happens in the JVM is the JIT undoes all the optimizations! Why? So it can do better ones because it has runtime information. ... So it undoes all the work that javac did, except maybe tell you that you had a parse error.
+
+> And to us, C++ was the ultimate in Roman decadence. I mean, it was equivalent to going and vomiting so you could eat more.
+
+> The problem is, picture an ant walking across your garage floor, trying to make a straight line of it. It ain't gonna make a straight line. And you know this because you have perspective. You can see the ant walking around, going hee hee hee, look at him locally optimize for that rock, and now he's going off this way, right?
+
+Interesting Langdev Papers
+===========================
+http://www.ics.uci.edu/%7Efranz/Site/pubs-pdf/C44Prepub.pdf
+http://www.ics.uci.edu/%7Efranz/Site/pubs-pdf/ICS-TR-07-10.pdf
+http://research.sun.com/self/papers/pldi94.ps.gz
+http://homepages.inf.ed.ac.uk/wadler/papers/essence/essence.ps
+http://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29
+
+> writing programs is a medium of expression which doesn't necessarily map to anything other than a programming language, and probably isn't easier in anything other than a programming language.
+
+Question about CFront
+======================
+What was so special about its error messages?
+
+JVM Languages
+=============
+1. Rhino
+2. JRuby
+3. Jython
+4. Clojure
+5. Groovy
+6. Scala
+7. [Broccoli][broccoli] (TBD)
+
+On Javascript
+=============
+
+There are some very nice things about js and some very bad things:
+
+## Good
+1.  JSON
+2.  lambda *(js is the first mainstream language with this language feature)*
+3.  Functional nature
+4.  Object literals
+5.  Objects as containers
+6.  No casting needed, the type system is dynamic
+7.  Supports light, minimal, and shallow coding
+    + On the other hand, Java fosters extremely deep type hierarchies
+8.  Standardized
+
+## Bad
+1.  Overloaded + to mean addition and concatenation
+2.  Automatic semicolon injection
+3.  Objects as containers are not quite useable as general purpose containers
+4.  Global vars as method of linkage for compilation units
+5.  Variables without `var` in front are global by default!
+6.  Globals in a file and DOM are readable by any other js file that includes it
+7.  `with` statement wants to be dynamic in a static system
+8.  Very cluttered
+9.  Standardized
+
+## References
+Paper by Ivan Pratt.
+
+[jslint][jslint] 
+> jslint will hurt your feelings
+
+Static vs. Dynamic vs. Strong vs. Weak vs. Duck vs. Structural
+===============================================================
+It's that time of the year where I refresh on some basic computer science topics.
+
+## Static typing
+*examples: c, c++, c#, java*
+
+Static languages require variable type definitions prior to their usage.  These type definitions are checked at *compile time*.  The type of an entity resides in the variable.
+
+## Dynamic typing
+*examples: php, lisp, [Broccoli][broccoli], javascript, perl, python, ruby, scheme, and smalltalk*
+
+Dynamic languages apply type definitions as needed.  These type definitions are checked at *run time*.  The type of an entity resides in the value.
+
+## Strong typing
+Claims that a variables and operations can hold only one type of variable and only one type.  There are no implicit conversions.
+
+### How to break strong typing
+-   Most static languages has some form of casting, which throws the guarantees of static typing out the window -- buying all of the dangers of dynamic typing, with none of the benefits.  
+-   Automatic type conversion
+-   Variadic functions (???)
+-   Union types
+
+## Weak typing
+Claims that variables and operations can hold compatible types in addition to the specific type.
+
+## Duck typing
+An object is equivalent to another if the relevant pieces are the same.  That is, there is no need to check if object A is of type X; if A can perform A.quack() at runtime, then it is considered equivalent.
+
+## Structural typing
+More restrictive than duck typing, but similar in that two objects are the same if they are structurally the same.  
+
+Broccoli Thoughts
+==============
+1.  One or two releases into [Broccoli][broccoli] should at a minimum be as powerful as [TRS-80 Model I Level II BASIC][trs80]
+2.  L@@K the TCL threading model
+3.  Currying
+
+    a technique where functions take a general function and return a new, more specialized one.
+
+4.  Detecting int overflow for `c = a + b`
+
+    -  `c > (1 << 32) - 1`
+    -  `if( c < a) or if( c < b)`
+
+## [The ineq operator discussion](http://dewitters.koonsolo.com/python_neq.html) ##
+* Change inequality to >< or =/= or /=
+* Change equality to =
+* Change bind to :=
+* Add less-than-or-greater-than operator <>
+
+
+
+Books that absolutely must be read in order to be considered a man of note
+===========================================================================
+*this list is taken from [The Art of Manliness](http://artofmanliness.com/2008/05/14/100-must-read-books-the-essential-mans-library), but not all are considered*
+
+Those I have yet to read -- or should have but didn't -- or did but forgot (for shame!)
+
+1.  The Great Gatsby
+2.  Brothers Karamazov
+3.  For Whom the Bell Tolls
+4.  The Grapes of Wrath
+5.  Brave New World
+6.  Dharma Bums
+7.  Bluebeard
+8.  Atlas Shrugged
+9.  The Metamorphosis
+10. Another Roadside Attraction
+11. White Noise
+12. Ulysses
+13. Blood Meridian
+14. Crime And Punishment
+15. Steppenwolf
+16. Don Quixote
+17. East of Eden
+18. Adventures of Huckleberry Finn
+19. Cyrano de Bergerac
+20. Tropic of Cancer
+21. The Federalist Papers
+22. Moby Dick
+23. A Farewell To Arms
+24. Robinson Crusoe
+25. The Pearl
+26. On the Road
+27. Treasure Island
+28. Confederacy of Dunces
+29. Foucault’s Pendulum
+30. Fear and Trembling
+31. Undaunted Courage
+32. Paradise Lost 
+33. Cannery Row
+34. The Island of Dr. Moreau
+35. The Count of Monte Cristo
+36. The Maltese Falcon
+37. To Kill a Mockingbird
+
+While reading about [crashing nicely](http://www.codinghorror.com/blog/archives/001118.html)
+============================================================================================
+> the first thing I do on any new project is set up an error handling framework
+
+> Whatever error handling solution you choose, it should automatically log everything necessary to troubleshoot the crash -- and ideally send a complete set of diagnostic information back to your server. This is fundamental. If you don't have something like this in place yet, do so immediately.
+
+ASOIAF
+======
+*  Blood of the Dragon (1996) by George R.R. Martin
+* Hedge Knight, the (1998) by George R.R. Martin
+* Path of the Dragon (2000) by George R.R. Martin
+* Arms of the Kraken (2002) by George R.R. Martin
+* Sworn Sword, the (2003) by George R.R. Martin
+* Hedge Knight, the (2004) by George R.R. Martin
+1. Game of Thrones, a (1996) by George R.R. Martin
+2. Clash of Kings, a (1998) by George R.R. Martin
+3. Storm of Swords, a (2000) by George R.R. Martin
+4. Feast for Crows, a (2005) by George R.R. Martin
+
+www thoughts
+============
+<pre style="background: rgb(0, 0, 0) none repeat scroll 0%; color: rgb(0, 204, 0); margin-left: 4px;">
+This is 
+a very
+    nice
+
+code block!
+
+</pre>
+
+Misc
+====
+<pre><code>
+import sqlite3
+mydb = sqlite3.connect('sample.db')
+mydb.execute("create table peeps (fn text, ln text, em text)")
+
+mydb.execute("insert into peeps values('FN','LN','a@boo.com')")
+
+mydb.commit()
+mydb.close()`
+</code></pre>
+
+[short route](http://www.gmap-pedometer.com/?r=1212971)
+[long route](http://www.gmap-pedometer.com/?r=1212993)
+
+## Living Tips ##
++ Use the same food allowance that you had when you were 17, but eat better
++ Use Gmail to manage todo items 
+       - TODO as subject
+       - Filter to catch star and tag
+       - As items are done, reply to message and remove from sublect line
+       - Archive old email
++ Do all two-minute tasks immediately
++ Silence on the Wire
++ Eliminate unneeded bank accounts
++ Get rid of things that you haven't used in 6 months
++ Be anal about finances
+     - Be a pest to HR
++ Live off of my allowance
+     - Save 40%
++ Create a list of goals
+     - weekly
+     - monthly
+     - yearly
+     - 5-yearly
+
+## Games to find for emulation ##
+Pitfall! - Atari 2600
+Mystery House - Apple 2
+Super Mario Kart - SNES
+NBA JAM - Atari Jaguar
+Zork - Roll my own OR commodore 64
+SimCity - Commodore 64
+Metroid - GBA OR NES
+Super Mario 64 - Nintendo 64
+
+## Something to think about ##
+> This world ain't nothing but bad news and the pills that go with it, and you got a girl who's thinking about your Christmas present in March.
+
+Baseball
+========
+
+## Some formulas ##
+`OUTS = (3*FLOOR(IP,1)) + ((IP-((3*FLOOR(IP,1))/3)) * 10)`
+
+`QUALITY_OUTS = IF(EQ(SIGN(IP-4.0), -1),0,FLOOR(ABS(IP-4.0),1) * 3)`
+
+`GAME_SCORE = 50 + OUTS + (QUALITY_OUTS/3) + K - ((2*H) + (4*ER) + (2*(R-ER)) + BB)`
+
+## Billy Beane ##
+His system is built around being successful over the long haul. That is, if you have guys that walk walk walk, then they will tend to score more runs over the course of a season then an otherwise equal team that doesn't In other words, a team that scores more runs wins more games (stop the presses!!!).
+
+HOWEVER, in the playoffs anything can happen over the course of a 5-7 game series. Therefore, his goal of playing for the long haul is neutralized. That is not to say that his teams cannot win in the playoffs, it's just that they (as with any other team) are not guaranteed to.
+
+Java Performance Myths
+=======================
+## 64 vs 32 bits ##
+There is a belief that 64-bit code will take up more memory and therefore no longer slim enough to fit into L1 or L2 cache.
+
+On the x86 processor, 64-bit code has 2x the number of processors, therefore lengthening the pipelines.
+
+## Locking ##
+Uncontended locking is almost free.  Synchronized locking with contention is very expensive, but also immune to a growing thread population (i.e. scales).  
+
+TV
+==
+-  Happy Days: We learn how Fonzy has avoided charges of statutory rape by possession photos of a certain police chief and a goat.
+
+- Facts of Life: We learn how Blair gets pregnant and pays Jo a fiver to repeatedly punch her in the stomach.
+
+- ALF: We learn how Willie eats an inordinate number of carrots turning his skin yellow and his teeth floppy, thus driving ALF into a canabalistic frenzy.
+
+- Wonder Years: We learn how Kevin succumbs to his baser curiosities one day with Paul.  His brother Wayne learns of this and calls him a "closet case" for the entire episode.  
+
+On Java and Singletons
+======================
+> Since in Java, classes are the ONLY globally available namespace mechanism built into the language
+
+
+[yegge1]: http://steve-yegge.blogspot.com/2008/05/dynamic-languages-strike-back.html
+[broccoli]: http://www.earthvssoup.com/projects/broccoli
+[jslint]: http://www.jslint.com
+[trs80]: http://www3.nbnet.nb.ca/mclays/level2.html
+
+

@@ -1,0 +1,44 @@
+---
+title: Earth vs. Soup Philosophical Leanings and Viewpoints 
+inMenu: true
+filemdate: 2008.04.28
+--- 
+
+Overview
+========
+This is where I will aggregate my views on various topics including, but not limited (although at times excluding entirely) to:
+- Java, Python, Ruby, Lisp, Scala, Vodka, etc...., programming and code monkey-ism
+- Operating system development
+- Programming language design and development
+- Mystery Science Theater 3000
+- Mathematics and logic
+- Crypto-zoology
+- Computing industry observations
+- Transcendental Unity of Apperception
+
+{menu: }
+
+Computing
+=========
+
+### [The One True Way][onetrueway]
+Whereby I outline my setup and configuration of any machine that I happen to get my grubby hands on.  
+
+Humor
+=====
+
+### [The Ecology of a Corporate IT Workplace][it-ecology]
+Whereby I outline the rich diversity of a typical corporate IT shop.  
+
+Reading
+=======
+
+### [72 books in 2007](72for2007.html)
+
+Reviews
+=======
+
+### [Quick reviews of everything](quick-reviews)
+
+[onetrueway]: ./one-true-way/
+[it-ecology]: ./it-ecology/
