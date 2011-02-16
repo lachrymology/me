@@ -1,3 +1,45 @@
+2011.02.16
+==========
+
+*Toward More Expressive Contracts by Bertrand Meyer*
+----------------------------------------------------
+
+
+
+
+2011.02.15
+==========
+
+*Practice to Perfect: The Quality First Model by Bertrand Meyer*
+----------------------------------------------------------------
+
+> Quality First is bottom-up (it starts with perfecting a small system then adds functionality)
+
+Motto:
+
+> Build it so you can trust it. Then don’t trust it
+
+On comments, etc.
+
+> Like everyone else I am occasionally tempted to cut corners and postpone writing header comments, 
+> indexing clauses, and the like. But I censure myself because I know it means slower progress in the
+> end.
+
+No love for dynamic langs:
+
+> Why would anyone use an untyped or dynamically typed language?  The argument “we’ll develop faster that
+> way” makes no sense to me, either theoretically or practically
+
+Demo
+
+> always have a working system
+
+
+### L@@k
+
+- Kim Walden “Reversibility in Software Engineering” Sept. 1996
+- Tom Van Vleck's homepage <http://www.multicians.org/thvv/>
+
 2011.02.14
 ==========
 
