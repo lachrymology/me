@@ -1,0 +1,526 @@
+---
+title: Annotated Scala Levels
+---
+
+This is an annotated version of Martin Odersky's [*Scala Levels* blog post](http://www.scala-lang.org/node/8610) with additional commentary derived from [Tony Morris's extended levels](http://blog.tmorris.net/critique-of-oderskys-scala-levels/).  
+
+*this is a living document and therefore subject to change*
+
+{menu: {min_levels: 2}}
+
+Level A1: Beginning application programmer
+==========================================
+
+Java-like statements and expressions
+------------------------------------
+
+I'm of the firm opinion that to fully appreciate the power of Scala, one must begin their exploration with the language holding the appropriate knowledge required to understand Josh Bloch's book [Effective Java](http://www.amazon.com/o/asin/0321356683?tag=fogus-20).
+
+### standard operators
+
+### method calls
+
+### conditionals
+
+### loops
+
+### try/catch
+
+Scala basics
+------------
+
+While you can easily write Java-flavored Scala code, to do so beyond the initial explorations is folly.
+
+*important terms: [singleton](http://en.wikipedia.org/wiki/Singleton_pattern), [lexical](http://www.gnu.org/software/guile/manual/html_node/Lexical-Scope.html)*
+
+### class
+
+Classes in Scala operate along the same dimensions as java classes:
+
+     class Name(first:String, last:String)
+     
+     new Name("mike", "fogus")
+     //=> Name@27adc5f7
+
+However, as you can see the Scala class syntax gives you many things for free.  More information can be found in first chapter of any of the existing Scala books.
+
+### object
+
+The `object` keyword in Scala is used to define a singleton:
+
+    object App {
+      def main(args:Array[String]) = println("Hello Cleveland!")
+    }
+    
+    App.main(null)
+    // Hello Cleveland!
+
+Objects can also be used as companions to classes, but I won't get into that deeply here.  Instead, read [First Steps to Scala](http://www.artima.com/scalazine/articles/steps.html) by Bill Venners if you want the beginner's guide to that technique.
+
+### def
+
+The `def` keyword can be used to define functions:
+
+    def hi(msg:String) = println("Hello " + msg)
+    
+    hi("Cleveland")
+    // Hello Cleveland!
+
+or methods to classes and objects:
+
+    class Name(first:String, last:String) {
+      def speak() = println("Watashi ha " + first + " " + last + " desu.")
+    }
+    
+    object Name {
+      def apply(first:String, last:String) = new Name(first,last)
+    }
+    
+    val me = Name("mike", "fogus")
+    me speak
+    // Watashi ha mike fogus desu.
+
+There is a lot going on here that I am glossing over.  Have fun learning it on your own.
+
+### val
+
+A name defined using `val` is constant in that it cannot be reassigned:
+
+    val L = new java.util.ArrayList[String]()
+    
+    L
+    //=> []
+    
+    L = 138
+    // error: reassignment to val
+
+However, `val` in no way makes an immutable instance, only the name `answer` is immutable:
+
+    L.add("Goo!")
+    
+    L
+    //=> ["Goo!"]
+
+### var
+
+A name defined with `var` is transient and can change on a whim:
+
+    var answer = 42
+    answer = 138
+
+Of course the type is still maintained:
+
+    answer = "Money"
+    // error: type mismatch
+
+### import
+
+Scala's `import` works very similar to that of Java's:
+
+    import java.util.ArrayList
+    
+    val AL = new ArrayList[String]()
+
+At a superficial level Java's wildcard import declaration `*` is replaced by `_` in Scala[^anaphora].  However, at a deeper level Scala's `import` is lexical by nature:
+
+    def createJucMap() = {        
+      import java.util.HashMap    
+      new HashMap[String,String]()
+    }
+    
+    val JM = createJucMap()       
+    
+    val JM2 = new HashMap[String,String]()
+    // error: not found: type HashMap
+
+This is pretty handy.  There is [more to `import` than this as outlined at jcranky.com](http://jcranky.com/2009/08/18/import-statements-in-scala/).
+
+[^anaphora]: You will see `_` pop up in Scala in many different places and taking on different meanings depending on context.  This is a huge cause for confusion.
+
+### package
+
+On the surface, Scala's `package` is of the same nature as Java's:
+
+    package foo.bar
+    
+    class Baz(x:String)
+
+You know, I find packages kinda boring, so I will just [let David MacIver take over from here](http://www.drmaciver.com/2009/07/how-packages-work-in-scala/).  Scala 2.8 also introduced [package objects](http://www.scala-lang.org/docu/files/packageobjects/packageobjects.html) that are pretty nice.
+
+Methods
+-------
+
+There is nothing particularly compelling about Scala's notion of the method beyond the fact that they are pervasive.
+
+### Infix notation for method calls
+
+However, any method that takes either none or a single argument can be used without the dot operator:
+
+    class Bug {                                              
+      def buzz(t:Int) = { 
+        print("buzz " * t)
+        this
+      }
+    
+      def die() = println("Blargh!")
+    }
+    
+    val fly = new Bug
+    
+    fly buzz 5
+    // buzz buzz buzz buzz buzz
+    //=> Bug@87342819749
+    
+    fly die
+    // Blargh!
+    
+    fly buzz 5 die
+    // buzz buzz buzz buzz buzz Blargh!
+
+Simple closures
+---------------
+
+There are different types of name bindings in Scala, but for the sake of narrowing this section I will only talk about bound and free names within the context of functions.  A binding occurs when its value is given as a parameter to the function or explicitly assigned in the function body.  All of these are examples of bindings:
+
+    def chump(x:Int) = {
+      val y = 2         
+      
+      x * y
+    }
+    
+    chump(10)
+    //=> 20
+
+Both the names `x` and `y` refer to bindings that were either explicit or occurred as parameters to the function `chump`.  However, a free binding is one that is defined through neither of these means:
+
+    def chimp(x:Int) = {
+      x * ub
+    }
+    
+    // error: not found: value ub
+
+The name `ub` is not known at the time that `chimp` is defined, so Scala has no idea what to do with it.  However, what happens if it *is* defined?
+
+    val ub = 2
+    
+    def chimp(x:Int) = {
+      x * ub
+    }
+    
+    chimp(100)
+    //=> 200
+
+The name `ub` has now been "captured" by `chimp` and can be referred to within its body.  However, this example is far from compelling because I've only shown that globals can be used in a function body.  A more interesting example would be to try and "capture" a binding that is known to have a limited lifetime (or extent).
+
+    def timesN(n:Int) = (x:Int) => n * x
+    
+    val times2 = timesN(2)
+    
+    times2(1000)
+    //=> 2000
+
+So a closure therefore is the capturing of free bindings (in this case `n`) within the body of a function allowing its use beyond the confines defined by the normal lifetime (in this case, the body of `timesN`).
+
+*important terms: [binding](http://en.wikipedia.org/wiki/Name_binding), [free bindings](http://en.wikipedia.org/wiki/Free_variables), [extent](http://en.wikipedia.org/wiki/Variable_(programming))*
+
+
+Applicative programming
+-----------------------
+
+At the most basic level of understanding regarding functional programming one must minimally grasp the idea of *applicative programming*.
+
+Consider a list of Integers:
+
+    val L = List(1,2,3,4,5)
+
+*important terms: [higher-order function](http://en.wikipedia.org/wiki/Higher-order_function), [applicative programming](http://en.wikipedia.org/wiki/Applicative_programming_language)*
+
+### `map`
+
+The simplest applicative higher-order method is `map`, used as such:
+
+    L.map(e => 2 * e)
+    //=> List(2, 4, 6, 8, 10)
+
+That is, `map` takes a function and applies it to every value in a collection, returning a new collection of the resulting values.
+
+### `filter`
+
+The `filter` method takes a function and returns a collection of only the containing values for which said function returns `true`:
+
+    // take only the even numbers
+    
+    L.filter(e => e % 2 == 0)
+    //=> List(2, 4)
+
+### `reduceLeft`
+
+The `reduceLeft` method takes a function of two arguments and returns the cumulative result of repeatedly applying said function to each element and each intermediate result:
+
+    L.reduceLeft(_ * _)
+    //=> 120
+
+The `(_ * _)` construct is idiomatic if not obtuse in Scala and is [explained nicely elsewhere](http://www.codecommit.com/blog/scala/quick-explanation-of-scalas-syntax).
+
+
+Comprehensions
+--------------
+
+Comprehensions in Scala are analogous to set notation in mathematics.
+
+*important terms: [list comprehension](http://en.wikipedia.org/wiki/List_comprehension), [set notation](http://en.wikipedia.org/wiki/Set-builder_notation), [guard clause](http://en.wikipedia.org/wiki/Guard_(computing))*
+
+### for-expressions
+
+At its simplest manifestation, a `for` comprehension operates as follows:
+
+    for (e <- L) yield 2 * e
+    //=> List(2, 4, 6, 8, 10)
+
+This results in the same as the `map` example above.
+
+However, `for` also has a guard clause available that can be used to constrain the values for which the comprehension occurs:
+
+    for (e <- L; if e % 2 == 0) yield e 
+    //=> List(2, 4)
+
+This results in the same as the `filter` example above.
+
+Finally, `for` can also operate with multiple values:
+
+    for (e  <- L; 
+         e2 <- for (a <- L) yield e * a) yield 
+      Pair(e, e2)
+    
+    //=> List((1,1), (1,2),  (1,3),  (1,4),  (1,5), 
+              (2,2), (2,4),  (2,6),  (2,8),  (2,10), 
+              (3,3), (3,6),  (3,9),  (3,12), (3,15), 
+              (4,4), (4,8),  (4,12), (4,16), (4,20), 
+              (5,5), (5,10), (5,15), (5,20), (5,25))
+
+The `for` comprehension's syntax is far richer than I am willing to enumerate here, but [others have done a great job instead](http://creativekarma.com/ee.php/weblog/comments/the_scala_for_comprehension_from_a_java_perspective/).  While the `for` can be used in an imperative fashion, I would highly recommend avoiding doing that.  Instead, `for` should **always** be used as a value-producing expression.  Finally, there are ways to [extend your own types to operate within the `for` comprehension](#defining-mapflatmapwithfilter-for-new-kinds-of-for-expressions), but that's a task for later.
+
+Useful Resources
+----------------
+
+- [First Steps to Scala](http://www.artima.com/scalazine/articles/steps.html) by Bill Venners
+
+
+Level A2: Intermediate application programmer
+=============================================
+
+Pattern matching
+----------------
+
+
+Trait composition
+-----------------
+
+
+Recursion
+---------
+
+### Mundane recursion
+
+TBD
+
+### Tail recursion
+
+TBD
+
+### Tail calls
+
+TBD
+
+XML literals
+------------
+
+
+Useful Resources
+----------------
+
+- [Why Object-Oriented Languages Need Tail Calls](http://projectfortress.sun.com/Projects/Community/blog/ObjectOrientedTailRecursion) by Guy L. Steele Jr.
+- [Effective Java](http://www.amazon.com/o/asin/0321356683?tag=fogus-20) by Joshua Bloch
+- [Common Lisp: A Gentle Introduction to Symbolic Computation](http://www.cs.cmu.edu/~dst/LispBook/)
+
+
+Level A3: Expert application programmer 
+=======================================
+
+Folds
+-----
+
+### `foldLeft`
+
+### `foldRight`
+
+
+Streams and other lazy data structures
+--------------------------------------
+
+TBD
+
+Actors
+------
+
+TBD
+
+Combinator parsers
+------------------
+
+TBD
+
+Useful Resources
+----------------
+
+- The [Akka library](http://akka.io/)
+
+
+Level L1: Junior library designer
+=================================
+
+Type parameters
+---------------
+
+TBD
+
+Traits
+------
+
+TBD
+
+Lazy vals
+---------
+
+TBD
+
+Control abstraction via currying
+--------------------------------
+
+TBD 
+
+By-name parameters
+------------------
+
+TBD
+
+Useful Resources
+----------------
+
+- [Types and Programming Languages](http://www.amazon.com/o/asin/0262162091?tag=fogus-20) by Benjamin Pierce
+
+
+Level L2: Senior library designer
+=================================
+
+Variance annotations
+--------------------
+
+TBD
+
+Existential types 
+-----------------
+
+*e.g., to interface with Java wildcards*
+
+TBD
+
+Self type annotations and the cake pattern for dependency injection
+-------------------------------------------------------------------
+
+TBD
+
+Structural types
+----------------
+
+TBD
+
+Defining map/flatmap/withFilter for new kinds of for-expressions
+----------------------------------------------------------------
+
+TBD 
+
+Extractors
+----------
+
+TBD
+
+Useful Resources
+----------------
+
+- [Basic Category Theory for Computer Scientists](http://www.amazon.com/o/asin/0262660717?tag=fogus-20) by Benjamin Pierce
+
+
+Level L3: Expert library designer
+=================================
+
+Early initializers
+------------------
+
+TBD
+
+Abstract types
+--------------
+
+TBD
+
+Implicit definitions
+--------------------
+
+TBD
+
+Higher-kinded types
+-------------------
+
+TBD
+
+Useful Resources
+----------------
+
+- [Advanced Topics in Types and Programming Languages](http://www.amazon.com/o/asin/0262162288?tag=fogus-20) by Benjamin Pierce
+- The [Haskell programming language](http://www.haskell.org/)
+
+
+Level Z: *Really* expert library designer
+=========================================
+
+Awareness of the limitations of early initializers
+--------------------------------------------------
+
+TBD
+
+Purely functional data structures
+---------------------------------
+
+TBD
+
+Type-level tranformations
+-------------------------
+
+TBD
+
+Spec-based testing
+------------------
+
+TBD
+
+Practical algebraic data structures
+-----------------------------------
+
+TBD
+
+An understanding of type theory
+-------------------------------
+
+TBD
+
+Abstraction in the face of limited laziness
+-------------------------------------------
+
+TBD
+
+Useful Resources
+----------------
+
+- [Purely Functional Datastructures](http://www.amazon.com/o/asin/0521663504?tag=fogus-20) by Chris Okasaki
+- The [scalaz library](https://github.com/scalaz/scalaz)
