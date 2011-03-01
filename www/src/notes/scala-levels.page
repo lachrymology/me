@@ -3,9 +3,12 @@ title: Annotated Scala Levels
 filemdate: 2011.02.25
 ---
 
+The Annotated Scala Levels
+==========================
+
 This is an annotated version of Martin Odersky's [*Scala Levels* blog post](http://www.scala-lang.org/node/8610) with additional commentary derived from [Tony Morris's extended levels](http://blog.tmorris.net/critique-of-oderskys-scala-levels/).  
 
-*this is a living document and therefore subject to change*
+*this is a living document and therefore subject to change.  however, it should be noted that I no longer have a job that affords me the opportunity to use scala on a daily basis, so keep that in mind if updates prove to be infrequent*
 
 {menu: {min_levels: 2}}
 
@@ -15,22 +18,160 @@ Level A1: Beginning application programmer
 Java-like statements and expressions
 ------------------------------------
 
-I'm of the firm opinion that to fully appreciate the power of Scala, one must begin their exploration with the language holding the appropriate knowledge required to understand Josh Bloch's book [Effective Java](http://www.amazon.com/o/asin/0321356683?tag=fogus-20).
+I'm of the firm opinion that to fully appreciate the power of [Scala](http://scala-lang.org), one must begin their exploration holding the appropriate knowledge required to understand Josh Bloch's book [Effective Java](http://www.amazon.com/o/asin/0321356683?tag=fogus-20).  
 
 ### standard operators
 
+In Scala every operator is actually a method call.  For example:
+
+    1 + 2
+    //=> 3
+
+... is syntactic sugar for the following:
+
+    (1).+(2)
+    //=> 3
+
+
+
+Scala tends to reserve operators for limited (although not always well-known) use cases:
+
+- Mathematical operators (e.g. `+`, `-`, `*`, `/`, etc.)
+- Comparision operators (e.g. `>`, `<=`, etc.)
+- Logical operators (e.g. `&&`, `||`, etc.)
+- Shorthand notation (e.g. `++`, `/:`, `\:`, etc.)
+- DSL elements
+
+While Scala has a rich set of operators in the core, but there is no reason why you cannot define your own.  However, having said that bear in mind that operators are not always intuitive in their meaning and designing them into your APIs should be done thoughtfully.
+
+*TODO: Thrush*
+
 ### method calls
+
+Method calls in Scala (can) look exactly like those in Java:
+
+    val L = List(1,2,3,4,5)
+    L.slice(1,4)
+    //=> List(2,3,4)
+
+Scala methods of zero or one argument can be called without the parentheses:
+
+    L reverse
+    //=> List(5, 4, 3, 2, 1)
+    
+    L take 3
+    //=> List(1,2,3)
+
+This fact forms the basis for Scala's operator notation (touch on above).  That is, Scala provides many core operators that can look unlike methods calls, providing a more intuitive and fluent flow:
+
+    0 :: L
+    //=> List(0, 1, 2, 3, 4, 5)
+    
+    (1).+(2).*(3)
+    //=> 9
+    
+    (1+2) * 3
+    //=> 9
+
+Building fluent interfaces that take advantage of the 0-1 arg operator notation will later be used to build rich DSLs.
 
 ### conditionals
 
+Conditionals in Scala look and act much like their Java counterparts:
+
+    if (true) 
+      println("tru dat") 
+    else 
+      println("never printed")
+    
+    //tru dat
+
+However, where Scala differs (and in a huge way) is that *everything is an expression*
+
+    val res = if (true) 42 else 9 
+    res
+    //=> 42
+
+That is, the result of a Scala conditional can be used as a value.  Programming language statements are the spawn of Satan that tend to cause solutions to lose meaning as they grow.  Scala rightfully eschews statements and takes a functional, expression-oriented approach.[^unit]
+
+[^unit]: However, Scala can "simulate" statements by returning the `Unit` type... a value with a rough equivalency to Java's `void` -- although describing it in this way is to simplify to the point of farce.  The exact [nature of `Unit`](http://james-iry.blogspot.com/2009/07/void-vs-unit.html) is more richer than this and is tackled much more [eloquently by James Iry](http://james-iry.blogspot.com/2009/08/getting-to-bottom-of-nothing-at-all.html).
+
 ### loops
 
+Again, loops in Scala can look very similar to those in Java:
+
+    var i = 0;
+    while (i < L.length) { 
+      print(L(i))          
+      i += 1
+      i             
+    }
+                          
+    // 12345
+
+... and also in a way similar to Java's `for` statement:
+
+    for (e <- L.reverse) {
+      print(e)
+    }
+    
+    // 54321
+
+Additionally, Scala provides a `foreach` method that takes a function as an argument and runs it against each element in a collection:
+
+    L.foreach(print)
+    // 12345
+
+Scala also allows anonymous functions to be passed as well:
+
+    L.foreach(e => print(e.toString + "|"))
+    // 1|2|3|4|5|
+
+Used in these ways the looping constructs act very much like Java's looping statements (they will return `Unit` rather than nothing), however `for` is much richer than this naive usage belies, but I will go into more detail later.  
+
 ### try/catch
+
+Once again, Scala's `try/catch` looks quite similar to Java's:
+
+    var i = 0
+    
+    try { 
+      i += 1
+      error("fail") 
+    } catch { 
+      case e:Exception => i -= 10 
+    }
+    
+    i
+    //=> -9
+
+The Scala `catch` clause uses the pattern matching syntax, but I will save the discussion of that until later.  Like most things in Scala, the `try/catch` is an expression and can be used to return values based on the results therein:
+
+    val res = try { 
+      i += 1
+      error("fail") 
+    } catch { 
+      case e:Exception => {
+        i -= 10
+        42
+      }
+    }
+    
+    //=> 42
+
+Of course, all of the types along the `try/catch` paths *must* be compatible[^any-catch]:
+
+    val res:Symbol = try { i += 1; 'foo } catch { case e:Exception => i -= 10; i }
+    
+    // error: type mismatch;
+    // found Int required Symbol
+
+[^any-catch]: Although if types are not specified, then Scala will attempt to infer them, resulting in oddities:  `val res = try { i += 1; 'foo } catch { case e:Exception => i -= 10; i }` ---> `'foo:Any`
 
 Scala basics
 ------------
 
-While you can easily write Java-flavored Scala code, to do so beyond the initial explorations is folly.
+While you can easily write Java-flavored Scala code, to do so beyond the initial explorations is folly.  I touched on this a bit in my talk [Naïveté vs. Experience](http://blog.fogus.me/2011/01/10/dancing-monkey-gibbers-on-about-scala-and-clojure/), but there is much more to say about the matter -- of which I will not do here.
 
 *important terms: [singleton](http://en.wikipedia.org/wiki/Singleton_pattern), [lexical](http://www.gnu.org/software/guile/manual/html_node/Lexical-Scope.html)*
 
@@ -81,7 +222,38 @@ or methods to classes and objects:
     me speak
     // Watashi ha mike fogus desu.
 
-There is a lot going on here that I am glossing over.  Have fun learning it on your own.
+Scala function/method return type is that of the last expression evaluated.  Functions that are meant to have no meaningful return value are typed as `Unit` returns.  Typically `Unit` functions would be used for those that serve only to cause side-effects.  Further, there is sugar for defining `Unit` methods that, to me, is confusing and a source for potentially frustrating bugs:
+
+    class Name(first:String, last:String) {
+      def speak() { 
+        println("I am " + first + " " + last + ".")
+      }
+    }
+    
+    new Name("mike","fogus") speak
+    // I am mike fogus.
+
+The confusion derives from the fact that the only difference between this sugared version and the regular version is that there is no `=`!  This is kinda crazy because of the following:
+
+    def wtf(msg:String) {
+      "WTF " + msg
+    }
+    
+    wtf ("Where did it go?")
+
+And nothing seems to happen.  The reason is that the sugared syntax eats the intermediate expressions and forces a return value of type `Unit`.  It is very easy to mistake
+
+    def wtf(msg:String) {
+      "WTF " + msg
+    }
+    
+... for ...
+
+    def wtf(msg:String) = {
+      "WTF " + msg
+    }
+
+Where the latter definition will return the `String` as expected.  There is a lot going on here that I am glossing over.  Have fun learning it on your own.
 
 ### val
 
@@ -315,12 +487,41 @@ Level A2: Intermediate application programmer
 Pattern matching
 ----------------
 
-Pattern matching is a conditional construct able to reach into classes and structures and make decisions based on their contents.  
+[Pattern matching is a conditional expression](http://blog.fogus.me/2011/01/14/pattern-matching-vs-destructuring-electric-boogaloo/) able to reach into classes and structures and make decisions and return values based on their contents.  Let's take a look at a simple example:
 
-**TODO:** Add references.
+    def secondThird(l:List[Int]) = l match {
+      case f::s::t::rest => List(s,t)
+      case _ => List()
+    }
+    
+    secondThird( List(1,2,3,4,5) )
+    //=> List(2, 3)
+    
+    secondThird( List(1,2) ) 
+    //=> List()
+
+What `secondThird` says is that *if an `Integer List` has a 2nd and 3rd element then return an `Integer List` of those two elements, otherwise return an empty `Integer List`*.  Pattern matching allows one to use a compact and expressive form for stating your conditional.  How would `secondThird` look if it was "expanded" into the precise conditional denotation?
+
+    def secondThirdExplicit(l:List[Int]) = {
+      if (l.length >= 3)
+        List(l(1), l(2))
+      else
+        List()
+    }
+    
+    secondThirdExplicit( List(1,2,3) )
+    //=> List(2, 3)
+    
+    secondThirdExplicit( List(1,2) )  
+    //=> List()
+
+For a simple pattern match as needed by `secondThird` there is little compelling reason to use it over the explicit conditional expression.  However, you will find that the complexity of nesting the condition checks will quickly explode.
+
+*TODO: more complex example, match as expression, match case class*
 
 Trait composition
 -----------------
+
 
 
 Recursion
