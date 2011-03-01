@@ -1,11 +1,11 @@
 --- pipeline:erb,tags,blocks,head
-<html> 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang:}">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>fogus</title>
+    <title>{title:}</title>
     <meta name="description" content="Trammel - a contracts-programming library for Clojure"/>
     <meta name="author" content="Fogus"/>
     <meta name="generator" content="webgen - http://webgen.rubyforge.com/"/>
@@ -16,6 +16,19 @@
   </head>
   <body> 
     <webgen:block name="content"/>
-  </body> 
+    <hr/>
+    <sub><em>page &copy; fogus 2011, last modified {filemdate:}</em></sub>
+  </body>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-921112-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
 </head> 
 </html> 

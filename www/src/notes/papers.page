@@ -1,10 +1,82 @@
-2011.02.16
+---
+title: Papers read in 2011
+filemdate: 2011.02.25
+---
+
+2011.03.01
 ==========
+
+
+
+
+2011.02.23
+==========
+
+*The Development of the C Language by Dennis Ritchie*
+-----------------------------------------------------
+
+BCPL -> B -> C
+
+The original UNIX was in assembler, developed on another platform.  Thompson did not move to the PDP-7 until he had created the foloowing:
+
+- kernel
+- editor
+- assembler
+- simple shell
+- utilities: rm, cat, cp
+
+Doug McIlroy created the first HL-language TMG -- a lang for writing compilers
+
+**Did these guys get paid to just sit around and do awesome stuff?!**
+
+### L@@k
+
+- R. H. Canaday and D. M. Ritchie, `Bell Laboratories BCPL,' AT&T Bell Laboratories internal memorandum, May, 1969.
+- S. C. Johnson and B. W. Kernighan, `The Programming Language B,' Comp. Sci. Tech. Report #8, AT&T Bell Laboratories (January 1973).
+- S. C. Johnson, `A Portable Compiler: Theory and Practice,' Proc. 5th ACM POPL Symposium (January 1978).
+- R. M. McClure, `TMG—A Syntax Directed Compiler,' Proc. 20th ACM National Conf. (1965), pp. 262-274.
+- G. Nelson, Systems Programming with Modula-3, Prentice-Hall: Englewood Cliffs, NJ, 1991.
+- M. Richards, `The BCPL Reference Manual,' MIT Project MAC Memorandum M-352, July 1967.
+- M. Richards and C. Whitbey-Strevens, BCPL: The Language and its Compiler, Cambridge Univ. Press: Cambridge, 1979.
+- R. Sethi, `Uniform syntax for type expressions and declarators,' Softw. Prac. and Exp. 11 (6), June 1981, pp. 623-628.
+- J. E. Stoy and C. Strachey, `OS6—An experimental operating system for a small computer. Part I: General principles and structure,' Comp J. 15, (Aug. 1972), pp. 117-124
+- C* Programming Guide, Thinking Machines Corp.: Cambridge Mass., 1990.
+- K. Thompson, `Bon—an Interactive Language,' undated AT&T Bell Laboratories internal memorandum (ca. 1969).
+
+
+2011.02.21
+==========
+
+*Aspect-Oriented System Structure by Gregor Kiczales*
+-----------------------------------------------------
+
+They say they wish to "introduce", but then they use terms as if I know them.  :-(
+
+Talks about [AspectC](http://www.cs.ubc.ca/labs/spl/aspects/aspectc.html)
+
+
+2011.02.17
+==========
+
+*Overloading vs. Object Technology by Bertrand Meyer*
+------------------------------------------------------
+
+The gist:
+
+> Different things should have different names
+
+Shows a nice rename feature of Eiffel.
+
+**LOL**
+
+> the first case of defining a language’s semantics through compiler warnings. Semantics should be defined very 
+> precisely, since it conditions the validity of programs and the effect of valid programs
+
 
 *Toward More Expressive Contracts by Bertrand Meyer*
 ----------------------------------------------------
 
-
+Using functions to gain more expressiveness in conditions.
 
 
 2011.02.15

@@ -1,5 +1,6 @@
 ---
 title: Annotated Scala Levels
+filemdate: 2011.02.25
 ---
 
 This is an annotated version of Martin Odersky's [*Scala Levels* blog post](http://www.scala-lang.org/node/8610) with additional commentary derived from [Tony Morris's extended levels](http://blog.tmorris.net/critique-of-oderskys-scala-levels/).  
@@ -177,6 +178,8 @@ However, any method that takes either none or a single argument can be used with
     fly buzz 5 die
     // buzz buzz buzz buzz buzz Blargh!
 
+*point of note: Attempting to chain a bunch of these types of these functions will eventually confuse the compiler requiring high-level techniques to fix.  However, I'm not going to talk about that yet.*
+
 Simple closures
 ---------------
 
@@ -312,6 +315,9 @@ Level A2: Intermediate application programmer
 Pattern matching
 ----------------
 
+Pattern matching is a conditional construct able to reach into classes and structures and make decisions based on their contents.  
+
+**TODO:** Add references.
 
 Trait composition
 -----------------
@@ -339,6 +345,7 @@ XML literals
 Useful Resources
 ----------------
 
+- [Pattern Matching vs. Destructuring… Electric Boogaloo](http://blog.fogus.me/2011/01/14/pattern-matching-vs-destructuring-electric-boogaloo/)
 - [Why Object-Oriented Languages Need Tail Calls](http://projectfortress.sun.com/Projects/Community/blog/ObjectOrientedTailRecursion) by Guy L. Steele Jr.
 - [Effective Java](http://www.amazon.com/o/asin/0321356683?tag=fogus-20) by Joshua Bloch
 - [Common Lisp: A Gentle Introduction to Symbolic Computation](http://www.cs.cmu.edu/~dst/LispBook/)

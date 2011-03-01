@@ -38,17 +38,17 @@ Discussion
 - \#scala
 - \#lisp
 
-Reference Resources
-===================
+Research Resources
+==================
 
 *a thirst for knowledge*
 
 ## Free
 
+- [C2 Wiki](http://c2.com/cgi/wiki)
 - [Citeseer](http://citeseerx.ist.psu.edu/)
 - [arXiv](http://arxiv.org/)
 - [DSpace@MIT](http://dspace.mit.edu/)
-- [Bertrand Meyer's Publications](http://se.ethz.ch/~meyer/publications/)
 - [Google Scholar](http://scholar.google.com/)
 - [Open Courseware](http://ocw.mit.edu/index.htm)
 
@@ -57,6 +57,20 @@ Reference Resources
 - [IEEE Explore](http://ieeexplore.ieee.org)
 - [Odysci](http://www.odysci.com/)
 - [Science Direct](http://www.sciencedirect.com)
+
+## Standards
+
+- [Scheme](http://people.csail.mit.edu/jaffer/Scheme.html)
+- [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/)
+
+## Authors
+
+- [Bertrand Meyer's Publications](http://se.ethz.ch/~meyer/publications/) (OOP, Contracts, Eiffel)
+- [Christos Papadimitriou](http://www.cs.berkeley.edu/~christos/)
+- [Daniel Diaz](http://cri-dist.univ-paris1.fr/diaz/publications/) (CLP, Prolog, Compilation)
+- [Manfred von Thun](http://www.latrobe.edu.au/philosophy/phimvt/joy.html) (Joy, concatenative languages)
+- [R. Kent Dybvig](https://www.cs.indiana.edu/~dyb/) (Scheme)
+
 
 Programming Languages
 =====================
@@ -72,4 +86,4 @@ Programming Languages
 - [CLIPS](http://clipsrules.sourceforge.net/)
 - [Racket](http://racket-lang.org/)
 - [Io](http://iolanguage.com/) and [Self](http://selflanguage.org/)
-
+- [OCaml](http://caml.inria.fr/ocaml/index.en.html)
