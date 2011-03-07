@@ -253,7 +253,9 @@ And nothing seems to happen.  The reason is that the sugared syntax eats the int
       "WTF " + msg
     }
 
-Where the latter definition will return the `String` as expected.  There is a lot going on here that I am glossing over.  Have fun learning it on your own.
+Where the latter definition will return the `String` as expected.  Reapeatedly running into problems like this is a symptom of *statement derrangement*.  However, you can aleviate this problem by making sure that your methods and functions return maeningfully typed values, and that those values are used in a meaningful way.  By following this approach the type-checker will catch these kinds of mistakes. 
+
+There is a lot going on here that I am glossing over.  Have fun learning it on your own.
 
 ### val
 
@@ -522,7 +524,7 @@ For a simple pattern match as needed by `secondThird` there is little compelling
 Trait composition
 -----------------
 
-
+Scala Traits are quite powerful.  
 
 Recursion
 ---------

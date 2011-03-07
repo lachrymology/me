@@ -3,10 +3,25 @@ title: Papers read in 2011
 filemdate: 2011.02.25
 ---
 
-2011.03.01
+2011.03.02
 ==========
 
+*Factor: A Dynamic Stack-based Programming Language by Pestov and Ehrenberg*
+----------------------------------------------------------------------------
 
+CLOS-based generic function (as opposed to message passing) object system.
+
+**TODO**: Not sure that I understand row-polymorphism.
+
+### L@@k
+
+- Daniel G. Bobrow and Gregor Kiczales. The Common Lisp Object System metaobject kernel: a status report. In LFP ’88: Proceedings of the 1988 ACM conference on LISP and func- tional programming, pages 309–315, New York, NY, USA, 1988. ACM.
+- Robert Cartwright and Mike Fagan. Soft typing. In PLDI ’91: Proceedings of the ACM SIGPLAN 1991 conference on Pro- gramming language design and implementation, pages 278– 292, New York, NY, USA, 1991. ACM.
+- Daniel Ehrenberg. Closure elimination as constant propaga- tion. Programming Language Design and Implementation, Student Research Contest, 2010.
+- Michael Ernst, Craig Kaplan, and Craig Chambers. Predicate Dispatching: A Unified Theory of Dispatch. In ECCOP ’98: Proceedings of the 12th European Conference on Object- Oriented Programming, pages 186–211, London, UK, 1998. Springer-Verlag.
+- David Gudeman. Representing Type Information in Dynamically Typed Languages, 1993.
+- Xavier Leroy.	The Objective Caml sys- tem – Documentation and user’s manual. http://caml.inria.fr/pub/docs/manual-ocaml/.
+- Manfred von Thun. Rationale for Joy, a functional language, 2000.
 
 
 2011.02.23
