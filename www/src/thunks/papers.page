@@ -3,6 +3,101 @@ title: Papers read in 2011
 filemdate: 2011.02.25
 ---
 
+{menu: {min_levels: 3}}
+
+2011.03.10
+==========
+
+*Recursive Interfaces for Reactive Objects by Travers*
+------------------------------------------------------
+
+Talks briefly about Kay's Vivarium Project... **TODO**: find out more
+
+### Frames
+
+<blockquote>
+Framer provides a single structure, the frame, out of which more complicated structures are built. A frame has a name and a location within a structure that is similar to a hierarchical file system. All frames except the root have a container or home frame and may also have contained frames or annotations. Frames also have an optional value (which may be any Lisp object, including another frame) and an optional prototype (which must be a frame).
+</blockquote>
+
+### Prototypes
+
+> The advantages of prototype-based programming are simplicity and concreteness. It eliminates a whole set of objects (class 
+> descriptors) from the environment, and simplifies the specification of inherited properties. In a sense it is specification by 
+> example.
+
+### GEB
+
+> There are some indications that mental representation of categories makes use of prototypes
+
+### Vs Self
+
+<blockquote>
+Self [14] is currently the prototypical prototype-based object-oriented programming system. LiveWorld's (really Framer's) major contribution over and above what Self provides is in making slots be first-class objects and thus enabling recursive annotation and containment.
+</blockquote>
+
+### L@@K
+
+- Chang, B.-W. and Ungar, D. Animation: From Cartoons to the User Interface. In Proceedings of UIST `93. (November 3-5, Atlanta, Georgia), 1993, pp. 45-56.
+
+- Kay, A. Vivarium Papers. Unpublished essays, 1990.
+
+- Lieberman, H. Using Prototypical Objects to Implement Shared Behavior in Object Oriented Systems. In Proceedings of First ACM Conference on Object Oriented Programming Systems, Languages & Application., 1986.
+
+
+*The Jini Architecture by Jim Waldo*
+------------------------------------
+
+> Jini allows anything with a processor, some memory, and a network connection 
+> to offer services to other entities on the network or to use the services that are so offered.
+
+Java...  (good quote for JoC 2nd ed.)
+
+> Java’s most basic property is that it turns an otherwise heterogeneous network of 
+> computing entities into a homogeneous collection of Java virtual machines.
+
+### L@@k
+
+- Dorward, S., Pike, R., Presotto, D., Ritchie, D., Trickey, H., and Win- terbottom, P. The Inferno Operating System. Tech. Rep., Bell Laboratories
+
+
+*Modernizing Common Lisp: Recommended Extensions by mallery, Shrobe, Laddaga, etc.*
+-----------------------------------------------------------------------------------
+
+Wow!  Incredibly prescient!
+
+- Transactional Memory
+- Java interop
+- Parallelism
+- Mobile Lisp
+- VM
+- Event Model
+
+
+*High-order Logic Programming in Prolog by Naish*
+-------------------------------------------------
+
+Describes something called "skeletons and techniques".  Not sure what it means based on this paper.
+
+### L@@k
+
+- *HiLog: A foundation for higher-order logic programming* by Chen, Kifer, and Warren
+- *Mercury: an efficient purely declarative logic programming language* by Zoltan, Henderson, and Conway
+- *Applying techniques to skeletons* by Sterling and Kirschenbaum
+- *Higher-order extensions to Prolog: are they needed?* by Warren
+
+
+*The Tuple Space: An Old Solution to a New Problem? by Friday and Wade*
+-----------------------------------------------------------------------
+
+### L@@k
+
+- N. Davies, S. Wade, A. Friday and G. S. Blair, "Limbo: A Tuple Space Based Platform for Adaptive Mobile Applications", Proceedings of the International Conference on Open Distributed Processing/Distributed Platforms (ICODP/ICDP '97), Toronto, Canada, 27-30 May 1997. Internal report number MPG-97-02.
+
+- D. Gelernter, "Generative Communication in Linda.", ACM Transactions on Programming Langauges and Systems, Vol. 7 No. 1, Pages 80-112. January 1985.
+
+- D. Gelernter, N. Carriero, S. Chandran and S. Chang, "Parallel Programming in Linda", Proceedings of the International Conference on Parallel Processing, pp 255-263, August 1985.
+
+
 2011.03.02
 ==========
 
@@ -17,10 +112,10 @@ CLOS-based generic function (as opposed to message passing) object system.
 
 - Daniel G. Bobrow and Gregor Kiczales. The Common Lisp Object System metaobject kernel: a status report. In LFP ’88: Proceedings of the 1988 ACM conference on LISP and func- tional programming, pages 309–315, New York, NY, USA, 1988. ACM.
 - Robert Cartwright and Mike Fagan. Soft typing. In PLDI ’91: Proceedings of the ACM SIGPLAN 1991 conference on Pro- gramming language design and implementation, pages 278– 292, New York, NY, USA, 1991. ACM.
-- Daniel Ehrenberg. Closure elimination as constant propaga- tion. Programming Language Design and Implementation, Student Research Contest, 2010.
+- Daniel Ehrenberg. Closure elimination as constant propagation. Programming Language Design and Implementation, Student Research Contest, 2010.
 - Michael Ernst, Craig Kaplan, and Craig Chambers. Predicate Dispatching: A Unified Theory of Dispatch. In ECCOP ’98: Proceedings of the 12th European Conference on Object- Oriented Programming, pages 186–211, London, UK, 1998. Springer-Verlag.
 - David Gudeman. Representing Type Information in Dynamically Typed Languages, 1993.
-- Xavier Leroy.	The Objective Caml sys- tem – Documentation and user’s manual. http://caml.inria.fr/pub/docs/manual-ocaml/.
+- Xavier Leroy.	The Objective Caml system – Documentation and user’s manual. http://caml.inria.fr/pub/docs/manual-ocaml/.
 - Manfred von Thun. Rationale for Joy, a functional language, 2000.
 
 

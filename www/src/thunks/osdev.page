@@ -6,9 +6,9 @@ filemdate: 2011.02.25
 OSDev notes and links
 =====================
 
-At [one point](http://blog.fogus.me/2004/01/16/132/) I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extrememly difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targetting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
+At [one point](http://blog.fogus.me/2004/01/16/132/) I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extremely difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targeting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
 
-{menu: }
+{menu: {min_levels: 2}}
 
 Interesting alternative and hobby OSes
 ======================================
@@ -20,7 +20,7 @@ I've studied these deeply and found them incredibly instructional.
 - [Losethos](http://www.losethos.com/) - Losethos's creator has a very clear [vision](http://www.losethos.com/doc/Strategy.html) for his OS and he's executed that plan perfectly.
 - [MIT Exokernel](http://pdos.csail.mit.edu/exo.html)
 - [NewOS](http://newos.org/) - Seems to be abandoned, but the code is some of the cleanest that you will ever read.
-- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I neved used it, the abstractions it provides are worth studying.
+- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
 - [QNX Neutrino](http://www.swd.de/documents/manuals/neutrino/index_en.html) - At one point you could see the code to this.  It was mind-busting.
 - [Contiki](http://www.sics.se/contiki/) - Just plain fun.
 
@@ -37,7 +37,7 @@ OSDev resources
 Protected Mode
 --------------
 
-- [Tutorials in C and ASM by Alexei Frounze](http://members.tripod.com/protected_mode/alexfru/pmtuts.html)
+- [Tutorials in C and ASM by Alexei Frounze](http://members.tripod.com/protected_mode/alexfru/pmtuts.html)[^frounze]
 - [PMode tutorials](http://genapro.chat.ru/examples.html)
 
 ELF/COFF
@@ -45,6 +45,13 @@ ELF/COFF
 
 - [COFF by Alexei Frounze](http://alexfru.chat.ru/epm.html#coffutils)
 - [ELF](http://wiki.osdev.org/ELF)
+
+Bootloaders
+-----------
+
+- [Basics of bootloaders](http://wiki.osdev.org/Rolling_Your_Own_Bootloader)
+- [Network booting](http://osdev.berlios.de/netboot.html)
+- [El Torito](http://wiki.osdev.org/El-Torito) (CD-ROM bootsectors)
 
 OSDev sites
 ===========
@@ -66,19 +73,22 @@ Compilers, assemblers, and languages
 
 These are not always current, but much can be learned from them all.
 
+- [NASM](http://www.nasm.us/)
 - [TCC](http://bellard.org/tcc/)
 - [BCC](http://www.debath.co.uk/)
-- [NASM](http://www.nasm.us/)
 - [Turbo Pascal v5.5](http://edn.embarcadero.com/article/20803) (*my first compiler*)
 - [Borland compiler museum](http://edn.embarcadero.com/museum/)
 - [The Pascal programmers' page](http://www.devq.net/pascal/)
 - [C/C++ Snippets](http://snippets.snippets.org/index.php)
+- [Inside the JavaOS Operating System](http://www.amazon.com/o/asin/0201183935?tag=fogus-20)
 
 
 Books on and useful for OSDev
 =============================
 
-Interestingly, there are not that many books on developing your own opertaing systems.  I've read most of those that deal with the topic directly, and some of those that touch on it only tangentially.  Below are the books that I found particularly useful, relevant, and/or interesting:
+*note: some of the links below are amazon affiliate links.  please consider buying through the link if you find this site useful, otherwise you can remove the part of the url with fogus-20 to visit amazon instead*
+
+Interestingly, there are not that many books on developing your own operating systems.  I've read most of those that deal with the topic directly, and some of those that touch on it only tangentially.  Below are the books that I found particularly useful, relevant, and/or interesting:
 
 Foundational
 ------------
@@ -87,7 +97,7 @@ Foundational
 - *[Practical File System Design](http://www.letterp.com/~dbg/)* by Giampaolo
 
 OSDev books
-===========
+-----------
 
 - *[OS Design: the XINU Approach](http://www.amazon.com/o/asin/0136375391?tag=fogus-20)* by Comer
 - *[MMURTL](http://www.amazon.com/o/asin/1588530000?tag=fogus-20)* by Burgess
@@ -115,8 +125,8 @@ Have yet to read, but that look interesting
 - *TinyOS Programming* by Levis and Gay
 
 
-OSDev notes
-===========
+FogOS
+=====
 
 I started down the path of writing an OS, aptly named FogOS written in C++.  Below are some of the notes that I created (well, those I've been able to find).
 
@@ -175,14 +185,14 @@ I don't do any relocations. My kernel is linked to load at 1MB and the
 boot loader loads it directly there. Every time someone talks about  
 relocations I wonder what I'm missing. Looking forward to finding out :-) 
 
-Arch
-----
+Architecture
+------------
 
 My ideas for a microkernel.  Looking back on FogOS I realize that the kernel was less interesting than the HAL.  I spent a lot of time thinking about the HAL and it's base abstractions.  I actually went down the path of implementing it based on the following image:
 
 ![FogOS Overview](http://images.fogus.me/blog/fogos_overview.png "FogOS Overview")
 
-You'll notice that I have a crypto service all the way down in the kernel.  My thinking at the time was that I could gather interesting entropy at the kernel level.  I reclaa reading some papers about this, but their titles have long since faded.  Anyway, I added at least one hook for the entropy gathering and planned for more.
+You'll notice that I have a crypto service all the way down in the kernel.  My thinking at the time was that I could gather interesting entropy at the kernel level.  I recall reading some papers about this, but their titles have long since faded.  Anyway, I added at least one hook for the entropy gathering and planned for more.
 
 Booting
 -------
@@ -195,7 +205,14 @@ And then after adding the HAL, it was still able to boot!
 
 ![HAL Boots](http://images.fogus.me/blog/fogos_002_boot.png "FogOS with HAL booted")
 
-... and that is where I left it.
+... and that is where I left it.[^left]
 
 One day I shall return.
 
+
+Footnotes
+=========
+
+[^frounze]: Alexei Frounze is a hobby OSDev luminary.  It's well-worth studying his code if you're interested in creating your own OS.
+
+[^left]: And this is where 99% of hobby OS practitioners leave it.  :-(
