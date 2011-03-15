@@ -4,10 +4,10 @@
                      (or (eq system-type 'cygwin)
                          (eq system-type 'gnu/linux)
                          (eq system-type 'linux))
-                     "/home/fogusm/.emacs.d/"
+                     "/home/fogus/.emacs.d/"
                      (if (eq system-type 'darwin)
-                       "/Users/fogusm/.emacs.d/"
-                       "c:/home/fogusm/.emacs.d/"))
+                       "/Users/fogus/.emacs.d/"
+                       "c:/home/fogus/.emacs.d/"))
   "My home directory — the root of my personal emacs load-path.")
 
 (labels ((add-path (p) 
