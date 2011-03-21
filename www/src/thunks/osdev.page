@@ -1,6 +1,6 @@
 ---
 title: OS Development Notes and Links
-filemdate: 2011.02.25
+filemdate: 2011.03.18
 ---
 
 OSDev notes and links
@@ -23,6 +23,7 @@ I've studied these deeply and found them incredibly instructional.
 - [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
 - [QNX Neutrino](http://www.swd.de/documents/manuals/neutrino/index_en.html) - At one point you could see the code to this.  It was mind-busting.
 - [Contiki](http://www.sics.se/contiki/) - Just plain fun.
+- [The grand unified list of hobby and educational operating systems](http://wiki.osdev.org/Projects)
 
 OSDev resources
 ===============
