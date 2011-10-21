@@ -6,7 +6,7 @@
                          (eq system-type 'linux))
                      "/home/fogus/.emacs.d/"
                      (if (eq system-type 'darwin)
-                       "/Users/fogus/.emacs.d/"
+                       "/Users/fogusm/.emacs.d/"
                        "c:/home/fogus/.emacs.d/"))
   "My home directory — the root of my personal emacs load-path.")
 

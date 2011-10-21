@@ -1,0 +1,285 @@
+---
+title: Lisp philosophy
+filemdate: 2011.10.21
+---
+
+
+**Lisp philosophy**
+
+  by TANAKA Tomoyuki   <tanaka@cs.indiana.edu>
+  <http://www.cs.indiana.edu/hyplan/tanaka.html>
+
+> This essay was part of a document that I wrote in 1987 and
+> widely distributed.
+>
+> if i get really interesting responses, i might append them at
+> the end of the file, esp. if the comments are from Moons and JonLs.
+> i see that Moon has written something recently.  i'll look at
+> it sometime.
+
+*Kenneth H. Sinclair, David A. Moon: The Philosophy of Lisp. CACM 34(9): 40-47 (1991)*
+
+--------------------------------------------------------------------
+
+{menu: {min_levels: 2}}
+
+# Introduction
+> There are two kinds of computer languages: Lisp and all other languages."
+
+ I would like to summarize the appeal that Lisp has had for me.
+ I've never seen an essay focusing on Lisp philosophy, with the
+ possible exception of (Greenberg), which emphasizes Lisp's
+ "object" concept.
+
+ First of all, let me state that by "philosophy behind Lisp" I
+ don't mean what John McCarthy had in mind when he designed LISP
+ 1.5 in the early 1960s.  What is much more important to me is
+ to get at the core of attraction that Lisp has possessed over
+ Lisp enthusiasts around the world for decades.
+
+# Making programming easier
+
+ Only toy programs are easy to write.[^allen]
+ Any serious programming is strenuous work.  There are people,
+ called hackers, who enjoy programming and program for the
+ programming's sake.  To them programming is not a means, but an
+ end in itself.  Well, I am not one of them, and to me,
+ programming (although often interesting, and sometimes
+ extremely engaging) is only a necessary evil to accomplish my
+ goals.  Programming is a pain, so let's make it easier on the
+ programmers --- this is at the very heart of Lisp philosophy.
+
+[^allen]: I think this sentence is from (Allen).
+
+##  Minimality of syntax
+
+ How can we make it easier on the programmers?  One sure way is
+ by letting them free their minds from petty syntactic details.
+ Some computer languages make a big deal out of exact placement
+ of semicolons and operator precedence.  Lisp has parentheses,
+ which take care of most of syntax.  One never has to memorize
+ operator precedence because it's all there in the parentheses.
+
+ Syntax and operation of Lisp are further simplified because
+ Lisp provides most of its facility as functions, which share
+ these traits:
+
+  * Function name is the first thing after the opening
+        parenthesis. [^cp]
+
+  * Arguments to functions are evaluated in the same (left-to-right) order, all in call-by-value fashion. [^lrscm]
+
+What can not be provided as functions (mostly control structure
+constructs) are provided as special forms and macros, which
+have their own peculiar syntax, but an effort is made to reduce
+their number.
+
+[^cp]: This is called "Cambridge Polish" in (Allen).
+
+[^lrscm]: The left-to-right order rule doesn't hold in Scheme.
+
+## Removing arbitrary rules
+
+ Time and time again we find in Lisp a spirit to avoid arbitrary
+ rules, which are caused by hardware limitations or otherwise.
+ There is virtually no upper limit on the number of characters
+ one can use in variable and function names, nor is there an
+ upper limit on the largest integer that the system can handle
+ (the bignum facility).
+
+ Compare this with FORTRAN, in which conventions that made
+ things convenient in the punched-cards days now cause
+ programmers' inconvenience and irritation:  a program line must
+ begin at a certain column; ISUM is an integer, whereas SUM is a
+ real; everything has to be written in upper case; etc., etc.,
+ ad nauseum.
+
+## Debugging support
+
+ The pain of programming is most acute in debugging.  So
+ debugging is the place where Lisp most concentrates its user
+ assistance.
+
+ It's much easier to debug one's code if the code itself can be
+ run, instead of the compiled object code.   So Lisp provides
+ the interpreter.   Users' concern caused by intermixing of
+ compiled and interpreted code must be kept to a minimum, so the
+ interperter should faithfully simulate the operation of the
+ compiler.[^dyn]    When an error occurs, it
+ would be nice if a user can see exactly what went wrong by
+ examining call history and variable bindings in that context,
+ then furthermore change the function definition in question and
+ resume execution.
+
+[^dyn]: May dynamic scoping interpreters rest in peace, and never bother us again.
+
+ All these demands are met in Lisp, summed up as these four
+ points in (Gabriel, Page 11):
+
+ 1. functions may be defined on the fly by the user,
+ 2. functions can be compiled separately,
+ 3. compiled and interpreted calls can be intermixed, and
+ 4. when an error or interrupt occurs, the stack can be decoded within the context of the error.
+
+Although Gabriel calls these points the "Lisp philosophy", I
+feel that the Lisp philosophy runs much deeper, and these
+features of Lisp, though of crucial importance to Lisp, are but
+manifestations of deeper characteristics.
+
+## Language documentation
+
+ Lisp's user assistance does not stop here.  A readable and
+ complete manual helps programmers immensely.  Without such a
+ manual, programming is like playing an adventure game:  "Let's
+ try and see if this works ...".   On-line documentation is also
+ important, because when programming at a terminal, it's easier
+ to type `(help func-xxx)` than looking up `func-xxx` in a
+ manual.
+
+ You will agree with me that, when taking all these things into
+ account, writing a program which is hard to read is not in tune
+ with the philosophy of Lisp.  With pretty printer,
+ documentation strings, and constructs like defstruct, Lisp
+ encourages well-commented and readably indented programs, and
+ as a result, Lisp programs usually are very readable, just as C
+ programs are not.  I find tricky programs written by hackers
+ that magically get the job done completely against the
+ philosophy of Lisp.
+
+# A clean language can be powerful
+
+ There is another aspect to the philosophy of Lisp:  the spirit
+ of compromise that heeds the practical side of a programming
+ language.  This must be based on the conviction that a clean
+ and beautiful language can be practical too.
+
+ Many new languages have been proposed by the researchers of the
+ "functional programming" school.  These languages are important
+ to computer science, of course, because they explore future
+ directions of computer languages.  But I've never heard of a
+ truly practical system being written in a functional language:
+ such as an operating system, a text editor, an expert system,
+ or a compiler for another language.  All of these things have
+ been written in Lisp.  Optional declarations on variable types,
+ function use, etc.  enable optimizing compilers to produce code
+ comparable to other language compilers in speed, making Lisp a
+ practical language.
+
+ One reason for Lisp's constant attention to power was its use
+ as a system description language for itself.  We were all
+ impressed when we first saw the definition of e val and apply
+ in LISP 1.5 Programmer's Manual (McCarthy, et al.).  What
+ struck me was the recursivity in its self-description.
+ Lisp-in-Lisp then served as an educational tool (Nakanishi)
+ (Winston and Horn), but later on, real Lisp systems written in
+ Lisp began to appear.   Reading the Spice Lisp compiler
+ (Spice), I was struck once again with that awesome
+ self-documentation of its operation.  The size of Common Lisp
+ is not a gigantic mishmash, but rather a minimum solution for
+ an equation called self-description.
+
+# Common Lisp is good (but not perfect)
+
+ By now, you may have sensed my high opinion of Common Lisp.  My
+ experience with Common Lisp has been through Kyoto Common Lisp
+ (KCL) (Yuasa and Hagiya),  with a tiny bit of VAX Lisp on
+ VMS/VAX-11.  Rodney Brooks in the preface of (Brooks) wrote,
+ "The dialect chosen to illustrate both Lisp and good Lisp is
+ Common Lisp." KCL is a good Lisp.  It is also a good Common
+ Lisp.  Whether there can be a bad Common Lisp remains to be
+ seen.  But my guess is that, if one has understood the Lisp
+ philosophy well enough to want to implement Common Lisp, it is
+ impossible to build a bad system. [^steele-et]
+
+[^steele-et]: (Steele, et al.) is an extremely thorough specification.  But still, some things are left implementation dependent. The debugger is one important feature that I wish were more precisely defined; the KCL debugger (the version I used) did not enable me to see the entire form being evaluated.
+
+ Common Lisp was designed with compatibility with other Lisps in
+ mind.  Because of this, it is not as clean as it could be.
+ I'm not sure if facility like multiple values and closures are
+ worth the added complexity of the system.  When I program,
+ nestedly bound special variables are the primary source of
+ bugs.   Gargantuan "format" and the sharp sign macro are
+ against the Lisp philosophy, and should be outside the language
+ specification.  Although it doesn't bother me, I do notice that
+ it is overly English-centric.   If the function name
+ array-has-fill-pointer-p doesn't bother you, see that it's not
+ that much different from
+ this-is-an-array-that-comes-with-a-fill-pointer-p.
+ Maybe this is one of the reasons Europeans want another standard.
+
+ Still, I am happy with Common Lisp.  It is clearly the closest
+ thing that came to my Lisp philosophy.
+
+# Lisp is a LISP, but Lisp may not be the only LISP
+
+ You will see that what I have in mind is not exactly Common
+ Lisp or any Lisp, but more importantly a language with all
+ these aspects I described: A powerful and beautiful computer
+ language permeated with the spirit to make it easier on the
+ programmers.  Let me call such a language a "LISP", an acronym
+ for "Language Imbued with Support for Programmers".  Then this
+ question comes to my mind:  Is Lisp the only LISP, or could
+ there be other LISPs?
+
+ Here is my answer:  Lisp is so far the only LISP I know.  There
+ could be others in the future, but if there were a LISP which
+ is not Lisp, it would have to be remarkably similar to Lisp.
+
+# References
+
+(Allen)         Allen, John.  Anatomy of LISP. McGraw-Hill, 1978.
+
+(Brooks)        Brooks, Rodney A. Programming in Common LISP.
+                John Wiley & Sons, 1985.
+
+(Gabriel)       Gabriel, Richard P.  Performance and Evaluation
+                of Lisp Systems.   The MIT Press, 1985.
+
+(Greenberg)     Greenberg, Bernard S. "Prose and CONS (Multics
+                Emacs)".  In Proc. 1980 Lisp Conference, ACM.
+
+(McCarthy, et al.)  McCarthy, John, et al.  LISP 1.5
+                Programmer's Manual.  The MIT Press, 1965.
+
+(Nakanishi)     NAKANISHI Masakazu. LISP nyuumon. Kindai-kagaku-sha, 1985.
+
+(Spice)         The Spice Lisp project.  Spice Lisp source code.
+                Carnegie-Mellon University, 1984
+
+(Steele, et al.)  Steele, Guy., et al.  Common Lisp: the Language.
+                Digital Press, 1984.
+
+(Winston and Horn)  Winston, P.H. and Horn, B.K.P. LISP. Addison-Wesley, 1981.
+
+(Yuasa and Hagiya)  Yuasa, Taiichi. and Hagiya, Masami.  Kyoto
+                Common Lisp Report.  Teikoku Insatsu Inc., 1985.
+
+--------------------------------------------------------------------
+*Three more items that helped me enjoy Lisp more*
+
+* Hofstadter, Douglas R. Go:del, Escher, Bach: an Eternal
+        Golden Braid.  1979.
+
+* Friedman, Daniel P. The Little LISPer.  SRA, 1974 (also
+        from The MIT Press).
+
+* Hoare, C.A.R. and Allison, D.C.S.
+        "Incomputability".   Computing Surveys  (Vol. 4, No. 3,
+        September 1972) ACM.
+
+--------------------------------------------------------------------
+*Some descriptions of the author's technical involvement with Lisp*
+
+* Tanaka T. and Maeda A.   SYNAPSE Lisp V 1.0 User's Guide.
+        Keio University, 1987.
+
+* Tanaka T. and Uzuhara S.   "Multiprocessor Common Lisp on
+        TOP-1".  In Proc. Second IEEE Symposium on Parallel and
+        Distributed Processing (Dallas, Texas, 1990).
+
+* Tanaka T.   "Actor Reflection without Meta-Objects".  OOPS
+        Messenger (Vol. 2, No. 2, April 1991) ACM SIGPLAN.
+
+* Tanaka T. and Uzuhara S.  "Futures and Multiple Values in
+        Parallel Lisp".   Lisp Pointers (Vol. 8, No. 2,
+        May-August 1995) ACM SIGPLAN.

@@ -1,6 +1,6 @@
 ---
 title: OS Development Notes and Links
-filemdate: 2011.03.18
+filemdate: 2011.03.30
 ---
 
 OSDev notes and links
@@ -13,14 +13,16 @@ At [one point](http://blog.fogus.me/2004/01/16/132/) I was crazy about creating 
 Interesting alternative and hobby OSes
 ======================================
 
-I've studied these deeply and found them incredibly instructional.
+I've studied most of these deeply and found them incredibly instructional.
 
 - [Mona OS](http://monaos.org/) - The OS I would create if I had the skill.
 - [O3one](http://www.o3one.org/) - Crazy beautiful
 - [Losethos](http://www.losethos.com/) - Losethos's creator has a very clear [vision](http://www.losethos.com/doc/Strategy.html) for his OS and he's executed that plan perfectly.
+- [Itsy-OS: A simple 380 byte OS kernel](http://www.retroprogramming.com/2011/03/itsy-os-simple-preemptive-switcher.html) - True ultimate ASM power.
+- [The XOmB Bare Bones distribution is a minimal 64 bit OS written in D](http://wiki.xomb.org/index.php?title=XOmB_Bare_Bones) - Developing a kernel in an alternative language is a personal fetish.
+- [LOSAK: Lisp Operating System, Abstraction Kernel](http://losak.sourceforge.net/) - Defunct but fun nonetheless.
 - [MIT Exokernel](http://pdos.csail.mit.edu/exo.html)
 - [NewOS](http://newos.org/) - Seems to be abandoned, but the code is some of the cleanest that you will ever read.
-- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
 - [QNX Neutrino](http://www.swd.de/documents/manuals/neutrino/index_en.html) - At one point you could see the code to this.  It was mind-busting.
 - [Contiki](http://www.sics.se/contiki/) - Just plain fun.
 - [The grand unified list of hobby and educational operating systems](http://wiki.osdev.org/Projects)
@@ -54,11 +56,18 @@ Bootloaders
 - [Network booting](http://osdev.berlios.de/netboot.html)
 - [El Torito](http://wiki.osdev.org/El-Torito) (CD-ROM bootsectors)
 
+Libraries
+--------
+
+- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
+- [Metalkit: simple library for writing programs that run on IA32 (x86) machines on the bare metal](http://scanlime.org/2008/03/introducing-metalkit/)
+
 OSDev sites
 ===========
 
 - [OSnews](http://www.osnews.com/) (*my favorite*)
-- [OSDev.org](http://wiki.osdev.org/Main_Page)
+- [r/osdev](http://reddit.com/r/osdev) - a subreddit moderated by me
+- [OSDev.org](http://wiki.osdev.org/Main_Page) - teaching people how to clone UNIX since 2000
 - [Operating System resource center](http://www.nondot.org/sabre/os/articles/)
 - [Bonafide OS Dever](http://www.osdever.net/tutorials/index)
 - [alt.os.development](http://groups.google.com/group/alt.os.development/topics)
