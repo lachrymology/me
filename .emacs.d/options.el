@@ -60,12 +60,6 @@
 ;; making slides with code on them no longer requires textmate
 (require 'htmlize)
 
-;; pramatic programmers book building
-(require 'pragprog)
-(global-set-key (kbd "C-c C-c b") 'pragprog-build-book)
-(global-set-key (kbd "C-c C-c c") 'pragprog-build-chapter)
-(add-to-list 'auto-mode-alist '("\\.pml$" . nxml-mode))
-
 ;; turn off needless/annoying things
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
