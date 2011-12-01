@@ -1,0 +1,5 @@
+#name : (defpartial name [args] ...)
+# --
+(defn ${1:name}   
+  [${2:args}]
+  $0)

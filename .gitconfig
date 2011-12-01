@@ -1,0 +1,39 @@
+[user]
+	name = Fogus
+	email = mefogus@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+[color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+[merge]
+	tool = opendiff
+[core]
+	legacyheaders = false
+[repack]
+	usedeltabaseoffset = true
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+        ch = cherry -v origin
+[push]
+        default = tracking
+[github]
+	user = abedra
+[diff "ruby"]
+	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+[core]
+        pager = most +s +'/---'

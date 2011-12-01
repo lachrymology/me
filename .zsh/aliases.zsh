@@ -1,0 +1,7 @@
+alias g='git'
+alias ls='ls -GFh'
+alias ll='ls -GFhl'
+alias ri='ri -Tf ansi'
+alias rdoc='rdoc --ri --line-numbers --all'
+alias e='/usr/local/Cellar/emacs/HEAD/bin/emacs -nw'
+alias cycle_passenger='touch tmp/restart.txt'

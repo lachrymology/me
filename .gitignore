@@ -1,5 +1,6 @@
-_emacs.d/auto-save-list
-_emacs.d/url
-out
-.DS_Store
-webgen.cache
+*.*~
+*.zwc
+.zsh/cache
+.emacs.d/el-get
+.emacs.d/.ido.last
+.emacs.d/ac-comphist.dat

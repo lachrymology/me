@@ -1,0 +1,8 @@
+#name : (ns name ...)
+# --
+(ns ${1:name}
+  (:require [clojure.browser.repl :as repl]
+            [clojure.browser.dom :as dom]
+            [goog.events :as events]))
+
+(repl/connect "http://localhost:9000/repl")

@@ -1,0 +1,6 @@
+#name : (defn name [args] ...)
+# --
+(defn ${1:name}   
+  "${2:doc-string}"
+  [${3:args}]
+  $0)

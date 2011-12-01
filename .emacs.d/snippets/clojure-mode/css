@@ -1,0 +1,10 @@
+#name : css
+# --
+(ns ${1:name}
+  (:use cssgen.use))
+
+(css-ns ${name}.screen
+  (:use (${name})))
+
+(css-file "${2:path}" 
+  $0)

@@ -1,0 +1,7 @@
+#name : shoutget
+# --
+(defpage "/" []
+  (common/layout
+   [:div {:id "shout-form"}
+    (text-field "shout")
+    (submit-button {:id "button"} "Shout")]))

@@ -1,0 +1,14 @@
+#name : shoutlayout
+# --
+(defpartial layout [& content]
+  (html5
+   [:head
+    [:title "qcon"]
+    (include-css "/css/reset.css"
+                 "/css/screen.css")
+    (include-js "/js/out/goog/base.js"
+                "/js/qcon.js")]
+   [:body
+    [:div#wrapper
+     content
+     [:script {:type "text/javascript"} "goog.require('qcon.views.welcome');"]]]))
