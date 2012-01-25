@@ -84,3 +84,15 @@
 
 (require 'options)
 (require 'functions)
+(put 'ido-exit-minibuffer 'disabled nil)
+
+
+;; extras
+
+;; ALGOL
+
+(autoload 'algol-mode "extras/algol-mode.el" "Major mode for editing ALOGOL source" t)
+
+(add-to-list 'auto-mode-alist '("\\.a68.*$" . algol-mode))
+(add-to-list 'auto-mode-alist '("\\.algol.*$" . algol-mode))
+
