@@ -92,7 +92,10 @@
 ;; ALGOL
 
 (autoload 'algol-mode "extras/algol-mode.el" "Major mode for editing ALOGOL source" t)
-
 (add-to-list 'auto-mode-alist '("\\.a68.*$" . algol-mode))
 (add-to-list 'auto-mode-alist '("\\.algol.*$" . algol-mode))
 
+;; NOTROFF
+
+(autoload 'notroff-mode "extras/notroff-mode.el" "Major mode for editing NOTROFF docs." t)
+(add-to-list 'auto-mode-alist '("\\.nr.*$" . notroff-mode))
