@@ -30,6 +30,7 @@
 ** Breakfast of Champions
 ** Code of the Woosters
 ** Grendel
+** House of Leaves
 ** After Dark
 ** The Temple of the Golden Pavilion
 ** Ficciones
@@ -39,7 +40,6 @@
 ** TODO Midnight's Children
 ** TODO The Rings of Saturn
 * Sci-fi / Fantasy / Horror
-** House of Leaves
 ** Cthon
 ** Cryptonomicon
 ** Titus Groan
@@ -56,6 +56,11 @@
 ** The Creative Computer
 ** Hackers and Painters
 ** Java Concurrency in Practice
+** The Art of the Metaobject Protocol
+** Transaction Processing: Concepts and Techniques
+** Object-Oriented Programming in Common Lisp: A Programmer's Guide to CLOS
+** Patterns of Software: Tales from the Software Community
+** SQL and Relational Theory
 ** On Lisp
 ** Expert Systems: Principles and Practice
 ** PAIP
@@ -63,13 +68,24 @@
 ** Thinking Forth
 ** Programmers Guide to the 1802
 ** The Soul of a New Machine
-* Non-fiction
 ** Aspects of the Theory of Syntax
+* Non-fiction
 ** Broken Mirrors / Broken Minds
 ** The Complete History of Jack the Ripper
 ** Godel, Escher, Bach
 ** Bill James Historical Baseball Abstract
 * Graphic Novels
 ** From Hell
+** Transmetropolitan
 ** Jimmy Corrigan
 ** Bacchus
+** David Boring
+** Preacher
+** Lone Wolf and Cub
+** Safe Area Goražde: The War in Eastern Bosnia, 1992-1995
+** Berlin: City of Stones
+** Castle Waiting
+** Nodame Cantabile
+** Eagle: The Making of an Asian-American President
+** The Walking Dead
+   
