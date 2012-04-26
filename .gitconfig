@@ -32,7 +32,7 @@
 [push]
         default = tracking
 [github]
-	user = abedra
+	user = fogus
 [diff "ruby"]
 	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
 [core]

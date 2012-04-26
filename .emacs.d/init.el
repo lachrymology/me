@@ -99,3 +99,4 @@
 
 (autoload 'notroff-mode "extras/notroff-mode.el" "Major mode for editing NOTROFF docs." t)
 (add-to-list 'auto-mode-alist '("\\.nr.*$" . notroff-mode))
+(put 'downcase-region 'disabled nil)

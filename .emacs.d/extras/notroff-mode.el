@@ -343,6 +343,10 @@ This will not take effect until Emacs is restarted."
   "^\\.body\\(.*?\\)"
   "Regular expression for body start tags")
 
+(defconst notroff-regex-quote-start
+  "^\\.quote\\(.*?\\)"
+  "Regular expression for quote start tags")
+
 (defconst notroff-regex-include
   "^\\.inc \\(.*?\\)"
   "Regular expression for include tags")
@@ -439,6 +443,7 @@ text.")
    (cons notroff-regex-header-6-atx 'notroff-header-face-6)
    (cons notroff-regex-code-start 'notroff-header-face-6)
    (cons notroff-regex-body-start 'notroff-header-face-6)
+   (cons notroff-regex-quote-start 'notroff-header-face-4)
    (cons notroff-regex-include 'notroff-header-face-6)
    (cons notroff-regex-hr 'notroff-header-face)
    '(notroff-match-comments 0 notroff-comment-face t t)
