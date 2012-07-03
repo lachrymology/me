@@ -1,0 +1,28 @@
+---
+title: Clojure Obscura
+filemdate: 2012.06.04
+---
+
+* Contracts
+* Pipelines
+* Documentation
+  - Code reading (Marginalia)
+  - API docs (clojure-docs)
+  - Story-telling (Trout)
+  - Literate
+* Complexity measures
+  - Parens test
+  - Shapes
+* Testing
+  - Simulation
+  - pre/post checking
+  - Generative
+  - Datomic query testing
+* Static typing
+* Macros
+  - Piecewise transformation
+  - Transformers
+  - Unification
+* Out of the Tarpit
+* AOP
+* ???
