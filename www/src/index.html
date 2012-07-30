@@ -1,306 +1,140 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>The Joy of Clojure</title>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <link type="text/css" href="joy.css" rel="stylesheet" />
-    <script type="text/javascript" src="/irc.js"></script>
-  </head>
-  <body>
-    <div id="main">
-      <div class="leftbox">
-        <a href="/buy"><img id="cover" src="cover.jpg" /></a>
-        <br />
-        <a href="/buy">Buy it at Manning</a><br />
-        (35% off with code clojure35) <br/>
-        or at <a
-  href="http://www.amazon.com/gp/product/1935182641?ie=UTF8&tag=fogus-20">Amazon</a>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<img src="joy.png" style="float:left;"/>
 
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: 'joyofclojure OR joy clojure -from:fogus -from:chrishouser',
-  interval: 6000,
-  title: 'What people are saying about',
-  subject: 'The Joy of Clojure',
-  width: 200,
-  height: 200,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: false,
-    live: false,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    toptweets: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
-<br />
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'profile',
-  rpp: 4,
-  interval: 6000,
-  width: 200,
-  height: 200,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1986b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: false,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: false,
-    behavior: 'all'
-  }
-}).render().setUser('fogus').start();
-</script>
-<br />
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'profile',
-  rpp: 4,
-  interval: 6000,
-  width: 200,
-  height: 200,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1986b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: false,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: false,
-    behavior: 'all'
-  }
-}).render().setUser('chrishouser').start();
-</script>
-      </div>
-      <div class="body">
-      <h1>The Joy of Clojure</h1>
-      <h2>Thinking the Clojure Way</h2>
-      <h4>A book by
-          <a href="http://blog.fogus.me/">Michael Fogus</a>
-          and
-          <a href="http://blog.n01se.net/">Chris Houser</a>
-      </h4>
-      <p>
-      We’re really enjoying Clojure, and we’d like to share our knowledge and
-      experience with you.  <i>The Joy of Clojure</i> can now be <a
-          href="/buy">pre-ordered</a>, which
-      gives you access to the entire book as a PDF now, plus other formats
-      including the printed book once they're available. 
-      If you're not quite ready to buy, you can read the <a
-          href="http://www.manning.com/fogus/Fogus_MEAP_Ch1.pdf">first chapter
-          for free</a>.  A large excerpt of <a
-  href="http://www.infoq.com/articles/in-depth-look-clojure-collections">
-      chapter 5 is available on InfoQ</a>.  Check it out before you
-      decide to buy.  
-      </p>
 
-<h6>TABLE OF CONTENTS</h6>
-<ol>
-  <ol type="i">
-    <li>Foreword (to be announced)</li>
-    <li>Acknowledgments</li>
-    <li>Introduction</li>
-    <li>Notational Conventions</li>
-    <li>Getting Clojure</li>
-    <li>Road Map</li>
-  </ol>
-<h6>FOUNDATIONS</h6>
-<ol>
-  <li>Clojure Philosophy</li>
-  <ol>
-    <li>The Clojure Way</li>
-    <li>Why a(nother) Lisp?</li>
-    <li>Functional Programming</li>
-    <li>Why Clojure is Not Especially Object-oriented</li>
-    <li>Summary</li>
-  </ol>
-  <li>Drinking From the Clojure Firehose</li>
-  <ol>
-    <li>Scalars</li>
-    <li>Putting Things Together: Collections</li>
-    <li>Making Things Happen: Functions</li>
-    <li>Vars</li>
-    <li>Locals, Loops, and Blocks</li>
-    <li>Preventing Things from Happening: Quoting</li>
-    <li>Leveraging Java via Interop</li>
-    <li>Exceptional Circumstances</li>
-    <li>Namespaces</li>
-    <li>Summary</li>
-  </ol>
-  <li>Dipping Our Toes Into the Pool</li>
-  <ol>
-    <li>Truthiness</li>
-    <li>nil Pun With Care</li>
-    <li>Using Destructuring</li>
-    <li>Using the REPL to Experiment</li>
-    <li>Summary</li>
-  </ol>
-</ol>
-<h6>DATA TYPES</h6>
-<ol start="3">
-  <li>On Scalars</li>
-  <ol>
-    <li>Understanding Precision</li>
-    <li>Try To Be Rational</li>
-    <li>When To Use Keywords</li>
-    <li>Symbolic Resolution</li>
-    <li>Regular Expressions - The "Second Problem"</li>
-    <li>Summary</li>
-  </ol>
-  <li>Composite Data Types</li>
-  <ol>
-    <li>Persistence, Sequences, and Complexity</li>
-    <li>Vectors: Creating and Using Them in All Their Varieties</li>
-    <li>Lists: Clojure's Code Form Data Structure</li>
-    <li>How to Use Persistent Queues</li>
-    <li>Persistent Sets</li>
-    <li>Thinking in Maps</li>
-    <li>Putting It All Together: Finding the Position of Items in a Sequence</li>
-    <li>Summary</li>
-  </ol>
-</ol>
-<h6>FUNCTIONAL PROGRAMMING</h6>
-<ol start="5">
-  <li>Being Lazy and Set in Your Ways</li>
-  <ol>
-    <li>On Immutability</li>
-    <li>Designing a Persistent Toy</li>
-    <li>On Laziness</li>
-    <li>Putting It All Together: A Lazy Quicksort</li>
-    <li>Summary</li>
-  </ol>
-  <li>Functional Programming</li>
-  <ol>
-    <li>Functions in All Their Forms</li>
-    <li>Closures</li>
-    <li>Thinking Recursively</li>
-    <li>Putting It All Together: A* Pathfinding</li>
-    <li>Summary</li>
-  </ol>
-</ol>
-<h6>LARGE-SCALE DESIGN</h6>
-<ol start="7">
-  <li>Macros</li>
-  <ol>
-    <li>Data is Code is Data</li>
-    <li>Defining Control Structures</li>
-    <li>Macros Combining Forms</li>
-    <li>Using Macros When Changing Forms</li>
-    <li>Using Macros to Control Symbolic Resolution Time</li>
-    <li>Using Macros to Manage Resources</li>
-    <li>Putting It All Together: Macros Returning Functions</li>
-    <li>Summary</li>
-  </ol>
-  <li>Combining Data and Code</li>
-  <ol>
-    <li>Namespaces</li>
-    <li>Exploring Multimethods with the Universal Design Pattern</li>
-    <li>Types, Protocols, and Records</li>
-    <li>Putting it All Together: A Fluent Builder for Chess Moves</li>
-  </ol>
-  <li>Java.next</li>
-  <ol>
-    <li>Generating Objects On the Fly with proxy</li>
-    <li>Clojure gen-class and GUI Programming</li>
-    <li>Clojure's Relationship to Java Arrays</li>
-    <li>All Clojure Functions Implement...</li>
-    <li>Using Clojure Data Structures In Java APIs</li>
-    <li>definterface</li>
-    <li>Be Wary of Exceptions</li>
-    <li>Summary</li>
-  </ol>
-  <li>Mutation</li>
-  <ol>
-    <li>Software Transactional Memory with Multiversion Concurrency Control and Snapshot Isolation</li>
-    <li>When To Use Refs</li>
-    <li>When To Use Agents</li>
-    <li>When To Use Atoms</li>
-    <li>When To Use Locks</li>
-    <li>When To Use Futures</li>
-    <li>When To Use Promise and Deliver</li>
-    <li>Parallelism</li>
-    <li>Vars and Dynamic Binding</li>
-    <li>Summary</li>
-  </ol>
-</ol>
-<h6>TANGENTIAL CONSIDERATIONS</h6>
-<ol start="11">
-  <li>Performance</li>
-  <ol>
-    <li>Type Hints</li>
-    <li>Transients</li>
-    <li>Chunked Sequences</li>
-    <li>Memoization</li>
-    <li>Understanding Coersion</li>
-    <li>Summary</li>
-  </ol>
-  <li>Clojure Changes the Way You Think</li>
-  <ol>
-    <li>DSLs</li>
-    <li>Testing</li>
-    <li>A Lack of Design Patterns</li>
-    <li>Error Handling and Debugging</li>
-    <li>Fare Thee Well</li>
-  </ol>
-</ol>
-<ol type="A"> 
-  <li>Appendix A: Clojure Style</li>
-  <li>Appendix B: Annotated Bibliography</li>
-</ol>
-    </div>
-</div>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-921112-2");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</body>
-</html>
+
+<title>me fogus</title>
+
+
+<meta name="author" content="Fogus">
+<meta name="copyright" content="Copyright (c) 2006 Fogus">
+<meta name="description" content="fogus.me main interface">
+<meta name="keywords" content="programming, blog, oss, linux, computers, java, python, apple, osx, ruby, c, math">
+<meta name="robots" content="index, follow, archive">
+
+<link rel="icon" href="http://fogus.me/images/labyrinth.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://fogus.me/images/labyrinth.ico" type="image/x-icon">
+<link rel="StyleSheet" href="styles/ui.css" type="text/css" media="screen">
+
+<script src="js/nice.js"></script>
+
+</head>
+
+<body>
+
+<table width="100%" height="100%"><tbody><tr><td valign="middle" width="100%" height="100%">
+<center>
+<table width="640" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr>
+		<td>
+			<img src="images/spacer.gif" width="202" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="4" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="202" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="229" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td rowspan="4">
+			<!-- **** ME LINK **** -->
+			<a href="http://fogus.me/fun/" title="me" onmouseover="document.abt.src=&#39;images/modus_01ovr.jpg&#39;" onmouseout="document.abt.src=&#39;images/modus_01.jpg&#39;">
+			<img src="images/modus_01.jpg" width="202" height="197" border="0" alt="abt" name="abt"></a></td>
+			
+		
+		<td colspan="3" rowspan="2">
+			<img src="images/modus_02.jpg" width="207" height="96"></td>
+		<td colspan="2">
+			<img src="images/modus_03.jpg" width="230" height="95"></td>
+		<td rowspan="2">
+			<img src="images/modus_04.jpg" width="1" height="96"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="95"></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<img src="images/modus_05.jpg" width="230" height="1"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<img src="images/modus_06.jpg" width="208" height="1"></td>
+		<td colspan="2" rowspan="4">
+			<!-- **** PROJECTS LINK **** -->
+			<a href="http://github.com/fogus/" title="projects" onmouseover="document.labs.src=&#39;images/modus_07ovr.jpg&#39;" onmouseout="document.labs.src=&#39;images/modus_07.jpg&#39;">
+			<img src="images/modus_07.jpg" width="230" height="217" border="0" alt="labs" name="labs">
+		</a></td>
+			
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td rowspan="4">
+			<img src="images/modus_08.jpg" width="4" height="217"></td>
+		<td rowspan="4">
+			<img src="images/modus_09.jpg" width="202" height="217"></td>
+		<td colspan="2" rowspan="4">
+			<img src="images/modus_10.jpg" width="2" height="217"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="100"></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/modus_11.jpg" width="202" height="2"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="2"></td>
+	</tr>
+	<tr>
+		<td rowspan="3">
+			<!-- **** BLOG LINK **** -->
+			<a href="http://blog.fogus.me/" title="blog" onmouseover="document.aka.src=&#39;images/modus_12ovr.jpg&#39;" onmouseout="document.aka.src=&#39;images/modus_12.jpg&#39;">
+			<img src="images/modus_12.jpg" width="202" height="216" border="0" alt="akashic record" name="aka">
+		</a></td>
+
+		<td>
+			<img src="images/spacer.gif" width="1" height="114"></td>
+	</tr>
+	<tr>
+		<td colspan="2" rowspan="2">
+			<img src="images/modus_13.jpg" width="230" height="102"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1"></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="images/modus_14.jpg" width="207" height="101"></td>
+		<td>
+			<img src="images/modus_15.jpg" width="1" height="101"></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="101"></td>
+	</tr>
+</tbody></table>
+
+<a href="http://blog.fogus.me" style="text-decoration: none;" title="novus ordo seclorum">blog</a>
+</center>
+</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 5:43:38 Dec 20, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 20:17:01 Jul 23, 2012.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+</body></html>

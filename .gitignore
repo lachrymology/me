@@ -7,3 +7,4 @@ webgen.*
 .emacs.d/.ido.last
 .emacs.d/ac-comphist.dat
 .emacs.d/url
+.DS_Store
