@@ -43,7 +43,7 @@
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
 ;; inferior lisp
-(setq inferior-lisp-program "script/repl")
+(setq inferior-lisp-program "lein repl")
 
 ;; take care of utf-8
 (set-terminal-coding-system 'utf-8)

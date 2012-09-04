@@ -100,3 +100,17 @@
 (autoload 'notroff-mode "extras/notroff-mode.el" "Major mode for editing NOTROFF docs." t)
 (add-to-list 'auto-mode-alist '("\\.nr.*$" . notroff-mode))
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(mediawiki-site-alist (quote (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page") ("MATREX" "http://saturn/wiki/" "mfogus" "" "Main Page"))))
+ '(safe-local-variable-values (quote ((buffer-file-coding-system . utf-8-unix) (org-export-html-style-include-scripts))))
+ '(slime-net-coding-system (quote utf-8-unix)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
