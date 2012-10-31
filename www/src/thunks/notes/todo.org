@@ -1,0 +1,32 @@
+* Himera
+  - compiled form view
+* Roots
+  - fp
+* LIFE
+* Caerbannog
+* core.cache / core.memoize
+  - test.generative
+  - FnCache
+  - 2-way lookup fn
+  - documentation
+* ClojureScript
+  - toString
+* Clojure 1.4
+  - :pre/post in (doc)
+* Blogging
+  - D posts
+  - Apple langs
+* Trammel
+
+| m        | args  | constraints                             |
+|----------+-------+-----------------------------------------|
+| in       | [f s] | [(_ [n] num? => num?) (seq? s) => seq?] |
+| becomes  | [f s] | [(fn? f) (seq? s) => (seq? %)]          |
+|          |       |                                         |
+| delegate |       | (_f_ (partial cont f) s)                |
+
+* misc
+  - Clojure code complexity
+    - nesting
+    - "parens-view"
+    - lines/fn

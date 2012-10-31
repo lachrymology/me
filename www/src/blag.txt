@@ -1,0 +1,56 @@
+Blag de Fogus
+
+2012.08.20
+==========
+
+Phrases of maximum dickery:
+
+* Well, actually
+* Why don't they just
+* Why would you ever want to
+* Clearly
+* Obviously
+* As you can see
+
+2012.08.13
+==========
+
+Imagine you inherit a significant Java codebase; how might you proceed?
+
+* [Guava](http://code.google.com/p/guava-libraries/)
+* [Cofoja](http://code.google.com/p/cofoja/)
+* [Lombok](http://projectlombok.org/)
+* [Joda Time](https://github.com/JodaOrg/joda-time/)
+* [Jumi Actors](http://jumi.fi/actors.html)
+* [Functional Java](http://functionaljava.org/)
+* [Guice](http://code.google.com/p/google-guice/)
+* [Clojure](http://clojure.org) (for testing)
+* [ProGuard](http://proguard.sourceforge.net/#)
+* [Either trees](http://www.ibm.com/developerworks/java/library/j-ft14/index.html)
+* [GSON](http://code.google.com/p/google-gson/)
+
+More?
+
+2012.08.01
+==========
+
+First day at my new job.
+
+2012.07.27
+==========
+
+Just completed my last [Clojure/core](http://www.clojure.com) meeting and feel very sad.  Over the past ~17 months I've constantly looked forward to our Friday meetings for two reasons:
+
+1. The Clojure/core team is the smartest group of people I've ever worked with.
+
+2. Rich would often drive long discussions about software design and architecture and also language design and implementation.  These discussions were always thought-provoking and I can't imagine there will be another opportunity to capture this level of discussion in the future.
+
+So... I feel sad.
+
+2011.04.29
+==========
+
+Finished the bulk of the `defrecord` changes to make them first-class data types in Clojure.  Turns out that the compiler is much more pleasant to work with than I might have ever guessed.  I would love to re-write large portions of it in Clojure.
+
+I wish someone would write a 200 page book in prototypal languages.  Maybe start with Javascript and make it more purely prototypal?  Wind the language through Io, Self, and Kevo.
+

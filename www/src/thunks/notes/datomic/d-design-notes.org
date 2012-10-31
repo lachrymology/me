@@ -1,0 +1,58 @@
+* <2012-03-02 Fri>
+** D site
+*** FRONT PAGE
+**** I love how the navigation squashes down into a top bar and flows down the page. Nice touch.
+**** "Let me know" button looks misstyled and misaligned
+***** It's below the textbox on my computer
+**** <em> text is hard to read
+**** I love the word "indelible"
+**** One of the big chunky green checkboxes is cut off on the bottom
+**** The text to the right of the big chunky checkboxes looks like anchors, but is not
+**** The "Participate..." box looks bland -- should stand out more
+**** The bottom of the logo and the footer colors are alomst the same thus making the logo look odd
+*** COMPONENTS PAGE
+**** General dislike of italicized text
+**** The body font is too small
+**** There is a Siberia of open space to the right of the text
+**** First "Download it here" should say "Download Datomic here" and stand out more
+**** Omnigraffle images
+***** Omnigraffle's default is shadowed elements. I tend to turn it off because it doesn't print well
+***** Shadows do not tend to fit with the rest of the page design
+***** The line thickness of the Omnigraffle images could use more thickness
+**** Second "Download it here" should say "Download the Datomic Developer Appliance here" and stand out more
+**** The Siberia of open space could be used for gentle notes on the right
+***** Links to AWS
+***** Links to VirtualBox
+***** Download * Here links
+***** etc.
+*** RESOURCES PAGE
+**** General dislike of italicized text
+**** Slightly chunkier fonts would be nice.  Text is quite small.
+**** Again, right-side bar could be used for footnotes, links and such
+**** Some of the info pages are really really long
+**** The source blocks run right up against the text that follows them.
+**** GETTING STARTED
+***** The bulleted list in the beginning looks misspaced.
+**** TUTORIAL
+***** The seattle.gov link in the beginning is long and obnoxious
+***** "Datomic provides three environments..." table looks weird
+***** Inline code elements (e.g. Future<Boolean>, ?e, etc.) should stand out as code
+***** Tutorial is *really* long
+****** Not bad, it has the right info.
+****** Is pagenation in order?
+***** If the TBDs are meant to stay, then they should be styled slightly differently.
+**** ARCH
+***** only general points above apply here
+**** DEV APPLIANCE
+***** The numbered list looks scrunched up.
+***** Could use code styling on the filenames.
+**** INTEGRATING PEER
+***** only general points above apply here.
+**** JAVA SHELL
+***** Inline code fragments should look like code.
+*** FAQ
+**** The question text is huge
+**** The answer text is tiny
+*** DOWNLOAD
+**** A small description of the downloadable packages would be great.
+**** I am forced to agree every time I go to the DL page.  Intentional?

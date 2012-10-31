@@ -1,0 +1,27 @@
+names.txt
+
+* tathata (/)
+* trout (/)
+* minderbinder (/)
+* panegyrics (/)
+
+* treetruncs
+* riverdale
+* vander
+* zeder
+* patagonia
+* li
+* unk
+* clache
+* ariadne
+* bacwn
+* leibnitz
+* yuugen
+* autotelic
+* fichte
+* lem
+* ingmar
+* noumenon (noumen)
+
+term rewriting, ops5, chess, dataflow, hygiene, problem solvers, roguelike
+

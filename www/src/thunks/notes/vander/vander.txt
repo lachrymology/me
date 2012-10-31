@@ -1,0 +1,73 @@
+Thnead/Vander grammar
+=====================
+
+    expr :
+    | IDENT
+    | NUM
+    | STRING
+    | '(' block ')'
+    | expr '(' eargs ')'
+    | IDENT '=' expr
+    | 'fun' '(' arglist ')' stmt_expr
+    | expr BINOP expr
+    ;
+
+    stmt_expr :
+    | '{' block '}'
+    | 'if' expr stmt_expr 'else' stmt_expr
+    | 'while' expr stmt_expr
+    ;
+
+    block :
+    | 'let' IDENT '=' expr ';'
+    | 'let' 'rec' IDENT '(' arglist ')' stmt_expr
+    | simple block
+    | expr ';' block
+    | expr
+    | stmt_expr
+    ;
+
+
+    eargs :
+    |
+    | expr
+    | expr ',' eargs
+    ;
+
+    arglist :
+    |
+    | IDENT
+    | IDENT ',' arglist
+    ;
+
+Vander Example
+==============
+
+    let rec fact_iter(n) { 
+      let acc = 1;
+      while n > 0 {
+         acc = n * acc;
+         n = n - 1;
+      }
+      acc
+    }
+    
+    let value = fact_iter(6);
+
+    print("Six factorial iteratively is %d", value);
+
+    let fact_tr(n) { 
+      let rec loop(n, acc) {
+        if n == 0 { acc } else { loop(n - 1, n * acc) }
+      }
+      loop(n, 1)
+    }
+    
+    let value2 = fact_tr(6);
+    print("Six factorial tail-recursively is %d", value2);
+
+    let rec fact(n) {
+      if n == 0 { 1 } else { n * fact(n-1) }
+    }
+    
+    print("Six factorial recursivel is %d", fact(6))
