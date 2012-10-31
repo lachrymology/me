@@ -9,4 +9,5 @@
 # website.
 config = Webgen::WebsiteAccess.website.config
 config['sourcehandler.patterns']['Webgen::SourceHandler::Copy'] << '**/*.txt'
+config['sourcehandler.patterns']['Webgen::SourceHandler::Copy'] << '**/*.org'
 config['sourcehandler.patterns']['Webgen::SourceHandler::Copy'] << '**/*.pl'

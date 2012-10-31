@@ -357,13 +357,14 @@ A More Extended Example: A Recipes File
 ---------------------------------------
 
 Suppose you have a recipe file of the following form:
-{recipes: [ { 
-    instructions: &quot;This is how we do it...&quot;
-    ingredients: [ {ingredient: &quot;celery&quot;, quantity: 3, unit: &quot;stalk&quot;}
-                   ...],
-    servings: 4,
-  } ...]
-}
+
+    {recipes: [ { 
+        instructions: &quot;This is how we do it...&quot;
+        ingredients: [ {ingredient: &quot;celery&quot;, quantity: 3, unit: &quot;stalk&quot;}
+                       ...],
+        servings: 4,
+      } ...]
+    }
 
 You can imagine a bunch of queries that might not be too hard to write:
 
