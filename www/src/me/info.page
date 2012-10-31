@@ -71,19 +71,3 @@ Research Resources
 - [Manfred von Thun](http://www.latrobe.edu.au/philosophy/phimvt/joy.html) (Joy, concatenative languages)
 - [R. Kent Dybvig](https://www.cs.indiana.edu/~dyb/) (Scheme)
 
-
-Programming Languages
-=====================
-
-*I endorse the following programming languages for use and study*
-
-- [Clojure](http://clojure.org)
-- [Factor](http://factorcode.org/) and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy.html)
-- Common Lisp ([via SBCL](http://www.sbcl.org/))
-- [Haskell](http://www.haskell.org/)
-- [Eiffel](http://www.eiffel.com/)
-- [Datalog](http://code.google.com/p/clojure-contrib/wiki/DatalogOverview)
-- [CLIPS](http://clipsrules.sourceforge.net/)
-- [Racket](http://racket-lang.org/)
-- [Io](http://iolanguage.com/) and [Self](http://selflanguage.org/)
-- [OCaml](http://caml.inria.fr/ocaml/index.en.html)
