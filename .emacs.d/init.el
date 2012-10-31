@@ -21,11 +21,8 @@
 (package-initialize)
 
 (setq el-get-sources
-      '((:name magit
-	       :after (lambda ()
-			(global-set-key (kbd "C-c C-g") 'magit-status)))
-	(:name paredit
-	       :after (lambda ()
+      '((:name paredit
+	       :after (progn
 			(let ((paredit-modes '(clojure
 					       emacs-lisp
 					       lisp
@@ -37,46 +34,48 @@
 			(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)))
 	(:name clojure-mode 
 	       :type elpa
-	       :after (lambda ()
+	       :after (progn
 			(add-to-list 'auto-mode-alist '("\\.clj.*$" . clojure-mode))))
 	(:name slime-repl :type elpa)
-	(:name slime
-	       :type elpa
-	       :after (lambda ()
-			(setq slime-protocol-version 'ignore)
-			(setq font-lock-verbose nil)))
-	(:name smex
-	       :type elpa
-	       :after (lambda ()
-			(smex-initialize)
-			(global-set-key (kbd "M-x") 'smex)
-			(global-set-key (kbd "M-X") 'smex-major-mode-commands)))
-	(:name deft
-	       :type elpa
-	       :after (lambda ()
-			(setq deft-extension "org")
-			(setq deft-directory "~/Desktop/Dropbox/notes")
-			(setq deft-text-mode 'org-mode)
-			(global-set-key [f3] 'deft)))))
+	;;	(:name slime
+	;;       :type elpa
+	;;       :after
+	;;	(lambda ()
+	;;  (setq slime-protocol-version 'ignore)
+	;;  (setq font-lock-verbose nil)))
+	;; (:name smex
+	;;        :type elpa
+	;;        :after (lambda ()
+	;; 		(smex-initialize)
+	;; 		(global-set-key (kbd "M-x") 'smex)
+	;; 		(global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+	;; (:name deft
+	;;        :type elpa
+	;;        :after (lambda ()
+	;; 		(setq deft-extension "org")
+	;; 		(setq deft-directory "~/Desktop/Dropbox/notes")
+	;; 		(setq deft-text-mode 'org-mode)
+	;; 		(global-set-key [f3] 'deft)))
+))
 
 (setq my-packages
       (append
        '(ac-slime
 	 auto-complete
 	 coffee-mode
-	 deft
+	 ;; deft
 	 elein
 	 el-get
 	 js2-mode
 	 markdown-mode
-	 org-mode
+	 ;;org-mode
 	 ruby-block
 	 ruby-end
 	 ruby-mode
 	 scala-mode
 	 swank-clojure
 	 textile-mode
-	 smex
+	 ;;smex
 	 yaml-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
