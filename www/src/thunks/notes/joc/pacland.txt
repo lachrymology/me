@@ -1,0 +1,105 @@
+A Largish Example, Split Over the Remaining Chapters 
+====================================================
+
+Pac-Land (see PDF, page 50 - Microbe Computing)
+-----------------------------------------------
+
+Describes a fun little Game-of-Life type game on steroids.  Each little creature has 50 attributes that determines how they interact with their world and the existence of other "pac-mites".  There is an algorithm for describing what happens to a pac-mite based on its local cells (see PDF and the file World.java).  The world is a grid of squares, of which each can contain one of a number of things:
+
+- A pac-mite of species 1
+- A pac-mite of species 2
+- A blob (an empty square in the Java impl)
+- A barrier (not in the Java impl)
+
+To find a "good" species requires an intractably large search-space, so the Java impl goes about finding good species by running Tournaments and keeping the winners to and using "cross-breeding" to populate the next round.  It does this many many times.  There is also a random mutation element involved to keep things from stagnating.  Finally, there is also a simple GUI that can be used to visualize the battle between one species and another.
+
+I like this problem for a few reasons:
+
+- It's easy to understand and therefore explain
+
+- It's not so cumbersome that we have to devote an enormous number of pages to it
+
+- It awesome for concurrent processing because the problem can be sliced in a few independent ways:
+   + A per-battle basis
+   + A per-cell basis
+   + A per-species basis
+   + more?
+
+- There is a Java-interop element (GUI)
+
+- It is fun
+
+- If we market it right, we could get people excited to submit their own pac-mites and have battles online.  
+   + Likewise, other people might blog about it and write their own impls in their own languages -- all referring back to the book
+
+That last one is a maybe, but minimally the problem suites our book pretty well, without making it entirely focused on solving this particular problem.  The way I see things breaking down:
+
+### Large-scale design chapter
+
+1. Perhaps using types/proto||reify to describe the pac-mites and ops... although I'm not sure exactly what this means.
+2. We could also leverage the UDP code which might be conducive to the so-called "cross-breeding"
+
+### Interop chapter
+
+1. GUI
+
+### Concurrency chapter
+
+1. A battle scheduler (see picture below)
+2. Partitioning up the battles/tounaments/etc...
+
+This chapter is the biggest win for this problem. IMO
+
+### Performance chapter
+
+1. Not sure, but we could find something as we go
+
+### Final chapter
+
+1. Refactoring some parts
+2. A pac-mite DSL?  A DSL to describe a tournament structure? A cross-breed DSL?
+3. Some tests?
+
+
+
+SCHEDULER
+---------
+
+<pre>
+   _ _,...__
+  ,scheduler`.       ,------------------------------.
+  | pushes   |       | +-------.  ________          |
+  `-._    _,'        | |pairing|  |pairing| . . .   |  1  strongest
+      `'''           | `.......|  |_______|         |
+   priority stack    `..............................|
+      ,--------.
+      |   1    |     ,------------------------------.
+      |   1    |     | .........  .........         |
+      |   2    |     | |pairing|  |pairing| . . .   |  2 next strong
+      |   2    |     | |_______|  |_______|         |
+      |   4    |     |______________________________|
+      |   3    |
+      |   3    |     ,------------------------------.
+      |   4    |     | ,---------.                  |
+      `--------'     | |pairing  | . . . . .        |  3 lowest
+                     | `.........|                  |
+  ,-----.            `..............................|
+ /       \
+( workers )          ,------------------------------.
+ \ pop   /           | ,--------.                   |
+  ;-----:            | |pairing | . . . . . .       |  4 mutants
+ /       \           | |________|                   |
+( workers )          `------------------------------'
+ \ pop   /
+  `-----'
+</pre>
+
+Some Changes Needed
+-------------------
+
+- My Java version is incomplete, but it's simplified and works so maybe it's good enough model for us
+- We couldn't call them Pac-mites... my guess is that's a copyright thing
+- We don't have to use terms like proletariate, monachy, etc...  that was just my having fun with the problem.  Although I'm not opposed of course.
+- ???
+
+What do you think?

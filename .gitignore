@@ -8,3 +8,4 @@ webgen.*
 .emacs.d/ac-comphist.dat
 .emacs.d/url
 .DS_Store
+*.elc

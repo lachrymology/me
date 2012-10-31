@@ -1,0 +1,343 @@
+A few notes on implementing polymorphism:
+
+We've discussed the semantics of polymorphic languages such as
+System-F, but not the implementation issues.  There are about
+5 ways to handle polymorphism which I'll briefly discuss below:
+
+(1) Monomorphize the code (C++, MLton, ...):  In languages such
+as SML, the type system forces a prenex restriction on quantifiers:
+
+    monotypes:   t ::= a | t1 -> t2 | t1 * t2 | ...
+    polytypes:   s ::= t | All a.s
+
+which effectively makes the polymorphic definitions second-class
+(i.e., note that functions can't take/return a polytype, and 
+that products only range over monotypes, etc.)  Another way to
+see this is that the only polymorphic definitions are introduced
+by "let" expressions.  We can simply inline/duplicate the 
+let declaration everywhere it is used and do the reductions
+of the type applications at compile time:
+
+   let x = /\a1,...,an.e1 in e  ->  e[e1/x]
+   (/\a1,...,an.e) t1 ... tn -> e[ti/ai]
+
+Of course, we risk blowing up the code (because we're duplicating it).
+In practice, this can be avoided by doing CSE on the type applications
+before doing the inlining/duplication and by specializing the
+code once for each unique type instantiation, so this is not a
+real problem in practice.  
+
+The key advantage of monomorphizing the code is that we can compile
+the resulting language like Pascal -- in particular, we need not
+pick a uniform representation for values.  For instance, floats can
+be represented as 64-bit values and passed in fp registers, while ints 
+can be represented as 32-bit values and passed in gp registers.  If we 
+pass a float to "the" identity function, then we'll really end up passing 
+it to a specialized version of the identity function which expects
+its argument in an fp register, and if we pass an int to "the" identity
+function then we'll really pass it to a specialized version that 
+accepts the argument in a gp register.  
+
+The key disadvantage of monomorphizing code is that destroys separate
+compilation.  In particular, it's impossible to compile a polymorphic
+library (say, the list library) separate from the clients.  Another
+way to say this is that we're forced to expose the implementation in
+the interfaces (as in C++ and Ada) so that if the implementation 
+changes, we may have to recompile the clients.  In practice, this
+hurts if you change something very deep in the library dependency graph.
+Note that one option that can minimize these costs is to cache the
+instantiations of polymorphic code so that we don't necessarily have
+to generate specilized code for each client.  For instance, we might
+specialize the list library to integers, floats, and (say) pointers
+eagerly and then a client wouldn't have to worry about paying the
+cost of generating & compiling these specializations.  
+
+Another disadvantage of monomorphization is that we're really forced
+to have 2nd-class polymorphism which I believe is way too limiting.
+For instance, it precludes things like existentials, GADTs, and data
+structures like you'll find in Okasaki's book that demand support for
+polymorphic recursion.
+
+(2) Monomorphize @ JIT time (C#):  To avoid the problems mentioned
+above, an alternative is to use a JIT compiler to generate the
+specialized code at run-time.  Again, caching is important to avoid
+generating the code over and over again.  The key advantages of this
+approach are that (a) we get all of the wins of static monomorphization
+in terms of native representations, (b) we are no longer limited to
+2nd class polymorphic functions, and (c) we can support the illusion
+of separate compilation.  The downside is that we don't really get
+separate compilation, but rather just delay when we do the compilation
+and that latency may be of concern.  Another downside is that it's
+complicated and only works in relatively "heavyweight" environments
+where we can afford to have a JIT around at run-time.  Nonetheless,
+this is probably the best of the options in terms of raw performance.
+
+(2) Use a uniform representation: (O'Caml, Java, Modula-3):
+Consider the identity function:  /\a.\x:a.x  -- if we ensure that
+all values passed to it have the same size and calling convention,
+then we can use one piece of code.  For instance, we may "box" floats
+(i.e., represent them by a pointer to a cell holding the actual float)
+to ensure that they can be represented in 32-bits and be passed in
+a gp register.  
+
+There are obvious disadvantages to boxing in that we pay the price
+of constructing the box, and reading out the real value.  (There are
+subtle disadvantages too, such as the fact that Java does not lift
+"equality" on boxed floats in the right way...)  
+
+In languages such as Java and Modula-3, there is another disadvantage
+in that we are forced to make a distinction at the source level
+between the "uniform" types (i.e., reference types) and other
+types (e.g., int, float, etc.)  Programmers must explicitly coerce
+non-uniform values to and from a uniform representation if they
+want to pass such values to a polymorphic function.
+
+In languages such as O'Caml, there are no non-uniform types.  Rather,
+the compiler is responsible for making sure that every type is
+unifom.  Now at first blush, you might think that we only need to
+insert coercions around polymorphic functions, and indeed this is
+true, but it's a bit more subtle than you think and doesn't always
+work (see below.)  So most compilers (including older versions of
+SML/NJ) just made *every* value uniform (e.g., a 32-bit gp value.)
+That meant that floats were always boxed for instance.  The advantage
+of this approach is that polymorphic code is fast and programmers
+don't have to deal with anything.  The disadvantage is that monomorphic
+code pays the price...
+
+(3) Coercions (See Leroy, POPL'92): To see the subtlety with
+coercions, consider the following attempted translation from a source
+language where types are meant to be uniform, to a target language
+where they aren't.
+
+Source types:    t ::= a | int | float | t1 -> t2 | t1*t2
+                 s ::= All a1,...,an.t
+
+Target types:    u ::= a | int | u1 -> u2 | u1*u2 | Float
+                 t ::= u | float | t -> t | t1*t2
+                 s ::= All a1,...,an.t
+
+The intention is that in the target language, Float is a boxed float,
+whereas float is an unboxed float.  Furthermore, the type variables in
+the language range only over uniform types (u).  That allows the
+compiler to know, for instance, sizeof(a) and regtype(a) when emitting
+code.
+
+Let us start our compiler by defining a type translation mapping
+source types to target types.  The goal of the translation is to
+use floats by default and only use Floats when we have to.  We'll
+assume the target language has primitives:
+
+   box  :  float -> Float
+   unbox:  Float -> float
+
+to mediate the mismatch.  The naive translation might look like this:
+
+  T[a] = a
+  T[int] = int
+  T[float] = float
+  T[t1 -> t2] = T[t1] -> T[t2]
+  T[t1 * t2] = T[t1] * T[t2]
+  T[All a1,...,an.t] = All a1,...,an.T[t]
+
+The problem with this is that when we get to translating polymorphic
+instantiation at the term level:
+
+   D;G |- e : All a.t     D |- t1
+   ------------------------------
+      D;G |- e t : t[t1/a]
+
+something will break.  In particular, consider the identity
+function.  At source level it has type /\a.\x:a.a so we can
+conclude:
+
+  D;G |- id : All a.a->a   D |- float
+  -----------------------------------
+      D;G |- id float : float -> float
+
+Now we see what the problem is -- at the target level, we can't
+instantiate a with float because it's not a uniform type.  So
+that suggests that we need another type translation which produces
+a uniform type out of a source-level type:
+
+  U[a] = a
+  U[int] = int
+  U[float] = Float
+  U[t1 -> t2] = U[t1] -> U[t2]
+  U[t1 * t2] = U[t1] * U[t2]
+  U[All a1,...,an.t] = All a1,...,an.U[t]
+
+Then we could translate instantiation:
+
+  E[e t] = E[e] U[t]
+
+For example, E[id float] = E[id] U[float] = E[id] Float.  Now
+presumably, E[id] : T[All a.a->a] = All a.T[a->a], so we can
+conclude that E[id] Float : T[a->a][Float/a] = Float -> Float.
+More generally, if D;G |- e : All a1,...,an.t and D |- t1,
+then E[e] U[t1] : T[t]([U[t1]/a]).  
+
+That seems good except that we want our translation to have
+the property that if D;G |- e : t, then D;T[G] |- E[e] : T[t],
+and it is *not* the case that T[t]([U[t1]/a]) = T[t[t1/a]].
+For instance, at source level, id float : float -> float
+so at the target level, it should have type T[float -> float] = 
+float -> float.  But the translation we've used yields
+Float -> Float.  Oops!
+
+Notice that we could fix this problem by demanding that 
+D;U[G] |- E[e] : U[t] because U[t](U[t1]/a) = U[t[t1/a]].
+That is, the U translation commutes with substitution.
+But also note that this would force:
+
+  E[3.14] = box 3.14
+
+That is, every float expression would have to be boxed!
+
+The fix, which Leroy noted, is that at polymorphic instantiation,
+what we need to do is construct a coerion S of type:
+
+   S : T[t]([U[t1]/a]) -> T[t1/a]
+
+Then we can use S to coerce the polymorphic object to the
+right thing.  For instance, to fix up the identity function
+we want E[id float] to yield something like:
+
+  \x:float.(unbox(id Float (box float)))
+
+This function has type float->float (i.e., T[float->float]).
+It boxes the argument and then unboxes the result.  We can
+rewrite this as:
+
+  (\f:Float->Float.unbox o f o box) (id Float)
+
+and see that S for this case should be (\f:Float->Float.unbox o f o box).
+
+More generally, we can define S indexed by the substitution we're
+trying to perform as follows:
+
+  S[a][Float/a] = unbox
+  S[a1][u/a2] = \x:a1.x          (u != Float or a1 != a2)
+  S[int][u/a] = \x:int.x
+  S[float][u/a] = \x:float.x
+  S[t1 * t2][u/a] = \p.(S[t1][u/a](#1 p), S[t2][u/a](#2 p))
+  S[t1 -> t2][u/a] = \f:T[t1->t2].S[t2][u/a] o f o G[t1][u/a]
+
+  G[a][Float/a] = box
+  G[a1][u/a2] = \x:a1.x         (u != Float or a1 != a2)
+  G[int][u/a] = \x:int.x
+  G[float][u/a] = \x:float.x
+  G[t1 * t2][u/a] = \p.(G[t1][u/a](#1 p), G[t1][u/a](#2 p))
+  G[t1 -> t2][u/a] = \f:T[t1->t2].G[t2][u/a] o f o S[t1][u/a]
+
+The "S" stands for specialization and the "G" stands for generalization.
+Note that for functions, we need to be able to box arguments (i.e.,
+generalize them) and unbox results.  More generally, for positive
+occurrences of the type variable we're specializing, we need to
+use S to unbox, and for negative occurrences, we need to use G to
+box.  You can check that these two coercions have the properties:
+
+  S[T[t]][U[t1]/a] : (T[t][U[t1]/a]) -> T[t1/a]
+  G[T[t]][U[t1]/a] : T[t1/a] -> (T[t][U[t1]/a])
+
+and that furthermore, S o G = id and G o S = id (i.e., S and G
+form an isomorphism.)  Given this, we can define the translation
+on terms in a straightforward fashion.  Technically, we need to
+do this in a type-directed fashion (i.e., on the judgements) but
+I'll assume we've decorated terms with types as needed:
+
+  E[i] = i       (integer constants)
+  E[f] = f       (floating-point constants)
+  E[x] = x
+  E[\x:t.e] = \x:T[t].E[e]
+  E[e1 e2] = E[e1] E[e2]
+  E[(e:All a.t) t1] = (S[T[t]][U[t1]/a] (E[e] U[t1]))
+  E[/\a.e] = /\a.E[e]
+
+And you can verify that if D;G |- e : t, then D;T[G] |- E[e] : T[t].
+
+The beauty of this translation is that if you don't use polymorphic
+values, then you don't pay any boxing/unboxing overhead.  Of course,
+where we do use a polymorphic function, we'll be paying some overhead
+and in all likelyhood, we'll want to inline and beta-reduce the hell
+out of those coercions.
+
+Unfortunately, there's a problem with this translation when it comes
+to refs, inductive, or recursive types.  For instance, consider 
+what needs to happen to a call to map, when we specializing it
+to operate on a list of floating-point values.  We end up constructing
+a coercion S which maps list(float) to list(Float).  Hopefully, a
+really good compiler could do the deforestation and push the S/G
+coercions into the map itself.  But that's hard to do with
+separate compilation, and without very aggressive optimization.
+To avoid this overhead, Leroy's Gallium compiler forced values in
+inductive data structures to be boxed.
+
+For references, the problem is that the S/G coercions want to make
+*copies* of the values.  But you can't make a copy of the reference
+cell because you'll end up destroying the sharing.  (Technically,
+you could represent the ref by a pair of functions to get/set
+the unboxed contents and then coerce those functions, but doing so kills
+all of the wins of the unboxed representations.)  
+
+A third subtle problem that arose with coercions when implemented
+in SML/NJ is that they can pile up.  In particular, it's possible
+with certain kinds of loops to end up with a G o S wrapped around
+a value each time you go around the loop.  
+
+Nonetheless, I find this one of the most interesting and somehow
+satisfying translations that really demonstrates why type-directed
+translation can be such a powerful tool for understanding compilers.
+
+(4) A fourth approach to dealing with polymorphism is called 
+"intensional type analysis" or "runtime-type dispatch".  The
+basic idea was laid out in a POPL'95 paper by Harper and Morrisett
+and was implemented in the TIL, TIL(T), and SML/NJ compilers.
+(Actually, SML/NJ uses a combination of coercions and intensional
+type analysis.)  The observation is that we could translate
+a polymorphic function, such as the identity so that it actually
+took a representation of the type as a value at run-time.  Then
+it could look at this type-representation to decide what to do.
+For instance, the identity function might get compiled to something
+like this:
+
+   /\a.\t:R(a).
+      if (t == R(float))
+         \x:float.x
+      else
+         \x:a.x
+
+Here, R(a) is a type corresponding to the representation of the
+unknown type a.  It turns out that you can compile ML-like languages
+(really, full, predicative System-F) in this fashion and get all of
+the benefits of the coercion-based approach without some of the
+drawbacks.  In particular, this technique is compatible with refs,
+inductive data structures, recursive types, etc.
+
+Of course, it has its own costs in terms of constructing, passing, and
+testing representations of types at run-time.  But those
+representations can be used for other things (e.g., GC information, ad
+hoc polymorphic operations such as ML's polymorphic equality, etc.)
+I'm not sure this is really a win compared to say, the JIT approach.
+It does have the advantage that like the coercion-based approach, you
+only pay for polymorphism if you use it.  Still, I think that it's
+probably not worth the trouble.
+
+(5) Polymorphism as products: Another approach, pioneered by the
+Church project, is to really think of a polymorphic value as a
+product.  For a language without polymorphic recursion, the set of
+types at which we can apply a polymorphic value can be
+(conservatively) computed at compile time.  Then we could build the
+specialized versions and put them all in a big tuple.  Then
+polymorphic instantiation becomes a projection off of that tuple.
+(Dually, for existentials, we can use a datatype, and unpacking
+corresponds to doing a pattern-match.)  I suspect that this technique
+could be used to make MLton support 1st class polymorphism (though not
+polymorphic recursion.)
+
+In summary, there are a number of approaches for implementing
+polymorphism all with different tradeoffs and limitations.  The
+issues start to multiply when you consider languages such as
+C# and the latest versions of Java where you combine parametric
+polymorphism with subtyping (and run-time downcasts, reflection,
+etc.)  
+
