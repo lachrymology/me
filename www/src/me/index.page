@@ -3,25 +3,26 @@ title: fogus - about
 filemdate: 2012.10.31
 ---
 
-![me](/images/fogus.jpg "me")
+![me](/images/fogus.jpg "Mike Fogus - Hobbyist Philosopher")
 
-My name is Fogus, although those intimate with my offline identity tend to call me Mike.  I  spend a lot of time with Clojure and ClojureScript as a contributor to the languages and an avid user. I also love to [read](http://www.goodreads.com/author/show/3514864.Michael_Fogus) and [write](http://joyofclojure.com).
+My name is Fogus, although those intimate with my offline identity tend to call me Mike.  I  spend a lot of time with [Clojure](http://clojure.org) and ClojureScript as a contributor to the languages and an avid user. I love baseball, chupacabra husbandry, retrocomputing, chess, philosophy, horror movies, languages,   [reading](http://www.goodreads.com/author/show/3514864.Michael_Fogus) and [writing](http://joyofclojure.com).  I am a sucker for hobby programming language, text editor, operating system, database,  roguelike, and chess engine development.
 
 I can be found at various locations on the Interwebs, including:
 
  * [A blog, Send More Paramedics](http://blog.fogus.me)
  * [An occasional tumblog, Modus Ponens](http://fogus.tumblr.com)
- * [Delicious](http://www.delicious.com/fogus) and [Pinboard](http://pinboard.in/u:fogus)
+ * [Delicious](http://www.delicious.com/fogus)
  * [Facebook](http://facebook.com/fogus)
  * [Flickr](http://www.flickr.com/fogus.me)
  * [Github](http://www.github.com/fogus)
  * [Goodreads](http://www.goodreads.com/user/show/266149-fogus)
  * [Google Groups](http://groups.google.com/groups/profile?user=fogus)
+ * [Hacker News](http://news.ycombinator.com/user?id=fogus)
  * [IRC](irc://irc.freenode.net/_fogus_,isnick)
  * [Last.fm](http://www.last.fm/user/fojure)
- * [MixCloud](http://www.mixcloud.com/fogus/)
  * [LinkedIn](http://www.linkedin.com/in/fogus)
- * [Hacker News](http://news.ycombinator.com/user?id=fogus)
+ * [MixCloud](http://www.mixcloud.com/fogus/)
+ * [Pinboard](http://pinboard.in/u:fogus) 
  * [Reddit](http://www.reddit.com/user/fogus/)
  * [Stack Overflow](http://stackoverflow.com/users/31295/fogus)
  * [Twitter](http://www.twitter.com/fogus)
@@ -30,15 +31,20 @@ I can be found at various locations on the Interwebs, including:
 
 I endorse the following programming languages for use and study:
 
-- [Clojure](http://clojure.org)
-- [Factor](http://factorcode.org/) and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy.html)
-- Common Lisp ([via SBCL](http://www.sbcl.org/))
-- [Haskell](http://www.haskell.org/)
-- [Eiffel](http://www.eiffel.com/)
-- [Datalog](http://code.google.com/p/clojure-contrib/wiki/DatalogOverview)
+- [C](https://github.com/search?q=username%3Afogus+language%3Ac)
 - [CLIPS](http://clipsrules.sourceforge.net/)
-- [Racket](http://racket-lang.org/)
-- [Io](http://iolanguage.com/) and [Self](http://selflanguage.org/)
+- [Clojure](http://clojure.org)
+- Common Lisp ([via SBCL](http://www.sbcl.org/))
+- [Datalog](http://github.com/fogus/bacwn)
+- [Eiffel](http://www.eiffel.com/)
+- [Factor](http://factorcode.org/) 
+- [Frink](http://futureboy.us/frinkdocs/)
+- [Haskell](http://www.haskell.org/)
+- [Io](http://iolanguage.com/) 
+- [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy.html)
 - [OCaml](http://caml.inria.fr/ocaml/index.en.html)
-
+- [Pure](http://code.google.com/p/pure-lang/)
+- [Racket](http://racket-lang.org/)
+- [Self](http://selflanguage.org/)
+- [Shen](http://shenlanguage.org/)
 
