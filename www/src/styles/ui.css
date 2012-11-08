@@ -1,0 +1,145 @@
+html,body{margin:0;padding:0}
+body{font: 101% "Trebuchet MS", Verdana, Arial, sans-serif; text-align:center; background:#000000}
+p{margin:0 10px 10px}
+
+a:link { 
+    color: #510000; 
+    text-decoration: none;
+}
+a:visited { color: #454342; }
+a:hover { 
+    color: #510000;
+    background-color: #333333;
+    text-decoration: none;
+}
+a:active { 
+    color: #510000; 
+    text-decoration: none;
+}
+
+div#header h1{height:89px; line-height:89px; margin:0; padding-left:10px; background: #CFCFFF; color: #000051}
+
+div#container{text-align:left; background:#FFFFFF; padding: 5px 15px}
+div#container{width:800px; margin:0 auto}
+
+div#content p{line-height:1.4; background:#FFFFFF}
+div#content p:first-letter { font-weight: bold; }
+
+div#here{background:#B9CAFF}
+div#here{float:left; width:53%}
+
+div#there{float:right; width:47%}
+div#there{background:#FF8539}
+
+div#footer{clear:both; width:100%; padding-left:10px}
+div#footer{background: #333; color: #FFF}
+div#footer p{margin:0; padding:5px 10px}
+
+div.nicetitle {
+    background-color: #333;
+    color: #fff;
+    font: bold 13px "Trebuchet MS", Verdana, Arial, sans-serif;
+    left: 0;
+    padding: 4px;
+    position: absolute;
+    top: 0;
+    width: 25em;
+    z-index: 20;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-topright: 10px;
+    -moz-opacity: .87;
+    }
+
+div.nicetitle p {
+    margin: 0;
+    padding: 0 3px;
+    -moz-opacity: 1;
+}
+
+div.nicetitle p.destination {
+    font-size: 9px;
+    padding-top: 3px;
+    text-align: left;
+    -moz-opacity: 1;
+}
+
+div.nicetitle p span.accesskey {
+    color: #d17e62;
+}
+
+font.excited {
+    color: #eb6101;
+    font-size: 25px;
+}
+
+font.veryexcited {
+    color: #eb6101;
+    font-size: 25px;
+    font-weight:bold; 
+}
+
+#navcontainer {
+    margin: 0px 0px 0px 0px; 
+    border-bottom: 1px solid #000000;
+    padding: 0px 0px 6px 0px; 
+    font-family: arial, helvetica, sans-serif;
+    text-align: right;
+}
+
+
+/* to stretch the container div to contain floated list */ 
+#navcontainer:after {
+    content: "."; 
+    display: block; 
+    line-height: 1px; 
+    font-size: 1px;
+    color: transparent; 
+    clear: both; 
+} 
+
+ul#navlist {
+    list-style: none; 
+    padding: 0; 
+    margin: 0px; 
+    background-color: #000000;
+    font-size: 83%;
+}
+
+ul#navlist li {
+    text-align: left;
+    float: left; 
+    height: 37px; 
+    margin: 0px 0px 0px 0px; 
+    border-left: 1px solid #CFCFFF;
+    padding: 0; 
+    background-color: #000000;
+}
+
+html>body ul#navlist li { 
+    width: 100px; 
+} 
+
+
+ul#navlist li a {
+    display: block; 
+    padding: 7px 5px 10px 7px; 
+    color: #CFCFFF; 
+    font-size: 100%;
+    text-decoration: none;
+}
+
+ul#navlist li a:hover,
+ul#navlist li#active a:hover {
+    color: #000000;
+    background-color: #CFCFFF;
+}
+
+ul#navlist li.home{
+    border-left: none;
+}
+
+ul#navlist li#empty{
+    width: 395px;
+}
