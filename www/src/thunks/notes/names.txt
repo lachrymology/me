@@ -1,4 +1,4 @@
-names.txt
+# names
 
 * tathata (/)
 * trout (/)
@@ -13,7 +13,7 @@ names.txt
 * li
 * unk
 * clache
-* ariadne
+* ariadne(um)
 * bacwn
 * leibnitz
 * yuugen
@@ -25,3 +25,10 @@ names.txt
 
 term rewriting, ops5, chess, dataflow, hygiene, problem solvers, roguelike
 
+# PLZoo
+
+* muzzy puzzy
+* metafrak
+* {}
+* -:>[]<:-
+* stackless conc
