@@ -15,9 +15,10 @@ Interesting alternative and hobby OSes
 
 I've studied most of these deeply and found them incredibly instructional.
 
+- [GNU Mach](http://www.gnu.org/software/hurd/microkernel/mach/gnumach.html)
 - [Mona OS](http://monaos.org/) - The OS I would create if I had the skill.
 - [O3one](http://www.o3one.org/) - Crazy beautiful
-- [Losethos](http://www.losethos.com/) - Losethos's creator has a very clear [vision](http://www.losethos.com/doc/Strategy.html) for his OS and he's executed that plan perfectly.
+- [Losethos/SparrowOS](http://www.sparrowos.com/) - Losethos/Sparrow's creator has a very clear [vision](http://www.sparrowos.com/Wb/Doc/Constitution.html#l1) for his OS and he's executed that plan perfectly.
 - [Itsy-OS: A simple 380 byte OS kernel](http://www.retroprogramming.com/2011/03/itsy-os-simple-preemptive-switcher.html) - True ultimate ASM power.
 - [The XOmB Bare Bones distribution is a minimal 64 bit OS written in D](http://wiki.xomb.org/index.php?title=XOmB_Bare_Bones) - Developing a kernel in an alternative language is a personal fetish.
 - [LOSAK: Lisp Operating System, Abstraction Kernel](http://losak.sourceforge.net/) - Defunct but fun nonetheless.
@@ -178,22 +179,22 @@ Address       Size            Description
 
 I've left some BIOS stuff as I found it.
 
-My boot loader loads my kernel at 1MB physical. Given the 16-bit real-mode  
-nature of the boot code, it can't load anything beyond 1MB+65,520, so for  
-the time being my kernel is limited to 65,520 bytes in size. Currently  
-it's at 36,864 bytes. I know that one day, in the not-too-distant future,  
-I'll have to do something about this. Maybe load it lower and then let it  
-move itself? Or break the kernel up into two files: a small one that the  
+My boot loader loads my kernel at 1MB physical. Given the 16-bit real-mode
+nature of the boot code, it can't load anything beyond 1MB+65,520, so for
+the time being my kernel is limited to 65,520 bytes in size. Currently
+it's at 36,864 bytes. I know that one day, in the not-too-distant future,
+I'll have to do something about this. Maybe load it lower and then let it
+move itself? Or break the kernel up into two files: a small one that the
 boot loader loads, and that then loads the full kernel. I don't know.
 
-Some of these areas that I've reserved might not make sense. I pretty much  
-drew up this map before I know what I was doing (ha! I still don't!) and  
-so I made room for things like TSS's (plural) but I really won't know what  
+Some of these areas that I've reserved might not make sense. I pretty much
+drew up this map before I know what I was doing (ha! I still don't!) and
+so I made room for things like TSS's (plural) but I really won't know what
 I'll need there until I get to processes and task switching.
 
-I don't do any relocations. My kernel is linked to load at 1MB and the  
-boot loader loads it directly there. Every time someone talks about  
-relocations I wonder what I'm missing. Looking forward to finding out :-) 
+I don't do any relocations. My kernel is linked to load at 1MB and the
+boot loader loads it directly there. Every time someone talks about
+relocations I wonder what I'm missing. Looking forward to finding out :-)
 
 Architecture
 ------------
