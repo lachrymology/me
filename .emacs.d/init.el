@@ -117,3 +117,21 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ditaa . t)))
+
+(require 'org-exp-blocks)
+
+(defun toggle-tags-invisible ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (when (not (remove-text-properties (point-min) (point-max) '(invisible t)))
+     (let ((spew (make-progress-reporter "Hiding all tags..." (point-min) (point-max))))
+       (while (re-search-forward "<indexterm .*?</indexterm>\\\|<.*?>" nil t)
+         (add-text-properties (match-beginning 0) (match-end 0) '(invisible t) nil)
+         (progress-reporter-update spew (point)))
+       (progress-reporter-done spew)))))
+
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (visual-line-mode)))
+
