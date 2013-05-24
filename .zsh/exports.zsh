@@ -1,7 +1,7 @@
-export CDPATH=.:~/src:~/src/personal:~/src/opensource:~/src/relevance:~/src/configs:~/Documents:~/src/security
+export CDPATH=.:~/src:~/src/personal:~/src/opensource:~/src/fogus:~/src/configs:~/Documents:~/src/security
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-export JDK_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#export JDK_HOME=$(/usr/libexec/java_home)
 export CLOJURE_HOME=~/src/opensource/clojure
 export CLOJURESCRIPT_HOME=~/src/opensource/clojure/clojurescript
 

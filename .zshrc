@@ -13,3 +13,5 @@ source ~/.zsh/plugins/command_coloring.zsh
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+alias emacs="emacs -nw"

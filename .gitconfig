@@ -37,7 +37,6 @@
 	funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
 [core]
         pager = most +s +'/---'
-	autocrlf = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
