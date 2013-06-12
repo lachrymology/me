@@ -69,7 +69,7 @@
 	 js2-mode
 	 markdown-mode
 	 ;;org-mode
-         ob-sml
+         ;;ob-sml
 	 ruby-block
 	 ruby-end
 	 ruby-mode
