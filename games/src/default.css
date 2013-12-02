@@ -1,8 +1,3 @@
-/* css Zen Garden submission 218 - 'Apothecary', by Trent Walton, http: //www.trentwalton.com/ */
-/* css released under Creative Commons License - http: //creativecommons.org/licenses/by-nc-sa/1.0/  */
-
-/* TYPEKIT_KIT_ID: var4cmo */
-
 html,body,div,span,object,h1,h2,h3,h4,h5,h6,p,a,abbr,acronym,em,img,ol,ul,li {border: 0;font-weight: inherit;font-style: inherit;font-size: 100%;font-family: inherit;vertical-align: baseline;margin: 0;padding: 0;}
 
 * {
@@ -112,11 +107,10 @@ p {
   font-weight: 200;
   font-style: italic;
   letter-spacing: 0.05em;
-  text-transform: capitalize;
 }
 
 .intro h1:before {
-  content: "Juxt Labs Games";
+  content: "Juxt Labs'";
   font-family: "refrigerator-deluxe",sans-serif;
   font-style: normal;
   text-transform: uppercase;
@@ -816,13 +810,13 @@ footer a:hover, footer a:focus {
   }
   
   .participation h3:after {
-    content: '5.23 fl oz';
+    content: 'fogus';
     top: 1.1em;
     right: 1.6em;
   }
   
   .participation h3:before {
-    content: 'no. 218';
+    content: 'avec';
     top: 1.1em;
     left: 1.6em;
   }
@@ -835,7 +829,7 @@ footer a:hover, footer a:focus {
   }
   
   .intro {
-    padding-top: 8em;
+    padding-top: 2em;
   }
   
   .intro p,
@@ -860,7 +854,7 @@ footer a:hover, footer a:focus {
     border-left: 115px solid #faf3e6;
     border-right: 115px solid #faf3e6;
     border-top: 115px solid transparent;
-    margin: 0 auto -6em;
+    margin: 0 auto -2em;
   }
   
   .intro h1 {
@@ -877,7 +871,7 @@ footer a:hover, footer a:focus {
   }
   
   .intro h2 {
-    padding-top: 4.5em;
+    padding-top: 1.5em;
     margin-top: 0.7em;
     margin-bottom: 0em;
     background-size: 1.75em;
