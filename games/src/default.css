@@ -109,7 +109,7 @@ p {
 .intro h1 {
   font-size: 3em;
   line-height: 1;
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic;
   letter-spacing: 0.05em;
   text-transform: capitalize;
@@ -123,7 +123,7 @@ p {
   display: block;
   font-size: 1.12rem;
   letter-spacing: 0.1rem;
-  font-weight: 700;
+  font-weight: 300;
   background-size: 25rem;
   margin-bottom: 1.3em;
 }
@@ -453,32 +453,6 @@ h3.archives, h3.resources {
 
 .benefits p {
     margin: 0 auto;
-}
-
-.benefits:before {
-  content: 'Apply Liberally';
-  font-size: 3em;
-  position: absolute;
-  bottom: 3.5rem;
-  text-align: center;
-  width: 100%;
-  font-family: "french-clarendon-ornamented",sans-serif;
-  text-transform: uppercase;
-  padding-bottom: 14.35rem;
-  letter-spacing: 0.03em;
-}
-
-.benefits:after {
-  content: 'And Regularly!';
-  font-size: 3em;
-  position: absolute;
-  bottom: -13rem;
-  text-align: center;
-  width: 100%;
-  font-family: "french-clarendon-ornamented",sans-serif;
-  text-transform: uppercase;
-  padding-bottom: 14.35rem;
-  letter-spacing: 0.03em;
 }
 
 .benefits p:after {
@@ -1177,7 +1151,7 @@ footer a:hover, footer a:focus {
   }
   
   .intro h1 {
-    font-size: 7.35em;
+    font-size: 4.35em;
     line-height: 1.4;
   }
   

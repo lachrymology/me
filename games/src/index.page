@@ -1,7 +1,45 @@
 ---
-title: design notes
+title: Quuxotic
 author: fogus
 filemdate: 2013.12.02
----
+--- name:summary
 
-This is a test.
+This am a test.
+
+--- name:intro
+
+### Introduction
+
+insert LL-style summary box
+
+--- name:toc
+
+* [foo](http://www.google.com){: .design-name} [1](http://www.google.com){: .designer-name}
+
+
+--- name:story
+
+### Story
+
+This is the story of the game.
+
+
+--- name:content
+
+### Rules
+
+These are the rules the game.
+
+
+--- name:gameplay
+
+### Game Play
+
+These are gameplay examples.
+
+
+--- name:influences
+
+### Design notes
+
+These are notes about the design and development.
