@@ -9,7 +9,7 @@
 
 At [[http://blog.fogus.me/2004/01/16/132/][one point]] I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extremely difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targeting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
 
-** Interesting alternative and hobby OSes
+** Interesting alternative and hobby OSes, bootloaders, code, etc.
 
 I've studied most of these deeply and found them incredibly instructional.
 
@@ -25,6 +25,7 @@ I've studied most of these deeply and found them incredibly instructional.
 - [[http://www.swd.de/documents/manuals/neutrino/index_en.html][QNX Neutrino]] - At one point you could see the code to this.  It was mind-busting.
 - [[http://www.sics.se/contiki/][Contiki]] - Just plain fun.
 - [[http://wiki.osdev.org/Projects][The grand unified list of hobby and educational operating systems]]
+- [[https://github.com/drgowen/tiny-linux-bootloader][Tiny Linux bootloader source]]
 
 ** Interesting OSDev resources
 
