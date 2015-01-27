@@ -58,30 +58,27 @@ Bootloaders
 - [[http://wiki.qemu.org/Main_Page][QEMU]]
 - [[http://bochs.sourceforge.net/][Bochs]]
 
-Libraries
---------
+** Libraries
 
-- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
-- [Metalkit: simple library for writing programs that run on IA32 (x86) machines on the bare metal](http://scanlime.org/2008/03/introducing-metalkit/)
+- [[http://www.cs.utah.edu/flux/oskit/][OSKit]] - Although I've never used it, the abstractions it provides are worth studying.
+- [[http://scanlime.org/2008/03/introducing-metalkit/][Metakit]] - a simple library for writing programs that run on IA32 (x86) machines on the bare metal
 
-OSDev sites
-===========
+** OSDev sites
 
-- [OSnews](http://www.osnews.com/) (*my favorite*)
-- [r/osdev](http://reddit.com/r/osdev) - a subreddit moderated by me
-- [OSDev.org](http://wiki.osdev.org/Main_Page) - teaching people how to clone UNIX since 2000
-- [Operating System resource center](http://www.nondot.org/sabre/os/articles/)
-- [Bonafide OS Dever](http://www.osdever.net/tutorials/index)
-- [alt.os.development](http://groups.google.com/group/alt.os.development/topics)
+- [[http://www.osnews.com/][OSnews]] 
+- [[http://reddit.com/r/osdev][r/osdev]] - a subreddit moderated by me
+- [[http://wiki.osdev.org/Main_Page][OSDev.org]] - teaching people how to clone UNIX since 2000
+- [[http://www.nondot.org/sabre/os/articles/][Operating System resource center]]
+- [[http://www.osdever.net/tutorials/index][Bonafide OS Dever]]
+- [[http://groups.google.com/group/alt.os.development/topics][alt.os.development]]
 
-OSDev case studies
-==================
+** OSDev case studies
 
-- [The Creation of the UNIX Operating System](http://www.bell-labs.com/history/unix/)
-- [An inside look at MS-DOS](http://www.patersontech.com/Dos/Byte/InsideDos.htm)
+- [[http://www.bell-labs.com/history/unix/][The Creation of the UNIX Operating System]]
+- [[http://www.patersontech.com/Dos/Byte/InsideDos.htm][An inside look at MS-DOS]]
+- [[http://www.amazon.com/o/asin/0201183935?tag=fogus-20][Inside the JavaOS Operating System]]
 
-Compilers, assemblers, and languages
-====================================
+** Compilers, assemblers, and languages
 
 These are not always current, but much can be learned from them all.
 
@@ -92,8 +89,6 @@ These are not always current, but much can be learned from them all.
 - [Borland compiler museum](http://edn.embarcadero.com/museum/)
 - [The Pascal programmers' page](http://www.devq.net/pascal/)
 - [C/C++ Snippets](http://snippets.snippets.org/index.php)
-- [Inside the JavaOS Operating System](http://www.amazon.com/o/asin/0201183935?tag=fogus-20)
-
 
 Books on and useful for OSDev
 =============================
