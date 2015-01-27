@@ -102,16 +102,16 @@ Interestingly, there are not /that/ many books on developing your own operating 
 - [[http://www.amazon.com/o/asin/0136375391?tag=fogus-20][OS Design: the XINU Approach]] by Comer
 - [[http://www.amazon.com/o/asin/1588530000?tag=fogus-20][MMURTL]] by Burgess
 - [[http://www.amazon.com/Developing-32-Bit-Operating-System-Cd-Rom/dp/0672306557?tag=fogus-20][Developing Your Own 32-Bit Operating System]]by Burgess
-- [[http://www.amazon.com/o/asin/020155447X?tag=fogus-20][Protected Mode Software Architecture]] by Shanley
+- [[http://www.amazon.com/exec/obidos/ASIN/0201544288/fogus-20/][Project Oberon - The Design of an Operating System and Compiler]] by Wirth
 
 *** To-read
 
-- *[Dissecting DOS](http://www.amazon.com/o/asin/020162687X?tag=fogus-20)* by Podanoffsky
-- *[Project Oberon - The Design of an Operating System and Compiler](http://www.amazon.com/exec/obidos/ASIN/0201544288/fogus-20/)* by Wirth
-- *[The Symbian OS Internals](http://www.amazon.com/o/asin/0470025247?tag=fogus-20)* by Jane Sales
-- *[Real-Time Systems Development](http://www.amazon.com/o/asin/0750664711?tag=fogus-20)* by Williams
-- *Open VMS Operating System Concepts* by David Miller
-- *TinyOS Programming* by Levis and Gay
+- [[http://www.amazon.com/o/asin/020155447X?tag=fogus-20][Protected Mode Software Architecture]] by Shanley
+- [[http://www.amazon.com/o/asin/020162687X?tag=fogus-20][Dissecting DOS]] by Podanoffsky
+- [[http://www.amazon.com/o/asin/0470025247?tag=fogus-20][The Symbian OS Internals]] by Jane Sales
+- [[http://www.amazon.com/o/asin/0750664711?tag=fogus-20][Real-Time Systems Development]] by Williams
+- [[http://www.amazon.com/OpenVMS-Operating-Concepts-Edition-Technologies/dp/1555581579?tag=fogus-20][Open VMS Operating System Concepts]] by David Miller
+- [[http://www.amazon.com/TinyOS-Programming-Philip-Levis/dp/0521896061/ref=sr_1_1?tag=fogus-20][TinyOS Programming]] by Levis and Gay
 
 ** Case studies
 
@@ -125,6 +125,7 @@ Interestingly, there are not /that/ many books on developing your own operating 
 - [[http://www.amazon.com/o/asin/0764545698?tag=fogus-20][Undocumented Windows NT]]by Dabak and Phadke
 - [[http://www.amazon.com/o/asin/0471164836?tag=fogus-20][UNIX Filesystems: Evolution, Design, and Implementation]] by Pate
 - [[http://www.amazon.com/o/asin/1572316772?tag=fogus-20][Inside Windows NT]] by Custer
+
 
 * FogOS
 
