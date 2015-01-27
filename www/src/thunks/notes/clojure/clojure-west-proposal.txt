@@ -1,5 +1,0 @@
-Taking Clojure to School
-========================
-
-What can Clojure learn from the latest developments in programming language design and development?  In this talk I will give an overview of a handful of programming languages and how their operation and philosophies can inspire the future of Clojure.  From Shen to Pure to CoffeeScript to CHR to OMeta to Typed Racket and others, this talk is designed to satisfy the ultra-polyglot and Clojurian alike.
-

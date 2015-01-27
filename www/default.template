@@ -1,47 +1,34 @@
-<html> 
-  <head> 
-    <title>TODO</title> 
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/> 
-    <style> 
-      body { width: 33em; margin: 1in auto; }
-      
-      h1, h2 { font-family: "Gill Sans", sans-serif;  font-weight: 300; }
-      
-      p {
-      line-height: 1.3; 
-      /*text-indent: 1em;*/
-      padding: 0;
-      margin: 0;
-      margin-top: .75em;
-      }
-      
-      .name { font-variant: small-caps; }
-      
-      .note { margin-bottom: 1em; font-size: 90%; }
-      .note p:first-child { text-indent: 0; }
-      
-      .note_ref { vertical-align: 75%; font-size: 60%; }
-      .note_number { font-size: 100%; }
-      
-      .comments { 
-      border-top: thin solid black;
-      margin-top: 1em; 
-      padding-top: 1em; 
-      }
-      .comment_ref { vertical-align: 75%; font-size: 60%; font-variant: small-caps;  }
-      .comment_number { vertical-align: 75%; font-size: 60%; }
-      
-      
-      h1 + p { text-indent: 0; }
-      h2 + p { text-indent: 0; }
-      h3 + p { text-indent: 0; }
-      li p { text-indent: 0; }
-      
-      
-      /*pre + p { text-indent: 0; }*/
-    </style> 
-    <body> 
-      <webgen:block name="content"/>
-    </body> 
-  </head> 
-</html>
+--- pipeline:erb,tags,blocks,head
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang:}">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{title:}</title>
+    <meta name="author" content="Fogus"/>
+    <meta name="generator" content="webgen - http://webgen.rubyforge.com/"/>
+    <meta name="robots" content="index,follow,archive"/>
+
+    <link rel="icon" href="http://blog.fogus.me/images/labyrinth.ico" type="image/x-icon"/>
+    <link href="{relocatable: default.css}" rel="stylesheet" type="text/css"/>
+  </head>
+  <body> 
+    <webgen:block name="content"/>
+    <hr/>
+<div id="disqus_thread"></div>
+    <sub><em>page &copy; fogus 2011, last modified {filemdate:}</em></sub>
+  </body>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-921112-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</head> 
+</html> 
