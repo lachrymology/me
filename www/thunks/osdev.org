@@ -71,14 +71,7 @@ Bootloaders
 - [[http://www.nondot.org/sabre/os/articles/][Operating System resource center]]
 - [[http://www.osdever.net/tutorials/index][Bonafide OS Dever]]
 - [[http://groups.google.com/group/alt.os.development/topics][alt.os.development]]
-
-** OSDev case studies
-
-- [[http://www.bell-labs.com/history/unix/][The Creation of the UNIX Operating System]]
-- [[http://www.patersontech.com/Dos/Byte/InsideDos.htm][An inside look at MS-DOS]]
-- [[http://www.amazon.com/o/asin/0201183935?tag=fogus-20][Inside the JavaOS Operating System]]
-- [[http://www.pagetable.com/c64rom/][Fully Commented Commodore 64 ROM Disassembly]]
-
+  
 ** Compilers, assemblers, and languages
 
 These are not always current, but much can be learned from them all.
@@ -104,17 +97,19 @@ Interestingly, there are not /that/ many books on developing your own operating 
 - [[http://www.amazon.com/exec/obidos/ASIN/0130313580/fogus-20/][Modern Operating Systems]] by Tannenbaum
 - [[http://www.letterp.com/~dbg/][Practical File System Design]] by Giampaolo
 
-OSDev books
------------
+*** OSDev books
 
-- *[OS Design: the XINU Approach](http://www.amazon.com/o/asin/0136375391?tag=fogus-20)* by Comer
-- *[MMURTL](http://www.amazon.com/o/asin/1588530000?tag=fogus-20)* by Burgess
-- *[Developing Your Own 32-Bit Operating System](http://www.amazon.com/Developing-32-Bit-Operating-System-Cd-Rom/dp/0672306557?tag=fogus-20)* by Burgess
-- *[Protected Mode Software Architecture](http://www.amazon.com/o/asin/020155447X?tag=fogus-20)* by Shanley
+- [[http://www.amazon.com/o/asin/0136375391?tag=fogus-20][OS Design: the XINU Approach]] by Comer
+- [[http://www.amazon.com/o/asin/1588530000?tag=fogus-20][MMURTL]] by Burgess
+- [[http://www.amazon.com/Developing-32-Bit-Operating-System-Cd-Rom/dp/0672306557?tag=fogus-20][Developing Your Own 32-Bit Operating System]]by Burgess
+- [[http://www.amazon.com/o/asin/020155447X?tag=fogus-20][Protected Mode Software Architecture]] by Shanley
 
-Case studies
-------------
+** Case studies
 
+- [[http://www.bell-labs.com/history/unix/][The Creation of the UNIX Operating System]]
+- [[http://www.patersontech.com/Dos/Byte/InsideDos.htm][An inside look at MS-DOS]]
+- [[http://www.amazon.com/o/asin/0201183935?tag=fogus-20][Inside the JavaOS Operating System]]
+- [[http://www.pagetable.com/c64rom/][Fully Commented Commodore 64 ROM Disassembly]]
 - *[Solaris Internals](http://www.amazon.com/o/asin/0131482092?tag=fogus-20)* by McDougal
 - *[Lions' Commentary on UNIX](http://www.amazon.com/o/asin/1573980137?tag=fogus-20)* by John Lions
 - *[The Design of the UNIX Operating System](http://www.amazon.com/o/asin/0132017997?tag=fogus-20)* by Bach
