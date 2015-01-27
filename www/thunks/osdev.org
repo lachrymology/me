@@ -14,17 +14,17 @@ At [[http://blog.fogus.me/2004/01/16/132/][one point]] I was crazy about creatin
 I've studied most of these deeply and found them incredibly instructional.
 
 - [[http://www.gnu.org/software/hurd/microkernel/mach/gnumach.html][GNU Mach]]
-- [Mona OS](http://monaos.org/) - The OS I would create if I had the skill.
-- [O3one](http://www.o3one.org/) - Crazy beautiful
-- [Losethos/SparrowOS](http://www.sparrowos.com/) - Losethos/Sparrow's creator has a very clear [vision](http://www.sparrowos.com/Wb/Doc/Constitution.html#l1) for his OS and he's executed that plan perfectly.
-- [Itsy-OS: A simple 380 byte OS kernel](http://www.retroprogramming.com/2011/03/itsy-os-simple-preemptive-switcher.html) - True ultimate ASM power.
-- [The XOmB Bare Bones distribution is a minimal 64 bit OS written in D](http://wiki.xomb.org/index.php?title=XOmB_Bare_Bones) - Developing a kernel in an alternative language is a personal fetish.
-- [LOSAK: Lisp Operating System, Abstraction Kernel](http://losak.sourceforge.net/) - Defunct but fun nonetheless.
-- [MIT Exokernel](http://pdos.csail.mit.edu/exo.html)
-- [NewOS](http://newos.org/) - Seems to be abandoned, but the code is some of the cleanest that you will ever read.
-- [QNX Neutrino](http://www.swd.de/documents/manuals/neutrino/index_en.html) - At one point you could see the code to this.  It was mind-busting.
-- [Contiki](http://www.sics.se/contiki/) - Just plain fun.
-- [The grand unified list of hobby and educational operating systems](http://wiki.osdev.org/Projects)
+- [[http://monaos.org/][Mona OS]] - The OS I would create if I had the skill.
+- [[http://www.o3one.org/][O3one]] - Crazy beautiful
+- [[http://www.sparrowos.com/][Losethos/SparrowOS/TempleOS]] - Losethos/Sparrow's creator has a very clear [vision](http://www.sparrowos.com/Wb/Doc/Constitution.html#l1) for his OS and he's executed that plan perfectly.
+- [[http://www.retroprogramming.com/2011/03/itsy-os-simple-preemptive-switcher.html][Itsy-OS: A simple 380 byte OS kernel]] - True ultimate ASM power.
+- [[http://wiki.xomb.org/index.php?title=XOmB_Bare_Bones][The XOmB Bare Bones distribution is a minimal 64 bit OS written in D]] - Developing a kernel in an alternative language is a personal fetish.
+- [[http://losak.sourceforge.net/][LOSAK: Lisp Operating System, Abstraction Kernel]] - Defunct but fun nonetheless.
+- [[http://pdos.csail.mit.edu/exo.html][MIT Exokernel]]
+- [[http://newos.org/][NewOS]] - Seems to be abandoned, but the code is some of the cleanest that you will ever read.
+- [[http://www.swd.de/documents/manuals/neutrino/index_en.html][QNX Neutrino]] - At one point you could see the code to this.  It was mind-busting.
+- [[http://www.sics.se/contiki/][Contiki]] - Just plain fun.
+- [[http://wiki.osdev.org/Projects][The grand unified list of hobby and educational operating systems]]
 
 OSDev resources
 ===============
