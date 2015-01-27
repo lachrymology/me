@@ -1,0 +1,90 @@
+This difference is due to the subtleties around how protocols are implemented, and between passing a var vs. capturing a var's state at a particular time.
+
+If you change `transmogrify` to this (note the #'), the `(foo* (BarRec.))` succeeds:
+
+(def foo* (transmogrify #'foo "Bar"))
+
+Protocol implementations are largely tracked by a map held in a var corresponding to the protocol's name (in this case, FooProto).  Prior to using `extend`, the #'FooProto var contains this map:
+
+{:on-interface user.FooProto, :on user.FooProto, :sigs {:foo {:doc "Make a foo", :arglists ([X Y]), :name foo}}, :var #'user/FooProto, :method-map {:foo :foo}, :method-builders {#'user/foo #<user$eval1287$fn__1288 user$eval1287$fn__1288@610f7612>}}
+
+After using `extend`, it contains this map (note the `:impls` slot):
+
+{:impls {user.BarRec {:foo #<user$eval1321$fn__1322 user$eval1321$fn__1322@1e384de>}}, :on-interface user.FooProto, :on user.FooProto, :sigs {:foo {:doc "Make a foo", :arglists ([X Y]), :name foo}}, :var #'user/FooProto, :method-map {:foo :foo}, :method-builders {#'user/foo #<user$eval1287$fn__1288 user$eval1287$fn__1288@610f7612>}}
+
+The implementation of protocol functions is such that they retain optimized (fixed) call paths for each type extended to their protocol.  Thus, when you pass the value of `foo` to `transmogrify`, the un-extended protocol's "configuration" goes with it.  However, if you pass the var #'foo instead, all calls through #'foo are guaranteed to utilize the most up-to-date protocol function, and therefore the most up-to-date protocol type extensions.  In any case, calling `(foo …)` always works, because that call implicitly goes through #'foo anyway.
+
+The fine difference between capturing a var's value vs. passing or calling through the var itself is a frequent tripping hazard, but understanding it is especially important in ensuring maximum productivity and enjoyment in the REPL (as you've found out).  FWIW, we talk about this issue with some simpler examples illustrating the subtleties in chapter 10 of the book (in a subsection of REPL-Oriented Programming, ~page 416, 'Understand when you’re capturing a value instead of dereferencing a var').
+
+---
+
+Chas,
+
+thank you for the explanation, it confirmed my vague thoughts I had after quick review of Clojure source code and inspection of values in prototype maps before and after the change.
+I understand  the difference, however I think there are three points to consider from Clojure design point of view.
+
+1) If you target both Clojure and ClojureScipt, you cannot write #'foo, because variables are not first class citizens in CLJS (yet).
+
+2) Functional code is a lot about passing functions to functions making functions (for example wonderful reducers library). Does it mean we should always pass around variable instead of methods (because we cannot foresee if a programmer extending our code will use defrecord or extend)? 
+
+3) The point is the inconsistency in `defrecord` and `extend` implementation. I always thought about defrecord and extend as a "syntactic sugar" to achieve same goal.  If there are two ways how to implement a protocol, they should lead to same results and side effects otherwise it could backfire on us and result in hard to discover bugs.
+
+For example, if defprotocol is implemented in namespace A, transmogrify and foo* in namespace B and FooRec and BarRec were implemented in namespace C, I get different results if I load namespaces in sequence A-B-C and A-C-B. This is very dangerous indeed.
+
+For me the real issue is point 3) as it crosses the boundary of principle of least surprise. There are two ways how to implement a protocol in a record and your code may or may not throw an exception under different conditions. 
+
+So my recommendation would be to unify defrecord and extend implementation.
+
+---
+
+Re: (2), yes, using higher-order functions effectively is a big part of functional programming.  But, no, passing a var to HOFs in every case instead of dereferencing its value is not a good blanket policy.  You need to have a clear notion of what you want to happen and what the contract of a given HOF is, i.e. they generally only do accept values, and usually don't accept identities such as vars.  (Since vars implement IFn, and can freely be used in function position with calls being delegated to the function (assumed to be) contained therein, vars containing functions are the one case where passing a var and passing a function value is equivalent, at least with respect to the expectations of a receiving HOF.)  Whether you pass a var or a value to a HOF depends entirely on whether you want the HOF to use the current value of the var (very important if you want to have later changes to propagate to functions returned from a HOF) or the value of the var at a particular point in time; both are valid options in different circumstances.
+
+In practice, I've not found this distinction to be important with regard to protocols; I think this is largely due to my generally not defining the result of a HOF in a top-level, as you're doing with `transmogrify`.  My impression is that doing so is fairly rare, though that may be due to my personal tastes and whatever universe of code I happen to frequent.
+
+Re: (3), the semantics of `extend` vs. inline implementations of a protocol within defrecord (or deftype) are absolutely different, and unlikely to be unified.  The former uses the Clojure-specific polymorphism provided in protocols and manifested by the re-definition of protocol functions based on the value of the protocol map as discussed in my last message.  The latter defines a JVM class that implements the JVM interface corresponding to the named protocol; in these cases, calling a protocol function with a e.g. defrecord instance results in a call to that method directly, without regard to the current state of the protocol.  So:
+
+=> (defprotocol P (x [t]))
+P
+=> (defrecord A []
+     P (x [_]))
+	 user.A
+	 => (defrecord B [])
+	 user.B
+	 => (extend-type B
+	      P (x [_]))
+		  nil
+		  
+		  A is an instance of the user.P interface, but B is not:
+		  
+		  => (instance? user.P (B.))
+		  false
+		  => (instance? user.P (A.))
+		  true
+		  
+		  A has an `x` method implementation, while B does not:
+		  
+		  => (.x (A.))
+		  nil
+		  => (.x (B.))
+		  IllegalArgumentException No matching field found: x for class user.B
+
+(This is why `foo*` worked for you with a defrecord instance: protocol functions, regardless of their method of execution (i.e. directly or via a var), always first check if the first argument implements the protocol's interface; if so, the corresponding method is called directly, without referring to the protocol's map.)
+
+Finally, the implementation of `x` for an existing instance of `B` can be changed, while that is not possible for an instance of `A`:
+
+=> (def a (A.))
+#'user/a
+=> (def b (B.))
+#'user/b
+=> (extend-type B
+     P (x [_] "hi, B!"))
+	 nil
+	 => (x b)
+	 "hi, B!"
+	 => (extend-type A
+	      P (x [_] "hi, A!"))
+		  IllegalArgumentException class user.A already directly implements interface user.P for protocol:#'user/P
+
+The tl;dr of all this is that defrecord and deftype define JVM classes, which optionally contain interface (and therefore, protocol) implementations which cannot be changed.  defrecord and deftype actually don't contain any special support or consideration for protocols; they can be used to implement interface methods, and protocols just happen to (conveniently, and by design) generate an interface corresponding to their namespace and name.  Thus, the differences between such inline implementations and uses of `extend` isn't an inconsistency — they're just different beasts, definitionally.
+
+This all means that `extend` et al. are actually more flexible; it is the var or not-var issue that tripped you up, along with the fuzziness around the correspondence between protocols and interfaces.

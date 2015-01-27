@@ -1,0 +1,526 @@
+---
+title: What to know before debating type systems
+filemdate: 2011.02.25
+---
+
+Contents
+--------
+
+Introduction
+Extensions
+Scoping
+* Syntactic sugar for list comprehensions, using &quot;higher-order&quot; patterns
+* Explicit declarations
+* Implicit pattern augmentation
+Global Scope
+SIMD
+Prefix syntax - An Enlightening Syntactic Digression
+A More Extended Example - A Recipes File
+Efficiency
+Connection To SnikiSniki
+
+Introduction
+------------
+
+I was reading Wouter van Oortmerssen's brilliant thesis again, and I
+had an idea.  His Aardappel language is a linear eager
+(innermost-first) tree-rewriting system, and he points out that
+although it doesn't support any kind of inheritance, you can
+substitute new kinds of objects for old ones, simply by adding new
+rewrite rules for the functions that need to be successfully
+applicable to the new objects.
+
+So I got to thinking.  What if we take that approach to the extreme?
+Suppose you could define properties on records in terms of rewrite
+rules on those records' properties?
+
+    { x: X, y: Y }.r = (X*X + Y*Y).sqrt
+
+That would define an &quot;r&quot; method, or property, on any record that had X
+and Y properties.  But you could nest the pattern more deeply, use
+constants, and just use the property names to name the property values
+in cases where it wasn't ambiguous; here's an example taken from my
+toy APL in OCaml (recently posted to kragen-hacks, I think) that shows
+how to render APL expressions:
+
+    { unop, value }.show = Unop + &quot; &quot; + Value.show
+    { atom_value }.show = Atom_value.show_atom
+    { parenthesized_value }.show = &quot;(&quot; + Parenthesized_value + &quot;)&quot;
+    { left_op: { atom_value } as Left_op, bin_op, right_op }.show
+        = (Left_op, Bin_op, Right_op).show_binop
+    { left_op: { parenthesized_value } as Left_op, bin_op, right_op}.show
+        = (Left_op, Bin_op, Right_op).show_binop
+    (L, O, R).show_binop = L + &quot; &quot; + O + &quot; &quot; + R
+    { left_op, bin_op, right_op}.show 
+        = { parenthesized_value: Left_op }.show + &quot; &quot; + Bin_op + Right_op.show
+
+    [].show_atom = &quot;()&quot;
+    [N, M, ...Lst].show_atom = N.show_num + &quot; &quot; + [M, ...Lst].show_atom
+    [N].show_atom = N.show_num
+
+Here I'm using [N, M, ...Lst] to mean a list whose first two items are
+N and M and whose remainder is Lst, a la Lisp (N . (M . Lst)), Prolog
+[N|[M|Lst]], or OCaml N :: M :: Lst.  Without any syntactic sugar, you
+could still write it as { car: N, cdr: { car: M, cdr: Lst } }.
+
+Here's a fragment from my prototype Bicicleta implementation showing
+the use of a constant (&quot;nodefs&quot;) in a pattern:
+
+    { method_name, method_body, rest: nodefs }.definition 
+        = (Method_name, Method_body).show_method
+    { method_name, method_body, rest }.definition 
+        = (Method_name, Method_body).show_method + &quot;, &quot; + Rest.show_methods
+
+(The real code is in OCaml; that's just a translation.)
+
+Presumably you'd want to namespace the property names by some other
+mechanism to reduce spurious pattern matches.
+
+This pattern-matching syntax is less concise than the Caml or
+Aardappel equivalent, but it seems that it should make it easier to
+define new kinds of data that implement multiple protocols.  It is
+probably harder to implement efficiently, though.
+
+However, you could imagine that many pattern matches will be for the
+simplest cases, where we're only interested in the properties of a
+single record and have no particular requirements for them.  In this
+case, you could even omit the entire record!  So, for some of the
+previous examples, you could write:
+
+    r = (X*X + Y*Y).sqrt
+    show = Unop + &quot; &quot; + Value.show
+    show = Atom_value.show_atom
+    show = &quot;(&quot; + Parenthesized_value + &quot;)&quot;
+    { left_op: { atom_value } as Left_op, bin_op, right_op }.show
+        = (Left_op, Bin_op, Right_op).show_binop
+    { left_op: { parenthesized_value } as Left_op, bin_op, right_op}.show
+        = (Left_op, Bin_op, Right_op).show_binop
+    (L, O, R).show_binop = L + &quot; &quot; + O + &quot; &quot; + R
+    show = { parenthesized_value: Left_op }.show + &quot; &quot; + Bin_op + Right_op.show
+
+Perhaps you could shorten it further by inferring extra required property
+names even in cases where the pattern record is not entirely omitted:
+
+    { left_op: { atom_value } as Left_op }.show
+        = (Left_op, Bin_op, Right_op).show_binop
+    { left_op: { parenthesized_value } as Left_op }.show
+        = (Left_op, Bin_op, Right_op).show_binop
+
+By itself, the ability to define these rewrite rules, create records
+with properties whose names are known at compile time, and read properties
+whose names are known at compile time, suffices for a Turing-complete
+higher-order functional programming language; the rest of the above
+(with infix operators, tuples, lists, and so on) can be viewed as
+syntactic sugar.  (X + Y might rewrite as {left: X, right: Y}.sum, for
+example.)
+
+(The &quot;as Left_op&quot; requires some explanation; it means that the pattern
+on the left side of the &quot;as&quot; should be bound to the name on the right
+side, in the above cases the objects that matched {atom_value} and
+{parenthesized_value}, which might have arbitrary other data in them.
+I'm not sure if this feature is more than just syntactic sugar, but I
+suspect so.)
+
+In a way, it has a very APLish feel to it --- r = (X*X + Y*Y).sqrt,
+thought of as a statement, simultaneously creates a new &quot;column&quot;
+called &quot;r&quot; for all the values known as &quot;x&quot; and &quot;y&quot; (when they are on
+the same records).  In Bicicleta, you can occasionally reach that same
+level of brevity, but only inside the context of the object.
+
+Extensions
+----------
+
+There are other obvious extensions --- unification, properties with
+property names not known at compile-time (in patterns, property
+accesses, and even property definitions) and inheritance, but these
+are not necessary --- not even inheritance!  Defining a new property
+will automatically create that property on any record having the
+necessary attributes, which gives you a sort of multiple inheritance
+already.
+
+I was thinking that this might be an interesting basis for an
+end-user-oriented database.  Doing the equivalent of SQL's 
+SELECT ... WHERE would require a way to name attributes, preferably
+anonymous ones, so that you could say e.g. &quot;(R &lt; 4).where&quot; or (with an
+infix operation &quot;where&quot;) &quot;Mypoints where (R &lt; 4)&quot;, with &quot;(R &lt; 4)&quot;
+evaluating to an anonymous function or anonymous property that is True
+for records whose R is less than 4, and False otherwise.
+
+Scoping
+-------
+
+But the database idea in the &quot;extensions&quot; section introduces multiple
+name scopes in the same expression: R presumably comes from each
+point, and Mypoints presumably comes from some other context --- it
+clearly can't come from each point.  And we probably don't want to
+restrict where-expressions to contain only constants and properties of
+the queried items --- and if we're using the set of properties
+mentioned in each subexpression to determine when they are even
+applicable, we have an untenable situation.  Here are the options I
+have come up with.
+
+* Syntactic sugar for list comprehensions, using &quot;higher-order&quot; patterns
+
+The language as described earlier is already powerful enough to handle
+this sort of query without the ability to do things like apply
+anonymous functions.  Here the first four lines define a &quot;filter&quot;
+function, the fifth line defines an rlt4 &quot;function&quot;, and the sixth
+line is the translation of &quot;Mypoints where (R &lt; 4)&quot;.
+
+    ([], _).filter = []
+    ([A, ...As], F).filter = ((F, A).apply, As, F).filternext
+    (true, As, F).filternext = [A, ...(As, F).filter]
+    (false, As, F).filternext = (As, F).filter
+    (rlt4, A).apply = A.r &lt; 4
+    (Mypoints, rlt4).filter
+
+You could add syntactic sugar so that you could write 
+(Mypoints, (A -&gt; A.r &lt; 4)).filter or 
+or [A in Mypoints if A.r &lt; 4] that translated into the above.  A more
+general list-comprehension would also support 
+[A for A in Mypoints if A.r &lt; 4], and perhaps also multiple sequences to
+loop over.
+
+Still, it would probably be better to be able to write that with
+get-property-by-name, as follows:
+
+    ([], _).filter = []
+    ([A, ...As], F).filter = (A.F, As, F).filternext
+    (true, As, F).filternext = [A, ...(As, F).filter]
+    (false, As, F).filternext = (As, F).filter
+    A.rlt4 = A.r &lt; 4
+    (Mypoints, rlt4).filter
+
+Because then you could say (Mypoints, is_visible).filter.  Maybe that
+doesn't matter if you can say [A in Mypoints if A.is_visible].
+
+In the language as I've discussed it so far, (rlt4, A).apply (or
+A.rlt4) is still defined for records that don't have an r --- the
+left-hand-side pattern doesn't mention r, and the right-hand side
+doesn't mention R (which would cause an inferred r on the
+left-hand-side).  But presumably &quot;A.r &lt; 4&quot; would evaluate as 
+&quot;error &lt; 4&quot; or &quot;nil &lt; 4&quot; or something, and that should presumably not
+get ignored by default.  But maybe you could write a different kind of
+filter that did ignore it.
+
+Maybe you could also write ({r} -&gt; R &lt; 4), in which case 
+(rlt4, {}).apply would fail to match (rlt4, {r}).apply, and your
+evaluation would get stuck in the middle when 
+((rlt4, {}).apply, As, F).filternext failed to reach normal form.
+Probably that should also cause it to return an error.  Unlike
+Aardappel, this language family does distinguish between data
+structures and functions at a basic level, which would give it an
+excuse to return an error.
+
+The anonymous-property syntactic sugar would probably benefit from
+multiple pattern-match cases, so you could write 
+({r} -&gt; R &lt; 4 | {nonpolar} -&gt; false) or some such.
+
+Anyway, with this kind of filtering, you could add attributes to
+master records from joins --- using Avi Bryant's example from
+DabbleDB, where you have a table of talks with presenter names, and a
+table of presenters with presenter names and biographies:
+
+    presenter_rec = [P in Presenters if P.name == Presenter].first
+    presenter_bio = Presenter_rec.bio
+
+* Explicit declarations
+
+Here's a second way out.  In Python and Tcl, you can only assign to
+variables in the innermost syntactic scope.  You could take an
+analogous approach and only implicitly introduce new pattern elements
+when a previously undeclared variable was mentioned, and then
+introduce it automatically in the innermost scope, in which case you
+could write &quot;Mypoints where (R &lt; 4)&quot; but you wouldn't get the right
+effect from &quot;Presenters where (Name == Presenter)&quot; --- that would
+return records that had two properties, name and presenter, with the same
+value.  But you could write
+
+    {Presenter}.presenter_rec = (Presenters where (Name == Presenter)).first
+    presenter_bio = Presenter_rec.bio
+
+* Implicit pattern augmentation
+
+You could, also, just declare that property accesses implicitly
+augment the pattern match, and then you could write
+
+    Talk.presenter_rec = (Presenters where (Name == Talk.presenter)).first
+
+It would be somewhat undesirable to ignore all properties whose
+computation asked for an undefined property, which I think would be a
+result of this approach.
+
+Global scope
+------------
+
+I didn't mention where the variable Presenters comes from in the
+above.  I assumed it came from some global scope, not from every
+record.  Maybe it should have some Ruby-style sigil to indicate that.
+
+SIMD
+----
+
+Having properties that might have values of vectors of other records
+could simplify the process, by making query screens, tables of detail
+records, and the like, just ordinary records.  The ().first thing in
+the example above is ugly; it would be nicer to say this instead:
+
+    presenter_rec = [P in Presenters if P.name == Presenter]
+    presenter_bio = Presenter_rec.bio
+
+For that to work, though, the .bio property access has to
+automatically map over whatever &quot;where&quot; returns --- which probably
+means that all properties should be potentially multivalued, as in
+Prolog, Icon, Pick, Lotus Agenda, or perhaps APL.  This suggests the
+need for either a small and well-defined set of properties that apply
+to the entire collection rather than each item, or some special syntax
+for applying any property to the entire collection rather than each
+item.  I'm going to ignore that problem for now and just let some
+methods apply to the whole thing, while others apply only to part of
+it, the same mess most of those languages have.
+
+This could also provide a neat solution to clashing rewrite rules,
+although only time will tell if the neat solution is also a useful
+solution --- it might be preferable to be able to do the equivalent of
+overriding a method in a subclass so that the base class method is
+ignored, by providing a more specific rewrite rule.
+
+Prefix syntax: An Enlightening Syntactic Digression
+---------------------------------------------------
+
+Suppose I rewrite some of my previous examples with prefix syntax.
+
+    r { x: X, y: Y } = sqrt(X*X + Y*Y)
+    r = sqrt(X*X + Y*Y)
+
+    show { left_op: { atom_value } } = show_binop (Left_op, Bin_op, Right_op)
+    show_binop (L, O, R) = L + &quot; &quot; + O + &quot; &quot; + R
+    show = show { parenthesized_value: Left_op } + &quot; &quot; + Bin_op + show Right_op
+
+    show_atom [] = &quot;()&quot;
+    show_atom [N, M, ...Lst] = show_num N + &quot; &quot; + show_atom [M, ...Lst]
+    show_atom [N] = show_num N
+    definition { rest: nodefs } = show_method (Method_name, Method_body)
+    definition 
+        = show_method (Method_name, Method_body) + &quot;, &quot; + show_methods Rest
+
+    filter (_, []) = []
+    filter (F, [A, ...As]) = filternext ((F, A).apply, F, As)
+    filternext (true, F, As) = [A, ...filter(F, As)]
+    filternext (false, F, As) = filter (As, F)
+    apply (rlt4, A) = A.r &lt; 4
+    filter (Mypoints, rlt4)
+
+    presenter_rec = [P in Presenters where name P == Presenter].first
+    presenter_bio = Presenter_rec.bio
+
+This doesn't change the semantics at all, but it ought to look
+familiar to users of Haskell or OCaml; now the &quot;methods&quot; look like
+functions.  There are only a few important differences:
+
+1. The patterns are defined, not on the structural representation of
+   the objects, but on the set of functions applicable to those
+   objects.  Remember, the list, tuple, and infix notation is just
+   syntactic sugar --- in the list case, [N, M, ...Lst] means { car:
+   N, { car: M, cdr: Lst } }, in the tuple case, (true, F, As) means {
+   n: 3, arg1: true, arg2: F, arg3: As }; and in the infix case, (X*X
+   + Y*Y) means ((X, X).'*', (Y, Y).'*'),'+'.  So you can always
+   define new objects that implement whatever protocol is desired for
+   some existing operation, unlike in OCaml.
+
+   This probably implies that the process of figuring out how and
+   whether a function can be applied will resemble some kind of
+   deduction system.  The simplest solution is probably to maintain
+   the set of functions applicable to any particular object.
+   (Fortunately, in the language so far presented, this doesn't
+   require actually running any of the functions --- just examining
+   their dependencies.  See &quot;Efficiency&quot;.)
+
+2. The objects' &quot;contents&quot; are really point-wise overrides of
+   functions perhaps not otherwise applicable to those objects.  You
+   can view a definition like f = { x: 1, y: 2 } as syntactic sugar for
+   the following:
+
+   x g23132 = 1
+   y g23132 = 2
+   f = g23132
+
+   Except that { x: 1, y: 2 } is potentially garbage-collectable,
+   while g23132, taken literally, would not be.
+
+3. You can define a new pattern-action rule for an existing function
+   anywhere.  This probably implies some kind of specificity ordering,
+   as in Aardappel, and some kind of feedback about when it's
+   applicable.
+
+A More Extended Example: A Recipes File
+---------------------------------------
+
+Suppose you have a recipe file of the following form:
+
+    {recipes: [ { 
+        instructions: &quot;This is how we do it...&quot;
+        ingredients: [ {ingredient: &quot;celery&quot;, quantity: 3, unit: &quot;stalk&quot;}
+                       ...],
+        servings: 4,
+      } ...]
+    }
+
+You can imagine a bunch of queries that might not be too hard to write:
+
+    is_celery = Ingredient == &quot;celery&quot;
+    celery_ingredients = [I in Ingredients if I.is_celery]
+    {celery_ingredients: [N, ...Lst]}.has_celery = true
+    celery_quantity = Celery_ingredients.quantity.sum  # assuming SIMD auto-map
+    celery_per_serving = Celery_quantity / Servings
+    # It would be cool to be able to define quantity_per_serving as a
+    # property of each ingredient, but that requires access to the
+    # surrounding context.
+    ingredients_per_serving = (Ingredients, Servings).ing_divide
+    (List, Divisor).ing_divide = [{
+           ingredient: Item.ingredient, 
+           quantity: Item.quantity / Divisor,
+           unit: Item.unit
+    } for Item in List]  # assuming list comprehensions
+    # This next item only applies when you add a Desired_servings field to a
+    # particular recipe.
+    ingredients_for_desired_servings = 
+        (Ingredients, Servings / Desired_servings).ing_divide
+    calories_per_unit = [Nut.calories for Nut in Nutrition_database if
+        Nut.ingredient_name == Ingredient &amp;&amp; Nut.ingredient_unit == Unit]
+    calories = Calories_per_unit * Quantity
+    calories = Ingredients.calories.sum
+    calories_per_serving = Calories / Servings
+
+    cost_per_gram = [Item.cost for Item in Latest_shopping_price if
+        Item.ingredient_name = Ingredient]
+    cost = Cost_per_gram * Grams
+    grams = [[Conversion.factor * Quantity for Conversion in Conversions if
+        Conversion.from == Unit &amp;&amp; Conversion.to == &quot;grams&quot;],
+        [Density.factor * Quantity for Density in Food_densities if
+        Density.per_what == Unit &amp;&amp; Density.units == &quot;grams&quot;]].coalesce
+    cost = Ingredients.cost.sum
+    cost_per_serving = Cost / Servings
+
+    # Search for a recipe to use up the leftovers in the fridge:
+
+    ({ingredients}, ingredient).contains_ingredient = 
+        [I in Ingredients if I.ingredient == Ingredient].any
+    [Term, ...Terms].search_results = 
+        [Recipe for Recipe in Recipes if 
+        [(Recipe, Ingredient).contains_ingredient 
+            for Ingredient in [Term,...Terms]].all]
+
+Most of these should be no harder to write in Bicicleta, but being
+able to define methods &quot;out-of-line&quot; like this might have its
+advantages.
+
+Efficiency
+----------
+
+For a given set of method definitions, the set of methods that apply
+to a particular object can be mostly statically computed from the set
+of methods that are assigned values for that object; we can call that
+set the &quot;base object shape&quot;.  A finite program contains a finite set
+of base object shapes, at most one for each object literal in the
+program, and probably usually a lot less, so you can precompute most
+of the applicable method definitions for each object shape.
+
+It is possible to define methods that exist on some objects of a
+particular shape, but not others.  For example, if we have only this
+definition:
+
+    [N, M, ...Lst].show_atom = N.show_num + &quot; &quot; + [M, ...Lst].show_atom
+
+then some objects of shape {car, cdr} will have show_atom defined,
+while others will not, depending on what their cdr is; and some of
+those that have it defined will have an error when they try to call
+show_atom on their cdr.  (If we take the suggestion from earlier that
+we augment the pattern on the left-hand side so that the call on the
+right-hand-side cannot fail, then we end up with a pattern that
+matches only infinite lists.)
+
+Adding this definition helps matters a bit:
+
+    [N].show_atom = N.show_num
+
+Now any object of {car, cdr} whose cdr is either of shape [] or {car,
+cdr} has a match.  It seems plausible that some kind of type inference
+might be able to move this kind of pattern-matching to compile-time,
+leaving only a single conditional branch to run-time.
+
+Effectively, this proposal suggests inferring a set of classes in a
+system from a set of objects and method inference rules, in order to
+be able to use efficient lookup methods.
+
+Some kind of &quot;cut&quot;, as in Prolog, is probably also necessary.  In much
+of the above, I've assumed that only the most specific method
+definition ever applies, which is a kind of &quot;cut&quot;.
+
+Connection To SnikiSniki
+------------------------
+
+In Darius Bacon's SnikiSniki, you can make little tables out of little
+conjunctions of clauses, which Prolog-style look for solutions in the
+triple database; if you say
+
+    [[Person parent Parent, Parent parent Grandparent]]
+
+then you get a table of people with their parents and grandparents.
+In SnikiSniki, this doesn't create a new &quot;grandparent&quot; relationship,
+but you could imagine that it could.
+
+You could express something like the above in this approach as
+follows:
+
+    {parent: {parent: Grandparent}}.grandparent = Grandparent
+
+Most pattern-matching languages (OCaml, Haskell, etc.) have some kind
+of &quot;as&quot; feature that lets you give a name an intermediate part of the
+pattern-matching tree, so that you don't have to write
+
+    [N, M, ...Lst].show_atom = N.show_num + &quot; &quot; + [M, ...Lst].show_atom
+
+and can instead write
+
+    [N, ...[M, ...Lst] as Rest].show_atom = N.show_num + &quot; &quot; + Rest.show_atom
+
+(the point of the M here is to ensure that there are at least two
+elements in the list --- we don't want a space at the end of the
+list's show_atom.)
+
+With this feature, you could write
+
+    {parent: {parent: Grandparent} as Parent}.grandparent 
+        = (Parent, Grandparent)
+
+and get a closer match to the SnikiSniki semantics.
+
+I have often thought that SnikiSniki would be dramatically more
+powerful if you could define object property inference rules like
+this, and more convenient if you could leave some columns out.
+However, SnikiSniki's expressions are strictly more powerful, because
+they allow pattern-matching of arbitrary graphs, not just DAGs:
+
+    [[Selfdealer owns Foundation, Foundation givesGrantsTo Selfdealer]]
+    [[Doctor caresFor Patient, Nurse caresFor Patient, 
+        Doctor is doctor, Nurse is nurse]]
+    [[Person parent Mother, female isSexOf Mother]]
+
+I suspect that for cases where the QBE-like equational rewriting
+approach applies, it is generally terser and easier to understand.
+
+You could gain back the expressive power of SnikiSniki where it's
+needed, at some additional cost to terseness and readability in these
+cases, by defining the patterns with unification (as SnikiSniki does)
+and allowing multiple object-tree fragments on the left side:
+
+    {owns: Foundation} as Selfdealer,
+        ({givesGrantsTo: Selfdealer} as Foundation).self_dealer = Selfdealer
+    {caresFor: Patient, is: doctor} as Doctor,
+        {caresFor: Patient, is: nurse}.works_with_doctor = Doctor
+    female.isSexOf = Mother, {parent: Mother}.mother = Mother
+
+These last examples rather imply that the attributes are all
+multivalued, which is clearly part of Sniki but only potentially part
+of an equational rewrite system on properties.

@@ -1,0 +1,362 @@
+@charset UTF-8;
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    margin:0;
+    padding:0;
+}
+
+body {
+    line-height:1;
+    font-size:small;
+    font:x-small;
+    color:#000;
+    background:#fff;
+    margin-bottom:34px;
+}
+
+ol,ul {
+    list-style:none;
+}
+
+blockquote,q {
+    quotes:none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content:none;
+}
+
+ins {
+    text-decoration:none;
+}
+
+del {
+    text-decoration:line-through;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font-size:inherit;
+    font:100%;
+}
+
+pre,code,kbd,samp,tt {
+    font-family:monospace;
+    font-size:108%;
+    line-height:100%;
+}
+
+a {
+    text-decoration:none;
+    color:#225db7;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+sup,sub {
+    vertical-align:super;
+    font-size:.75em;
+    padding:0 2px 0 0;
+}
+
+sub {
+    vertical-align:sub;
+}
+
+.main {
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-175px 0 0 -462px;
+}
+
+div.span-1,div.span-2,div.span-3,div.span-4,div.span-5,div.span-6 {
+    float:left;
+    margin-right:6px;
+    position:relative;
+}
+
+.span-6,div.span-6 {
+    width:924px;
+    margin-right:0;
+}
+
+.span-6 .col-main {
+    float:left;
+    width:758px;
+    margin-right:6px;
+    position:relative;
+}
+
+hr {
+    background:#ddd;
+    color:#ddd;
+    clear:both;
+    float:none;
+    width:100%;
+    height:.1em;
+    border:0;
+    margin:0 0 1.45em;
+}
+
+.clear {
+    clear:both;
+}
+
+.ispan-1 {
+    float:left;
+    width:145px;
+    margin-right:8px;
+}
+
+.ispan-3 {
+    float:left;
+    width:451px;
+    margin-right:8px;
+}
+
+.ispan-5 {
+    float:left;
+    width:757px;
+    margin-right:8px;
+}
+
+.mod-container {
+    font-family:verdana,helvetica,arial,sans-serif;
+    width:100%;
+    clear:both;
+}
+
+.mod-header {
+    height:25px;
+    clear:both;
+}
+
+.mod-header h4 {
+    color:#fff;
+    font-family:helvetica,arial,sans-serif;
+    font-size:12px;
+    line-height:25px;
+    letter-spacing:.3px;
+    margin:0;
+    padding:0 0 0 10px;
+}
+
+.mod-footer {
+    background:#fff;
+    text-align:right;
+    margin-bottom:6px;
+    border-color:#c2c2c2;
+    border-style:solid;
+    border-width:0 1px 1px;
+}
+
+.mod-content {
+    background:#fff;
+    font-size:11px;
+    overflow:hidden;
+    border-color:#c2c2c2;
+    border-style:solid;
+    border-width:0 1px;
+    padding:2px;
+}
+
+.mod-no-footer .mod-content {
+    margin-bottom:6px;
+    border-bottom-width:1px;
+    padding-bottom:2px;
+}
+
+.mod-content a {
+    color:#225db7;
+}
+
+.mod-content a:visited {
+    color:#608fd6!important;
+}
+
+.mod-content .gradient-container {
+    overflow:hidden;
+}
+
+th,.colhead td {
+    font-weight:700;
+    color:#666;
+    font-size:11px;
+    background:0;
+    border-color:#ddd;
+    border-width:0 0 1px;
+    padding:6px 6px 2px;
+}
+
+th,.colhead a:link {
+    color:#666;
+}
+
+th,.mod-table .mod-content .colhead a:visited,.colhead a:visited {
+    color:#444!important;
+    text-decoration:underline;
+}
+
+th,.mod-table .mod-content .colhead a:hover,.colhead a:hover {
+    color:#777;
+    text-decoration:none;
+}
+
+body.frame .mod-container h4 {
+    text-transform:uppercase;
+    font-family:helvetica,arial,sans-serif;
+    color:#fff;
+    line-height:25px;
+    font-size:12px;
+    letter-spacing:.3px;
+    clear:both;
+    height:25px;
+    overflow:hidden;
+    margin:0;
+    padding:0 0 0 10px;
+}
+
+.mod-section-header h2,.mod-section-header h1.h2 {
+    font-size:24px;
+    float:left;
+    padding:2px 10px 0 0;
+}
+
+body.frame .depth-chart-tail {
+    background:transparent url(./caption.png) no-repeat;
+    height:7px;
+    position:absolute;
+    width:9px;
+    margin:-2px 0 0;
+}
+
+body.frame .depth-chart-tail.left {
+    margin-left:14px;
+}
+
+body.frame .depth-chart-tail.center {
+    margin-left:40px;
+}
+
+body.frame .depth-chart-tail.right {
+    margin-left:68px;
+}
+
+.mod-manager ul.player-info {
+
+}
+
+.mod-manager .mod-content {
+    color:#444;
+    font-size:11px;
+}
+
+.mod-manager .mod-content ul {
+    font-weight:700;
+    padding:6px 8px;
+}
+
+body.frame.baseball .positions.field {
+    background:transparent url(./diamond.png) no-repeat;
+    min-height:350px;
+    margin:0 auto;
+}
+
+.mod-positions {
+    clear:none;
+    float:left;
+    width:auto;
+    min-width:110px;
+}
+
+.mod-positions .mod-header {
+    background:#ccc;
+    height:auto;
+    border:#c2c2c2 solid small;
+    border-width:1px 1px 0;
+}
+
+body.frame.baseball .mod-container.positions .mod-positions .mod-header h4,body.frame .mod-container.mod-positions .mod-header h4 {
+    color:#484848;
+    font-family:verdana,arial,sans-serif;
+    font-size:10px;
+    text-transform:none;
+    font-weight:400;
+    height:auto;
+    line-height:16px;
+    margin:0;
+    padding:0 0 0 4px !important;
+}
+
+.mod-positions .mod-content {
+    border-width:0 1px;
+}
+
+.mod-positions.mod-no-footer .mod-content {
+    border-width:0 1px 1px;
+}
+
+body.frame.baseball .field-group {
+    position:relative;
+    clear:both;
+}
+
+body.frame.baseball .field-group.outfield {
+    min-height:80px;
+    padding:6px 0 0;
+}
+
+body.frame.baseball .mod-positions.left-field {
+    margin:30px 0 0 10px;
+}
+
+body.frame.baseball .mod-positions.center-field {
+    margin:0 16px;
+}
+
+body.frame.baseball .mod-positions.right-field {
+    margin:30px 0 0;
+}
+
+body.frame.baseball .mod-positions.short-stop {
+    margin:40px 15px 0 65px;
+}
+
+body.frame.baseball .mod-positions.second-base {
+    margin:40px 0 0;
+}
+
+body.frame.baseball .mod-positions.third-base {
+    margin:10px 70px 0 20px;
+}
+
+body.frame.baseball .mod-positions.first-base {
+    margin:10px 0 0 40px;
+}
+
+body.frame.baseball .mod-positions.catcher {
+    margin:50px 0 0 130px;
+}
+
+body.frame.baseball .mod-positions .mod-content ul.players {
+    min-width:90px;
+}
+
+body.frame.baseball .mod-positions .mod-content ul.players li {
+    font-weight:700;
+    padding:0 2px;
+}
+
+body.frame.baseball .mod-positions .mod-content ul.players li.backup {
+    font-weight:400;
+}
+

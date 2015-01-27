@@ -1,0 +1,118 @@
+Day 2
+=====
+
+
+
+Big Data
+--------
+
+- <http://custominsight.com/articles/random-sample-calculator.asp>
+- Hadoop
+  + Storing via HDFS
+  + Process via Map/Reduce
+  + Serialize via Avro
+  + Coordinate via Zookeeper
+  + HBase uses all to provide a Big-table like system
+
+Metaprogramming
+---------------
+
+- hook methods for module life
+
+Keynote
+-------
+
+- *Better Faster Lighter Java*
+- Slashdot thread on Rails, rewriting apps
+
+
+
+
+Day 1
+=====
+
+TODO
+----
+
+- L@@K apache bench
+- L@@K goliath evented
+- EventedZen - excellent idea for examples
+- JBoss application server & Clojure?  (L@@K TorqueBox)
+- Write-once variables
+- L@@K HonetQ
+- Compiling Clojure to Java - InvokeDynamic
+  + namespaces
+  + call-sites are fully polymorphic
+  + call-by-name langs (JRuby)
+  + Interop
+    - a win for invokedynamic
+    - type hints
+    - syntax vs Ruby
+  + caching sig -> method lookup
+  + deref is cost
+  + compile time symbol -> var
+  + deref at runtime
+  + condition check for thread-local 
+    + eliminated in 1.3
+
+
+???
+---
+
+Basic query functionality
+- sub-selects
+- column and row access
+- datalog skin  (L@@k Cascalog)
+- 
+
+InvokeDynamic
+-------------
+
+## What impact can invokedynamic have on clojure ?
+
+> possibly not much at all - it is mostly a feature for languages 
+> that do by-name single dispatch and thus can leverage per-call-site 
+> caching when one call site is typically only used for one 'type' 
+
+> Clojure's multimethods are already separated by namespace, and thus most 
+> call sites will be genuinely polymorphic
+
+> Clojure caches the signature-to-method lookup results on the multimethods 
+> themselves
+
+> when you call a function defined at the top level of a namespace, it 
+> actually dereferences a variable at each call site but yes, it has to 
+> see at least the symbol entry in the relevant namespace, if not its value
+
+> that's why you need to use a dummy def (or the shorthand declare macro) if 
+> you want to have mutually recursive function definitions
+
+## Clojure fn lookups are constant
+
+>  it does the "hash" lookup at compile time, but the deref at run time
+
+> at compile time, symbols are resolved to vars (which are first-class objects 
+> that have a root binding and can be further rebound on a per-thread local basis)
+
+> when a variable is evaluated at run time, it is dereferenced. so it's like a 
+> cheap thread local storage deref kind of operation, although there is a 
+> branch-taken-expected fast path when there is only a root binding and no 
+> thread-local rebindings
+
+> the net effect of this is that you can reload function and variable definitions 
+> at runtime and existing referrers will pick up the difference
+
+> so it's still perfectly dynamic in that sense
+
+## Inner fns
+
+> inner functions just generate new subclasses of AFn that are then newed (passing 
+> the closed-over values from the scope) by the outer function referencing it
+
+> the inner function is statically known. you don't need any indirection like 
+> for top-level functions.
+
+## Java Reflection
+
+> Java already caches reflection calls
+

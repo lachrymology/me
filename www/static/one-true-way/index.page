@@ -1,0 +1,270 @@
+---
+title: The One True Way 
+inMenu: true
+filemdate: 2008.05.30
+
+--- 
+
+{menu: }
+
+Overview
+========
+Recently I've had to reinstall OSX Panther on my PowerMac because of a weird issue with certain 
+pictures (including some toolbar, dock, and menu icons) were being rendered in [Evil Grimace purple][grimacepurple] 
+and [Uncle O'Grimacey green][peegreen]. It wasn't a ground breaking issue, but it was annoying and gave me an excuse 
+to start from scratch and re-implement The One True Way, which had fallen out of harmony. My One 
+True Way is simply my method of setting up a system in a way that makes sense to me. This 
+encompasses directory structure, dock/menu usage, symlink creation, script writing, desktop 
+background, desktop allocation, program installation, and program configuration. For the most 
+part, F1TW (Fogus One True Way&copy;) is virtually identical across platforms except for a few differences in the programs 
+installed. This essay describes the approach that I've taken with [OSX][osx] recently while deviations 
+for other platforms are highlighted when appropriate.  This essay will continue to evolve [^evolution] over time as 
+the F1TW is a dynamic system and not subject to dogmatic conformance to program usage, desktop background,
+or company/distro advocacy.  
+
+OS Installation
+========================
+For any system conforming to F1TW, all hard-drives are first repartitioned and each 
+individually formatted and checked for bad blocks. Using the OSX installation disk(s) (as well 
+as [Linux][linux] and [Windows][windows]) this is a trivial matter. However, I adhere to a strict 
+partitioning scheme for most of my systems, although the details for each differ.
+
+## OSX
+1. Partition 0 - OSX System files and home directory.
+2. Partition 1 - Vault
+
+## Linux
+1. /dev/sda1 - /boot | 2MB
+2. /dev/sda2 - /
+3. /dev/sda3 - /swap
+4. /dev/sda4 - Extended
+5. /dev/sda5 - /home
+6. /dev/sda6 - /usr
+7. /dev/sda7 - /usr/local
+8. /dev/sda8 - /var
+9. /dev/sda9 - /tmp
+10. /dev/sdb1 - /svn
+11. /dev/sdb2 - /vault
+
+## Windows
+1. Partition 0 - Windows
+2. Partition 1 - Mike
+3. Partition 2 - [Yuki][yuki]
+4. Partition 3 - Vault
+
+The partition scheme above are fairly self-explanatory, however a few exceptions need 
+to be explained. First, for all of my systems I like to keep a Vault partition. The vault 
+is a repository for essential programs, configuration files, and backups. I usually keep 
+a copy of the latest versions of my essential programs (listed below), any periodic backups, 
+mirrored copies of all important configuration files (XF86Config, .vimrc, .bashrc, .profile, 
+nethack.sav, .emacs, etc...), and a mirror of my source repository. This partition is *always* 
+stored on a separate disk from the main OS and is occasionally burned to a disk. The Mike and Yuki 
+volumes in Windows are our own sandboxes for to play in.
+
+Once the partitions have been created, formatted, and checked for bad blocks, then the real 
+fun begins. I always install from media even though most Linux systems allow for network 
+installations -- I like the tactility of physical installation media.
+
+Booting Up for the First Time
+======================================
+Once the OSes have been installed, it is now time to boot up for the first time and install 
+the critical software, or as I like to call it, Ring 0 [^ring0] software. Ring 0 software is generally 
+comprised of the following:
+
+## ALL
+1. [Bash][bash]
+2. [gcc][gcc]
+3. [Perl][perl]
+4. [Python][python]
+5. [Ruby][ruby]
+6. [SBCL][lisp]
+7. [SSH][ssh]
+8. [Apache Server][httpd]
+9. [Subversion][svn]
+
+## OSX
+1. Software Updates
+2. DevTools
+3. [MacPorts][macports]
+4. X
+
+## Linux
+1. Latest C libs
+2. [KDE][kde] [^whykde]
+3. [FVWM][fvwm]
+
+## Windows
+1. Software Updates and Security Patches
+2. .NET Framework
+3. .NET SDK
+4. [Cygwin][cygwin]
+
+Of course before this can be done a network has to be established and all security measures 
+must be taken.  I prefer to shut off all ports in and out of Windows to avoid the bite of 
+mindless security flaws.  Since I spend very little time in Windows, this is not a problem.  
+Likewise, my only Windows machine is actually a virtual machine running inside of VMWare.
+
+
+Creating Directory Structures
+=====================================
+After the Ring 0 software has been installed and the system rebooted, it is time to create 
+the F1TW sanctioned directory structure. I really despise the way that most system's 
+directory structures are laid out. Therefore, I tend to prefer a mish-mash of 
+structures that I have concocted/adopted in the past. Currently, my custom structure for my 
+home is built as follows:
+
+*    home
+
+    - doc
+		+ 	apidoc (stores javadoc, [doxygen][doxygen], and similar documentation locally)
+		+ 	tech (manuals, howtos, etc...)
+        
+    - opt 
+		+ 	games
+		+ 	music (a symlink to an external device)
+		+ 	video
+        
+    - src
+		+ 	minotaur ([project][ariadne] checkouts)
+		+	foss (open source source checkouts)
+        
+    - tmp
+		+ 	dl (download directory)
+		+ 	void (my own recycle bin)
+
+    - www
+		+ 	local (localhost site)
+		+ 	mirror (mirrored sites)
+		+ 	www (visible to the outside world)
+
+
+Configuration
+======================
+Once all of the directories have been set up, it is necessary to set up all programs 
+to point to them. For example, in OSX iTunes needs to be informed where the iTunes library is 
+located. For this I like to have iTunes copy all added music files to the location and handle 
+the directory structure for me. That way I can handle all of the music file tags directly in 
+iTunes and have it create the proper tree for them without spending countless hours in doing 
+so myself. I would like to have a little more control over the matter, but for the sake of time 
+I've decided to ignore the shortcomings in this process. I have a number of scripts written for 
+bash-enabled systems (Linux, OSX, Cygwin) that allow me to do platform independent tasks after 
+only a few minor changes. For example, I have a [checkin.pl][checkin] script that acts as a front-end hook to 
+Subversion and runs a few pre-processors on the source files that I wish to check in (there is also a 
+similar [checkout.pl][checkout] script). I also have a [void.sh][void] script that instead of outright removing 
+files, it instead copies them into the tmp/void directory. There have been too many occasions 
+where I have accidentally deleted important files permanently. During this step I also like to 
+copy my custom .bashrc and .bash&#95;profile files which have my own personal settings including 
+prompt style, aliases, etc...  Of course my handy-dandy [.emacs][.emacs] file goes into the 
+mix.  Finally, I like to setup my [X environment][xconfig] with whatever video card I happen to 
+be using at the time.
+
+
+Program Installation
+=============================
+Now that my environment is set up, I usually move on to installing the Ring 1 software. 
+That is, software that is not essential, but that I really really like to use. This software 
+includes:
+
+## ALL
+* [Eclipse][eclipse]
+* [Emacs][emacs]
+* GNU Chess, GNU Go
+* [Nasm][nasm] 
+* [Ant][ant]
+* Java SDK
+* [Firefox][firefox] [^firefox]
+* [Nethack][nethack] and [DND][dnd]
+* [VLC][vlc]
+* [Open Office][ooo]
+* wget and curl
+* VMWare Player
+* [Steel Bank Common Lisp](http://www.sbcl.org/)
+
+## OSX
+* [Quicksilver][qs]
+* [OmniGraffle][omni]
+* [OmniOutliner][omni]
+* [Adium][adium]
+* [iTerm][iterm]
+* [Burn][burn]
+* [HandBrake][handbrake]
+* [Delicious Library][delicious-monster]
+* [Cyberduck][cyberduck]
+* [Colloquy][colloquy]
+
+## Linux 
+* [Pidgin](http://www.pidgin.im/)
+* Mutt
+* [XChat](http://www.xchat.org/)
+
+## Windows
+* [7-Zip](http://7-zip.org/)
+* [Foxit Reader](http://www.foxitsoftware.com/pdf/rd_intro.php)
+* [Trillian](http://www.ceruleanstudios.com/)
+* [CDBurnerXP](http://www.cdburnerxp.se/home)
+* [EMACS][emacs-win] (Windows-specific binary)
+* 
+
+Eye Candy
+==================
+Once the boring technicalities are out of the way, then the systems can be made to look 
+pretty. Usually I choose a solid color background (I tend to like #000051), but 
+occassionally I feel fiesty and decide for a picture background. In the past I have 
+gone with: Chomsky, Penguins, HAL9000, Giant Robots, Suspiria, DC city-scapes, Destro, 
+Turing, Turing Machines, Kolmogorov, Tux, BSD Daemon, Spider Jerusalem, and other things 
+that I thought were cool at one point or another.
+
+Finally, the computer is useable.
+
+-m
+
+[^evolution]: For example, my recent switch to using Ubuntu Linux from Debain will most likely trigger a change to this here essay.
+[^ring0]: Not to be confused with http://en.wikipedia.org/wiki/Ring_%28computer_security%29
+[^whykde]: I once loved Gnome with a passion, but like all relationships, my love spoiled.  I do not necessarily like KDE, but it is better than the alternative.
+[^firefox]: I once loved Firefox with a passion, but my love is now waining.  It has become a fine piece of bloatware sadly.
+
+[peegreen]: http://www.colorhunter.com/color/93BF00
+[grimacepurple]: http://www.colorhunter.com/color/23006E
+[osx]: http://www.apple.com/macosx/
+[linux]: http://www.ubuntu.com/
+[windows]: http://www.microsoft.com/windows/products/windowsxp/default.mspx
+[yuki]: http://www.modus-tollens.com
+[bash]: http://www.gnu.org/software/bash/bash.html
+[gcc]: http://www.gnu.org/software/gcc/
+[perl]: http://www.perl.org/
+[python]: http://www.python.org
+[ruby]: http://www.ruby-lang.org
+[lisp]: http://sbcl.sourceforge.net/
+[ssh]: http://www.openssh.com/
+[httpd]: http://httpd.apache.org/
+[svn]: http://subversion.tigris.org/
+[macports]: http://www.macports.org/
+[kde]: http://www.kde.org/
+[fvwm]: http://www.fvwm.org/
+[cygwin]: http://www.cygwin.com/
+[ariadne]: http://projects.earthvssoup.com
+[doxygen]: http://www.doxygen.org
+[xconfig]: index.html
+[.emacs]: index.html
+[checkin]: index.html
+[checkout]: index.html
+[void]: index.html
+[eclipse]: http://www.eclipse.org
+[emacs]: http://aquamacs.org/about.shtml
+[nasm]: http://nasm.sourceforge.net/
+[ant]: http://ant.apache.org/
+[nethack]: http://www.nethack.org/
+[dnd]: index.html
+[vlc]: http://www.videolan.org/vlc/
+[ooo]: http://www.neooffice.org/neojava/en/index.php
+[iterm]: http://iterm.sourceforge.net/
+[adium]: http://www.adiumx.com/
+[burn]: http://burn-osx.sourceforge.net/
+[handbrake]: http://handbrake.fr/
+[delicious-monster]: http://www.delicious-monster.com/
+[cyberduck]: http://cyberduck.ch/
+[qs]: http://www.blacktree.com/
+[colloquy]: http://colloquy.info/
+[omni]: http://www.omnigroup.com/
+[firefox]: http://www.mozilla.org/
+[emacs-win]: http://ftp.gnu.org/pub/gnu/emacs/windows/

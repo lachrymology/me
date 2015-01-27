@@ -1,0 +1,16 @@
+* Books recommended to Russ
+
+** LISP in Small Pieces
+** The Recursive Universe
+** Bootstrapping: Douglas Engelbart, Coevolution, and the Origins of Personal Computing
+** Patterns of Software: Tales from the Software Community
+** The Computer and the Brain (by von Neumann)
+** [[http://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours][Write Yourself a Scheme in 48 Hours]]
+** Mindstorms: Children, Computers, And Powerful Ideas
+** ML for the Working Programmer
+** Dreaming in Code
+** Essentials of Programming Languages
+** Masters of Doom
+** The Joy of Clojure, 2nd edition
+** A Programming Language (by Iverson)
+

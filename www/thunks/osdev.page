@@ -1,0 +1,229 @@
+---
+title: OS Development Notes and Links
+filemdate: 2011.03.30
+---
+
+OSDev notes and links
+=====================
+
+At [one point](http://blog.fogus.me/2004/01/16/132/) I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extremely difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targeting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
+
+{menu: {min_levels: 2}}
+
+Interesting alternative and hobby OSes
+======================================
+
+I've studied most of these deeply and found them incredibly instructional.
+
+- [GNU Mach](http://www.gnu.org/software/hurd/microkernel/mach/gnumach.html)
+- [Mona OS](http://monaos.org/) - The OS I would create if I had the skill.
+- [O3one](http://www.o3one.org/) - Crazy beautiful
+- [Losethos/SparrowOS](http://www.sparrowos.com/) - Losethos/Sparrow's creator has a very clear [vision](http://www.sparrowos.com/Wb/Doc/Constitution.html#l1) for his OS and he's executed that plan perfectly.
+- [Itsy-OS: A simple 380 byte OS kernel](http://www.retroprogramming.com/2011/03/itsy-os-simple-preemptive-switcher.html) - True ultimate ASM power.
+- [The XOmB Bare Bones distribution is a minimal 64 bit OS written in D](http://wiki.xomb.org/index.php?title=XOmB_Bare_Bones) - Developing a kernel in an alternative language is a personal fetish.
+- [LOSAK: Lisp Operating System, Abstraction Kernel](http://losak.sourceforge.net/) - Defunct but fun nonetheless.
+- [MIT Exokernel](http://pdos.csail.mit.edu/exo.html)
+- [NewOS](http://newos.org/) - Seems to be abandoned, but the code is some of the cleanest that you will ever read.
+- [QNX Neutrino](http://www.swd.de/documents/manuals/neutrino/index_en.html) - At one point you could see the code to this.  It was mind-busting.
+- [Contiki](http://www.sics.se/contiki/) - Just plain fun.
+- [The grand unified list of hobby and educational operating systems](http://wiki.osdev.org/Projects)
+
+OSDev resources
+===============
+
+- [John Fine's original site](http://replay.waybackmachine.org/20050212051329/http://my.execpc.com/~geezer/johnfine/index.htm)
+- [Ethernet development](http://www.vijaymukhi.com/vmis/roll.htm)
+- [Google's OS directory](http://directory.google.com/Top/Computers/Software/Operating_Systems/)
+- [Mutexes and critical section](http://replay.waybackmachine.org/20060524034819/http://www.cs.wvu.edu/~jdm/classes/cs356/notes/mutex/)
+- [Creating a 64-bit OS](http://wiki.osdev.org/Creating_a_64-bit_kernel)
+- [Bochs](http://bochs.sourceforge.net/)
+
+Protected Mode
+--------------
+
+- [Tutorials in C and ASM by Alexei Frounze](http://members.tripod.com/protected_mode/alexfru/pmtuts.html)[^frounze]
+- [PMode tutorials](http://genapro.chat.ru/examples.html)
+
+ELF/COFF
+--------
+
+- [COFF by Alexei Frounze](http://alexfru.chat.ru/epm.html#coffutils)
+- [ELF](http://wiki.osdev.org/ELF)
+
+Bootloaders
+-----------
+
+- [Basics of bootloaders](http://wiki.osdev.org/Rolling_Your_Own_Bootloader)
+- [Network booting](http://osdev.berlios.de/netboot.html)
+- [El Torito](http://wiki.osdev.org/El-Torito) (CD-ROM bootsectors)
+
+Libraries
+--------
+
+- [OSKit](http://www.cs.utah.edu/flux/oskit/) - Although I've never used it, the abstractions it provides are worth studying.
+- [Metalkit: simple library for writing programs that run on IA32 (x86) machines on the bare metal](http://scanlime.org/2008/03/introducing-metalkit/)
+
+OSDev sites
+===========
+
+- [OSnews](http://www.osnews.com/) (*my favorite*)
+- [r/osdev](http://reddit.com/r/osdev) - a subreddit moderated by me
+- [OSDev.org](http://wiki.osdev.org/Main_Page) - teaching people how to clone UNIX since 2000
+- [Operating System resource center](http://www.nondot.org/sabre/os/articles/)
+- [Bonafide OS Dever](http://www.osdever.net/tutorials/index)
+- [alt.os.development](http://groups.google.com/group/alt.os.development/topics)
+
+OSDev case studies
+==================
+
+- [The Creation of the UNIX Operating System](http://www.bell-labs.com/history/unix/)
+- [An inside look at MS-DOS](http://www.patersontech.com/Dos/Byte/InsideDos.htm)
+
+Compilers, assemblers, and languages
+====================================
+
+These are not always current, but much can be learned from them all.
+
+- [NASM](http://www.nasm.us/)
+- [TCC](http://bellard.org/tcc/)
+- [BCC](http://www.debath.co.uk/)
+- [Turbo Pascal v5.5](http://edn.embarcadero.com/article/20803) (*my first compiler*)
+- [Borland compiler museum](http://edn.embarcadero.com/museum/)
+- [The Pascal programmers' page](http://www.devq.net/pascal/)
+- [C/C++ Snippets](http://snippets.snippets.org/index.php)
+- [Inside the JavaOS Operating System](http://www.amazon.com/o/asin/0201183935?tag=fogus-20)
+
+
+Books on and useful for OSDev
+=============================
+
+*note: some of the links below are amazon affiliate links.  please consider buying through the link if you find this site useful, otherwise you can remove the part of the url with fogus-20 to visit amazon instead*
+
+Interestingly, there are not that many books on developing your own operating systems.  I've read most of those that deal with the topic directly, and some of those that touch on it only tangentially.  Below are the books that I found particularly useful, relevant, and/or interesting:
+
+Foundational
+------------
+
+- *[Modern Operating Systems](http://www.amazon.com/exec/obidos/ASIN/0130313580/fogus-20/)* by Tannenbaum  (**start here**)
+- *[Practical File System Design](http://www.letterp.com/~dbg/)* by Giampaolo
+
+OSDev books
+-----------
+
+- *[OS Design: the XINU Approach](http://www.amazon.com/o/asin/0136375391?tag=fogus-20)* by Comer
+- *[MMURTL](http://www.amazon.com/o/asin/1588530000?tag=fogus-20)* by Burgess
+- *[Developing Your Own 32-Bit Operating System](http://www.amazon.com/Developing-32-Bit-Operating-System-Cd-Rom/dp/0672306557?tag=fogus-20)* by Burgess
+- *[Protected Mode Software Architecture](http://www.amazon.com/o/asin/020155447X?tag=fogus-20)* by Shanley
+
+Case studies
+------------
+
+- *[Solaris Internals](http://www.amazon.com/o/asin/0131482092?tag=fogus-20)* by McDougal
+- *[Lions' Commentary on UNIX](http://www.amazon.com/o/asin/1573980137?tag=fogus-20)* by John Lions
+- *[The Design of the UNIX Operating System](http://www.amazon.com/o/asin/0132017997?tag=fogus-20)* by Bach
+- *[Undocumented Windows NT](http://www.amazon.com/o/asin/0764545698?tag=fogus-20)* by Dabak and Phadke
+- *[UNIX Filesystems: Evolution, Design, and Implementation](http://www.amazon.com/o/asin/0471164836?tag=fogus-20)* by Pate
+- *[Inside Windows NT](http://www.amazon.com/o/asin/1572316772?tag=fogus-20)* by Custer
+
+Have yet to read, but that look interesting
+-------------------------------------------
+
+- *[Dissecting DOS](http://www.amazon.com/o/asin/020162687X?tag=fogus-20)* by Podanoffsky
+- *[Project Oberon - The Design of an Operating System and Compiler](http://www.amazon.com/exec/obidos/ASIN/0201544288/fogus-20/)* by Wirth
+- *[The Symbian OS Internals](http://www.amazon.com/o/asin/0470025247?tag=fogus-20)* by Jane Sales
+- *[Real-Time Systems Development](http://www.amazon.com/o/asin/0750664711?tag=fogus-20)* by Williams
+- *Open VMS Operating System Concepts* by David Miller
+- *TinyOS Programming* by Levis and Gay
+
+
+FogOS
+=====
+
+I started down the path of writing an OS, aptly named FogOS written in C++.  Below are some of the notes that I created (well, those I've been able to find).
+
+Memory map ideas
+----------------
+
+<pre>
+Address       Size            Description
+---------     ---------       ---------------------------------
+0000 0000     1 KB            Real-mode interrupt vector table
+0000 0400     256 bytes       ROM-BIOS data
+0000 0500     62.75 KB
+0001 0000     256 KB          miscellaneous data
+0005 0000     64 KB           Kernel stack at startup
+0006 0000     512 bytes       Kernel IDT
+0006 0200     64 KB           Kernel TSS's
+0007 0200     512 bytes       GDT
+0007 0400     63 KB
+0008 0000     64 KB           Kernel read-only data
+0009 0000     64 KB           Kernel heap
+000a 0000     128 KB          Video memory
+000c 0000     64 KB           Kernel ES
+000d 0000     128 KB
+000f 0000     64 KB           ROM-BIOS
+--  1MB --
+0010 0000     64 KB           Kernel code
+
+0010 FFF0     Max end of kernel (65,520 bytes)
+
+0050 0000     4 MB            Stack of physical memory pages
+008F F000     4 KB            Page table staging area
+0090 0000     4 KB            Kernel page directory
+0090 1000     ???             Kernel page tables
+???? ????
+00f0 0000     1 MB            Low DMA area
+-- 16MB --
+0100 0000     Unlimited       Available to applications
+</pre>
+
+I've left some BIOS stuff as I found it.
+
+My boot loader loads my kernel at 1MB physical. Given the 16-bit real-mode
+nature of the boot code, it can't load anything beyond 1MB+65,520, so for
+the time being my kernel is limited to 65,520 bytes in size. Currently
+it's at 36,864 bytes. I know that one day, in the not-too-distant future,
+I'll have to do something about this. Maybe load it lower and then let it
+move itself? Or break the kernel up into two files: a small one that the
+boot loader loads, and that then loads the full kernel. I don't know.
+
+Some of these areas that I've reserved might not make sense. I pretty much
+drew up this map before I know what I was doing (ha! I still don't!) and
+so I made room for things like TSS's (plural) but I really won't know what
+I'll need there until I get to processes and task switching.
+
+I don't do any relocations. My kernel is linked to load at 1MB and the
+boot loader loads it directly there. Every time someone talks about
+relocations I wonder what I'm missing. Looking forward to finding out :-)
+
+Architecture
+------------
+
+My ideas for a microkernel.  Looking back on FogOS I realize that the kernel was less interesting than the HAL.  I spent a lot of time thinking about the HAL and it's base abstractions.  I actually went down the path of implementing it based on the following image:
+
+![FogOS Overview](http://images.fogus.me/blog/fogos_overview.png "FogOS Overview")
+
+You'll notice that I have a crypto service all the way down in the kernel.  My thinking at the time was that I could gather interesting entropy at the kernel level.  I recall reading some papers about this, but their titles have long since faded.  Anyway, I added at least one hook for the entropy gathering and planned for more.
+
+Booting
+-------
+
+Some bits of the implementation of the image above eventually booted!
+
+![Boots](http://images.fogus.me/blog/fogos_001_boot.png "FogOS eventually booted")
+
+And then after adding the HAL, it was still able to boot!
+
+![HAL Boots](http://images.fogus.me/blog/fogos_002_boot.png "FogOS with HAL booted")
+
+... and that is where I left it.[^left]
+
+One day I shall return.
+
+
+Footnotes
+=========
+
+[^frounze]: Alexei Frounze is a hobby OSDev luminary.  It's well-worth studying his code if you're interested in creating your own OS.
+
+[^left]: And this is where 99% of hobby OS practitioners leave it.  :-(
