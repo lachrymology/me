@@ -77,31 +77,32 @@ Bootloaders
 - [[http://www.bell-labs.com/history/unix/][The Creation of the UNIX Operating System]]
 - [[http://www.patersontech.com/Dos/Byte/InsideDos.htm][An inside look at MS-DOS]]
 - [[http://www.amazon.com/o/asin/0201183935?tag=fogus-20][Inside the JavaOS Operating System]]
+- [[http://www.pagetable.com/c64rom/][Fully Commented Commodore 64 ROM Disassembly]]
 
 ** Compilers, assemblers, and languages
 
 These are not always current, but much can be learned from them all.
 
-- [NASM](http://www.nasm.us/)
-- [TCC](http://bellard.org/tcc/)
-- [BCC](http://www.debath.co.uk/)
-- [Turbo Pascal v5.5](http://edn.embarcadero.com/article/20803) (*my first compiler*)
-- [Borland compiler museum](http://edn.embarcadero.com/museum/)
-- [The Pascal programmers' page](http://www.devq.net/pascal/)
-- [C/C++ Snippets](http://snippets.snippets.org/index.php)
+- [[http://www.nasm.us/][NASM]]
+- [[http://bellard.org/tcc/][TCC]]
+- [[http://www.debath.co.uk/)][BCC]]
+- [[http://edn.embarcadero.com/article/20803][Turbo Pascal v5.5]]
+- [[http://edn.embarcadero.com/museum/][Borland compiler museum]]
+- [[http://www.devq.net/pascal/][The Pascal programmers' page]]
+- [[http://snippets.snippets.org/index.php][C/C++ Snippets]]
 
-Books on and useful for OSDev
-=============================
+** Books on and useful for OSDev
 
-*note: some of the links below are amazon affiliate links.  please consider buying through the link if you find this site useful, otherwise you can remove the part of the url with fogus-20 to visit amazon instead*
+/note: some of the links below are amazon affiliate links.  please consider buying through the link if you find this site useful, otherwise you can remove the part of the url with fogus-20 to visit amazon instead/
 
-Interestingly, there are not that many books on developing your own operating systems.  I've read most of those that deal with the topic directly, and some of those that touch on it only tangentially.  Below are the books that I found particularly useful, relevant, and/or interesting:
+Interestingly, there are not /that/ many books on developing your own operating systems.[fn:leanpub]  I've read most of those that deal with the topic directly, and some of those that touch on it only tangentially.  Below are the books that I found particularly useful, relevant, and/or interesting:
 
-Foundational
-------------
+[fn:leanpub] [[http://www.leanpub.com][Leanpub]] seems like the perfect place for underground OSDev book publishing.
 
-- *[Modern Operating Systems](http://www.amazon.com/exec/obidos/ASIN/0130313580/fogus-20/)* by Tannenbaum  (**start here**)
-- *[Practical File System Design](http://www.letterp.com/~dbg/)* by Giampaolo
+*** Foundational
+
+- [[http://www.amazon.com/exec/obidos/ASIN/0130313580/fogus-20/][Modern Operating Systems]] by Tannenbaum
+- [[http://www.letterp.com/~dbg/][Practical File System Design]] by Giampaolo
 
 OSDev books
 -----------
