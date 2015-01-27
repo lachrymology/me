@@ -4,23 +4,16 @@
 #+LANGUAGE:  en
 #+OPTIONS:   H:3 num:nil toc:2 \n:nil
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
-#+INFOJS_OPT: view:nil toc:nil ltoc:t
-#+EXPORT_SELECT_TAGS: export
-#+EXPORT_EXCLUDE_TAGS: noexport
 
-OSDev notes and links
-=====================
+* OSDev notes and links
 
-At [one point](http://blog.fogus.me/2004/01/16/132/) I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extremely difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targeting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
+At [[http://blog.fogus.me/2004/01/16/132/][one point]] I was crazy about creating and studying alternative operating systems.  While I still find OSDev fascinating, I have moved onto other interests.  This page contains links and notes from my previous studies.  I also have a notebook filled with notes that I probably might maybe scan or type up one day.  As a point of background, my first programming job was to convert an existing RTOS system for a custom digital board from Cosmac 1802 assembly to C and 6809 assembly.  It was extremely difficult for me, but I found that I loved every moment of it.  That project was of course much simpler than a general-purpose OS targeting the x86, but it stoked the embers of interest in me, and I have been fascinated with OSDev ever since.
 
-{menu: {min_levels: 2}}
-
-Interesting alternative and hobby OSes
-======================================
+** Interesting alternative and hobby OSes
 
 I've studied most of these deeply and found them incredibly instructional.
 
-- [GNU Mach](http://www.gnu.org/software/hurd/microkernel/mach/gnumach.html)
+- [[http://www.gnu.org/software/hurd/microkernel/mach/gnumach.html][GNU Mach]]
 - [Mona OS](http://monaos.org/) - The OS I would create if I had the skill.
 - [O3one](http://www.o3one.org/) - Crazy beautiful
 - [Losethos/SparrowOS](http://www.sparrowos.com/) - Losethos/Sparrow's creator has a very clear [vision](http://www.sparrowos.com/Wb/Doc/Constitution.html#l1) for his OS and he's executed that plan perfectly.
