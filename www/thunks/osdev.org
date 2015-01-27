@@ -26,27 +26,25 @@ I've studied most of these deeply and found them incredibly instructional.
 - [[http://www.sics.se/contiki/][Contiki]] - Just plain fun.
 - [[http://wiki.osdev.org/Projects][The grand unified list of hobby and educational operating systems]]
 
-OSDev resources
-===============
+** Interesting OSDev resources
 
-- [John Fine's original site](http://replay.waybackmachine.org/20050212051329/http://my.execpc.com/~geezer/johnfine/index.htm)
-- [Ethernet development](http://www.vijaymukhi.com/vmis/roll.htm)
-- [Google's OS directory](http://directory.google.com/Top/Computers/Software/Operating_Systems/)
-- [Mutexes and critical section](http://replay.waybackmachine.org/20060524034819/http://www.cs.wvu.edu/~jdm/classes/cs356/notes/mutex/)
-- [Creating a 64-bit OS](http://wiki.osdev.org/Creating_a_64-bit_kernel)
-- [Bochs](http://bochs.sourceforge.net/)
+- [[http://replay.waybackmachine.org/20050212051329/http://my.execpc.com/~geezer/johnfine/index.htm][John Fine's original site]]
+- [[http://www.vijaymukhi.com/vmis/roll.htm][Ethernet development]]
+- [[http://directory.google.com/Top/Computers/Software/Operating_Systems/][Google's OS directory]]
+- [[http://replay.waybackmachine.org/20060524034819/http://www.cs.wvu.edu/~jdm/classes/cs356/notes/mutex/][Mutexes and critical section]]
+- [[http://wiki.osdev.org/Creating_a_64-bit_kernel][Creating a 64-bit OS]]
 
-Protected Mode
---------------
+** Protected Mode
 
-- [Tutorials in C and ASM by Alexei Frounze](http://members.tripod.com/protected_mode/alexfru/pmtuts.html)[^frounze]
-- [PMode tutorials](http://genapro.chat.ru/examples.html)
+- [[http://members.tripod.com/protected_mode/alexfru/pmtuts.html][Tutorials in C and ASM by Alexei Frounze]] [fn:frounze]
+- [[http://genapro.chat.ru/examples.html][PMode tutorials]]
 
-ELF/COFF
---------
+[fn:frounze] Alexei Frounze is a hobby OSDev luminary.  It's well-worth studying his code if you're interested in creating your own OS.
 
-- [COFF by Alexei Frounze](http://alexfru.chat.ru/epm.html#coffutils)
-- [ELF](http://wiki.osdev.org/ELF)
+** Binary formats
+
+- [[http://alexfru.chat.ru/epm.html#coffutils][COFF by Alexei Frounze]]
+- [[http://wiki.osdev.org/ELF][ELF]]
 
 Bootloaders
 -----------
@@ -54,6 +52,11 @@ Bootloaders
 - [Basics of bootloaders](http://wiki.osdev.org/Rolling_Your_Own_Bootloader)
 - [Network booting](http://osdev.berlios.de/netboot.html)
 - [El Torito](http://wiki.osdev.org/El-Torito) (CD-ROM bootsectors)
+
+** VMs
+
+- [[http://wiki.qemu.org/Main_Page][QEMU]]
+- [[http://bochs.sourceforge.net/][Bochs]]
 
 Libraries
 --------
@@ -221,7 +224,5 @@ One day I shall return.
 
 Footnotes
 =========
-
-[^frounze]: Alexei Frounze is a hobby OSDev luminary.  It's well-worth studying his code if you're interested in creating your own OS.
 
 [^left]: And this is where 99% of hobby OS practitioners leave it.  :-(
