@@ -25,7 +25,7 @@ I've studied most of these deeply and found them incredibly instructional.
 - [[http://www.swd.de/documents/manuals/neutrino/index_en.html][QNX Neutrino]] - At one point you could see the code to this.  It was mind-busting.
 - [[http://www.sics.se/contiki/][Contiki]] - Just plain fun.
 - [[http://wiki.osdev.org/Projects][The grand unified list of hobby and educational operating systems]]
-- [[https://github.com/drgowen/tiny-linux-bootloader][Tiny Linux bootloader source]]
+- [[https://github.com/drgowen/tiny-linux-bootloader][Tiny Linux bootloader source (single sector)]]
 
 ** Interesting OSDev resources
 
@@ -106,17 +106,10 @@ Interestingly, there are not /that/ many books on developing your own operating 
 - [[http://www.amazon.com/Developing-32-Bit-Operating-System-Cd-Rom/dp/0672306557?tag=fogus-20][Developing Your Own 32-Bit Operating System]]by Burgess
 - [[http://www.amazon.com/exec/obidos/ASIN/0201544288/fogus-20/][Project Oberon - The Design of an Operating System and Compiler]] by Wirth
 
-*** To-read
+*** Case studies
 
-- [[http://www.amazon.com/o/asin/020155447X?tag=fogus-20][Protected Mode Software Architecture]] by Shanley
-- [[http://www.amazon.com/o/asin/020162687X?tag=fogus-20][Dissecting DOS]] by Podanoffsky
-- [[http://www.amazon.com/o/asin/0470025247?tag=fogus-20][The Symbian OS Internals]] by Jane Sales
-- [[http://www.amazon.com/o/asin/0750664711?tag=fogus-20][Real-Time Systems Development]] by Williams
-- [[http://www.amazon.com/OpenVMS-Operating-Concepts-Edition-Technologies/dp/1555581579?tag=fogus-20][Open VMS Operating System Concepts]] by David Miller
-- [[http://www.amazon.com/TinyOS-Programming-Philip-Levis/dp/0521896061/ref=sr_1_1?tag=fogus-20][TinyOS Programming]] by Levis and Gay
-
-** Case studies
-
+- [[http://www.amazon.com/Mac-OS-Internals-Systems-Approach/dp/0321278542/?tag=fogus-20][Mac OS X Internals]] by Amit Singh
+- [[http://www.amazon.com/Design-Implementation-FreeBSD-Operating-Edition/dp/0321968972/?tag=fogus-20][The Design and Implementation of the FreeBSD Operating System]] by Marshall Kirk McKusick, George V. Neville-Neil, and Robert N.M. Watson
 - [[http://www.bell-labs.com/history/unix/][The Creation of the UNIX Operating System]]
 - [[http://www.patersontech.com/Dos/Byte/InsideDos.htm][An inside look at MS-DOS]]
 - [[http://www.amazon.com/o/asin/0201183935?tag=fogus-20][Inside the JavaOS Operating System]]
@@ -128,6 +121,15 @@ Interestingly, there are not /that/ many books on developing your own operating 
 - [[http://www.amazon.com/o/asin/0471164836?tag=fogus-20][UNIX Filesystems: Evolution, Design, and Implementation]] by Pate
 - [[http://www.amazon.com/o/asin/1572316772?tag=fogus-20][Inside Windows NT]] by Custer
 
+*** To-read
+
+- [[http://www.amazon.com/o/asin/020155447X?tag=fogus-20][Protected Mode Software Architecture]] by Shanley
+- [[http://www.amazon.com/o/asin/020162687X?tag=fogus-20][Dissecting DOS]] by Podanoffsky
+- [[http://www.amazon.com/o/asin/0470025247?tag=fogus-20][The Symbian OS Internals]] by Jane Sales
+- [[http://www.amazon.com/o/asin/0750664711?tag=fogus-20][Real-Time Systems Development]] by Williams
+- [[http://www.amazon.com/OpenVMS-Operating-Concepts-Edition-Technologies/dp/1555581579?tag=fogus-20][Open VMS Operating System Concepts]] by David Miller
+- [[http://www.amazon.com/TinyOS-Programming-Philip-Levis/dp/0521896061/ref=sr_1_1?tag=fogus-20][TinyOS Programming]] by Levis and Gay
+  
 
 * FogOS
 
