@@ -78,6 +78,7 @@ These are not always current, but much can be learned from them all.
 
 - [[http://www.nasm.us/][NASM]]
 - [[http://bellard.org/tcc/][TCC]]
+- [[http://bluishcoder.co.nz/tags/ats/][ATS]]
 - [[http://www.debath.co.uk/)][BCC]]
 - [[http://edn.embarcadero.com/article/20803][Turbo Pascal v5.5]]
 - [[http://edn.embarcadero.com/museum/][Borland compiler museum]]
@@ -131,41 +132,9 @@ Interestingly, there are not /that/ many books on developing your own operating 
 
 I started down the path of writing an OS, aptly named FogOS written in C++.  Below are some of the notes that I created (well, those I've been able to find).
 
-Memory map ideas
-----------------
+** Memory map ideas
 
-<pre>
-Address       Size            Description
----------     ---------       ---------------------------------
-0000 0000     1 KB            Real-mode interrupt vector table
-0000 0400     256 bytes       ROM-BIOS data
-0000 0500     62.75 KB
-0001 0000     256 KB          miscellaneous data
-0005 0000     64 KB           Kernel stack at startup
-0006 0000     512 bytes       Kernel IDT
-0006 0200     64 KB           Kernel TSS's
-0007 0200     512 bytes       GDT
-0007 0400     63 KB
-0008 0000     64 KB           Kernel read-only data
-0009 0000     64 KB           Kernel heap
-000a 0000     128 KB          Video memory
-000c 0000     64 KB           Kernel ES
-000d 0000     128 KB
-000f 0000     64 KB           ROM-BIOS
---  1MB --
-0010 0000     64 KB           Kernel code
-
-0010 FFF0     Max end of kernel (65,520 bytes)
-
-0050 0000     4 MB            Stack of physical memory pages
-008F F000     4 KB            Page table staging area
-0090 0000     4 KB            Kernel page directory
-0090 1000     ???             Kernel page tables
-???? ????
-00f0 0000     1 MB            Low DMA area
--- 16MB --
-0100 0000     Unlimited       Available to applications
-</pre>
+| Address    | Size                             | Description                      | |------------+----------------------------------+----------------------------------| | 0000 0000  | 1 KB                             | Real-mode interrupt vector table | | 0000 0400  | 256 bytes                        | ROM-BIOS data                    | | 0000 0500  | 62.75 KB                         |                                  | | 0001 0000  | 256 KB                           | miscellaneous data               | | 0005 0000  | 64 KB                            | Kernel stack at startup          | | 0006 0000  | 512 bytes                        | Kernel IDT                       | | 0006 0200  | 64 KB                            | Kernel TSS's                     | | 0007 0200  | 512 bytes                        | GDT                              | | 0007 0400  | 63 KB                            |                                  | | 0008 0000  | 64 KB                            | Kernel read-only data            | | 0009 0000  | 64 KB                            | Kernel heap                      | | 000a 0000  | 128 KB                           | Video  memory                    | | 000c 0000  | 64 KB                            | Kernel ES                        | | 000d 0000  | 128 KB                           |                                  | | 000f 0000  | 64 KB                            | ROM-BIOS                         | | --  1MB    | --                               |                                  | | 0010 0000  | 64 KB                            | Kernel code                      | | 0010 FFF0  | Max end of kernel (65,520 bytes) |                                  | | 0050 0000  | 4 MB                             | Stack of physical memory pages   | | 008F F000  | 4 KB                             | Page table staging area          | | 0090 0000  | 4 KB                             | Kernel page directory            | | 0090 1000  | ???                              | Kernel page tables               | | ???? ????  |                                  |                                  | | 00f0 0000  | 1 MB                             | Low DMA area                     | | -- 16MB -- |                                  |                                  | | 0100 0000  | Unlimited                        | Available to applications        | 
 
 I've left some BIOS stuff as I found it.
 
