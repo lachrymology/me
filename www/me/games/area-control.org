@@ -1,0 +1,64 @@
+The Area Control mechanic typically awards control of an area to the player that has the majority of units or influence in that area.
+
+* Pre-Catan (<= 1995)
+
+| played? | year | title           | interest | notes |
+|---------+------+-----------------+----------+-------|
+| n       | 1986 | Die Macher      |       10 |       |
+| n       | 1994 | Manhatten       |        8 |       |
+| n       | 1979 | Dune            |        6 |       |
+| n       | 1992 | Tal der Könige  |        6 |       |
+| n       | 1977 | War of the Ring |        5 |       |
+| n       | 1986 | Castle Risk     |        4 |       |
+| n       | 1981 | Hyborian Risk   |        4 |       |
+| y       | 1959 | Risk            |        4 |       |
+| y       | 1959 | Diplomacy       |        3 |       |
+| n       | 1994 | We the People   |        3 |       |
+
+* Catan Rising (1995 - 2005)
+
+| played? | year | title                | interest | notes          |
+|---------+------+----------------------+----------+----------------|
+| n       | 2000 | Carolus Magnus       |       10 |                |
+| n       | 2001 | Gnostica             |       10 |                |
+| n       | 1998 | Samurai              |       10 |                |
+| y       | 1997 | Tigris and Euphrates |       10 |                |
+| n       | 1996 | Zarcana              |       10 |                |
+| n       | 1995 | El Grande            |        9 |                |
+| n       | 1999 | Tores                |        9 |                |
+| y       | 2000 | Carcassonne          |        8 |                |
+| n       | 2002 | Clans                |        8 |                |
+| n       | 1999 | Stephensons Rocket   |        8 | expensive      |
+| n       | 2000 | Web of Power / China |        8 |                |
+| y       | 2005 | Aton                 |        7 |                |
+| n       | 1997 | Lowenherz            |        7 |                |
+| n       | 2002 | Wallenstein          |        7 |                |
+| n       | 2003 | Amun-Re              |        5 |                |
+| n       | 2005 | Fjords               |        5 | expensive      |
+| n       | 2003 | Santiago             |        5 |                |
+| n       | 1995 | Condottiere          |        4 |                |
+| n       | 2005 | Pocket Civ           |        3 |                |
+| n       | 2005 | Sun Tzu              |        3 |                |
+| y       | 1999 | Tikal                |        3 |                |
+| n       | 2005 | Indonesia            |        2 | very expensive |
+
+* Catan's Wake (>2005)
+
+| played? | year | title                        | interest | notes |
+|---------+------+------------------------------+----------+-------|
+| y       | 2007 | Blockers / Uptown            |       10 |       |
+| n       | 2014 | Five Tribes                  |       10 |       |
+| n       | 2013 | Quantum                      |       10 |       |
+| n       | 2010 | Firenze                      |        9 |       |
+| n       | 2013 | Impulse                      |        9 |       |
+| n       | 2008 | Metropolys                   |        9 |       |
+| y       | 2010 | Catchup                      |        8 |       |
+| n       | 2013 | Corto                        |        8 |       |
+| n       | 2009 | Alea Iacta Est               |        7 |       |
+| y       | 2014 | Coin Age                     |        7 |       |
+| y       | 2011 | Fealty                       |        6 |       |
+| n       | 2013 | Eight-Minute Empire: Legends |        5 |       |
+| n       | 2006 | Yspahan                      |        5 |       |
+| n       | 2010 | Labyrinth: The War on Terror |        4 |       |
+| n       | 2010 | Troyes                       |        4 |       |
+| n       | 2010 | Washington's War             |        3 |       |
