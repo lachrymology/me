@@ -1,91 +1,109 @@
+#+TITLE:     List of lists
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+
 * Punk Bands
-** The Raincoats
+** 7 Seconds
+** Freak Beans
+** Fugazi
+** Jawbox
+** Lungfish
 ** Meat Puppets
-** 
+** The Misfits
+** The Raincoats
 * Perfect Albums
-** Radiohead – Amnesiac
-** Tool - Undertow
-** Violent Femmes
-** Shudder to Think - Pony Express Record
+** Black Sabbath - s/t
 ** Boards of Canada - Geogaddi
 ** Fugazi - Repeater
-** The Smiths
-** Black Sabbath
 ** Helmet - Meantime
+** Radiohead – Amnesiac
+** Shudder to Think - Pony Express Record
+** The Smiths - s/t
+** Tool - Undertow
+** Violent Femmes - s/t
 * Films
-** Children of Men
 ** 2001
-** Suspiria
-** The Graduate
+** Adaptation
+** Apocalypse Now
+** Blow Up
+** Children of Men
 ** Fight Club
 ** Mulholland Drive
-** Apocalypse Now
-** Vanilla Sky
-** Ran
-** Adaptation
 ** No Country for Old Men
+** Ran
+** Suspiria
+** The Graduate
+** Vanilla Sky
 * Literature
-** Catch-22
-** Remains of the Day
+** After Dark
 ** Breakfast of Champions
+** Catch-22
 ** Code of the Woosters
+** Ficciones
 ** Grendel
 ** House of Leaves
-** After Dark
-** The Temple of the Golden Pavilion
-** Ficciones
 ** King Lear
 ** Notes From Underground
+** Remains of the Day
+** The Rings of Saturn
 ** The Stranger
-** TODO Midnight's Children
-** TODO The Rings of Saturn
+** The Temple of the Golden Pavilion
 * Sci-fi / Fantasy / Horror
-** Cthon
-** Cryptonomicon
-** Titus Groan
-** The Moon is a Harsh Mistress
-** Jonathan Strange and Mr. Norrell
-** The Sirens of Titan
 ** A Game of Thrones
+** Cryptonomicon
+** Cthon
 ** Foundation
-** The Dying Earth
+** Jonathan Strange and Mr. Norrell
 ** Rendezvous with Rama
 ** The Case of Charles Dexter Ward
+** The Dying Earth
+** The Moon is a Harsh Mistress
+** The Purple Cloud
+** The Sirens of Titan
+** The Star Rover
+** Titus Groan
 * Computer books
-** The Architecture of Symbolic Computers
-** The Creative Computer
+** A Programming Language
+** Aspects of the Theory of Syntax
+** Expert Systems: Principles and Practice
 ** Hackers and Painters
 ** Java Concurrency in Practice
-** The Art of the Metaobject Protocol
-** Transaction Processing: Concepts and Techniques
 ** Object-Oriented Programming in Common Lisp: A Programmer's Guide to CLOS
-** Patterns of Software: Tales from the Software Community
-** SQL and Relational Theory
 ** On Lisp
-** Expert Systems: Principles and Practice
 ** PAIP
-** A Programming Language
-** Thinking Forth
+** Patterns of Software: Tales from the Software Community
 ** Programmers Guide to the 1802
+** SQL and Relational Theory
+** The Architecture of Symbolic Computers
+** The Art of the Metaobject Protocol
+** The Creative Computer
 ** The Soul of a New Machine
-** Aspects of the Theory of Syntax
+** Thinking Forth
+** Transaction Processing: Concepts and Techniques
 * Non-fiction
-** Broken Mirrors / Broken Minds
-** The Complete History of Jack the Ripper
-** Godel, Escher, Bach
+** A Gamut of Games
 ** Bill James Historical Baseball Abstract
+** Broken Mirrors / Broken Minds
+** Deep Blues: A Musical and Cultural History of the Mississippi Delta
+** Godel, Escher, Bach
+** In Patagonia
+** Interzonal Chess Tournament,: Palma de Mallorca 1970
+** How Buildings Learn
+** The Complete History of Jack the Ripper
+** The Machinery of Life
 * Graphic Novels
-** From Hell
-** Transmetropolitan
-** Jimmy Corrigan
 ** Bacchus
-** David Boring
-** Preacher
-** Lone Wolf and Cub
-** Safe Area Goražde: The War in Eastern Bosnia, 1992-1995
 ** Berlin: City of Stones
 ** Castle Waiting
-** Nodame Cantabile
+** David Boring
 ** Eagle: The Making of an Asian-American President
+** From Hell
+** Jimmy Corrigan
+** Lone Wolf and Cub
+** Nodame Cantabile
+** Preacher
+** Safe Area Goražde: The War in Eastern Bosnia, 1992-1995
 ** The Walking Dead
+** Transmetropolitan
    
