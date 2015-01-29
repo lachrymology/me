@@ -1,0 +1,29 @@
+#+TITLE:     Recommended books on concatenative programming
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:nil toc:2 \n:nil
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+
+* Best of the 
+
+- [[http://www.amazon.com/Starting-Forth-Prentice-Hall-Software-Series/dp/0138430799/?tag=fogus-20][Starting Forth]] by Leo Brodie
+- [[http://www.amazon.com/Thinking-Forth-Leo-Brodie/dp/0976458705/?tag=fogus-20][Thinking Forth]] by Leo Brodie
+- [[http://users.ece.cmu.edu/~koopman/stack_computers/index.html][Stack Computers: the New Wave]] by Philip Koopman, Jr.
+- [[http://www.amazon.com/Thinking-Postscript-Glenn-C-Reid/dp/0201523728/?tag=fogus-20][Thinking In Postscript]] by Glenn Reid
+
+* Interesting offerings
+
+- [[http://www.amazon.com/Object-Oriented-Forth-Dick-Pountain/dp/0125635702/?tag=fogus-20][Object-oriented Forth - Implementation of Data Structures]] by Pountain
+
+* Practicioner's Guides
+
+- [[http://www.amazon.com/Forth-Programmers-Handbook-Elizabeth-Rather/dp/1419675494/?tag=fogus-20][Forth Programmer's Handbook]] by Conklin & Rather
+- [[http://www.amazon.com/Forth-Application-Techniques-Course-Notebook/dp/1419685767/?tag=fogus-20][Forth Application Techniques]] by Rather
+
+* Implementator's guides
+
+- [[ftp://ftp.taygeta.com/pub/forth/Literature/rtfv5.pdf][Real Time Forth]] by Tim Hendtlass (PDF)
+- /Footsteps in an empty valley/ by Dr. C.H. Ting
+- /eForth Implementation Guide/ by Dr. C.H. Ting
+
