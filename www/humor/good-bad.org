@@ -1,0 +1,21 @@
+#+TITLE:     Good/Bad Movies
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:nil toc:2 \n:nil
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+
+One cannot be told what a good/bad movie is -- it must be experienced.
+
+- What About Bob
+- Rockstar
+- Cherry 2000
+- Zoolander
+- Joe vs. the Volcano
+- Starship Troopers
+- Clifford
+- Drop Dead Fred
+- Halloween III: Season of the Witch
+- 3 O’Clock High
+- The Gate
+
