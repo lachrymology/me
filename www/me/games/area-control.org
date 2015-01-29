@@ -1,3 +1,8 @@
+#+TITLE:     Area-control games of interest
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+
 The Area Control mechanic typically awards control of an area to the player that has the majority of units or influence in that area.
 
 * Pre-Catan (<= 1995)
