@@ -1,0 +1,49 @@
+#+TITLE:     Induction/Deduction games of interest
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+
+Deduction games are those that require players to form conclusions based on available premises.  While the conclusion of a deductive argument is supposed to be certain, the truth of the conclusion of an inductive argument is supposed to be probable, based upon the evidence given.
+
+* Pre-Catan (<= 1995)
+
+| played? | year | title        | interest | notes |
+|---------+------+--------------+----------+-------|
+| n       | 1956 | Eleusis      |        9 |       |
+| n       | 1987 | Werewolf     |        9 |       |
+| n       | 1987 | Black Vienna |        8 |       |
+| n       | 1985 | Code 777     |        8 |       |
+| n       | 1971 | Sleuth       |        8 |       |
+| n       | 1992 | Confusion    |        6 |       |
+| n       | 1988 | Inkognito    |        5 |       |
+| y       | 1949 | Clue         |        4 |       |
+| y       | 1971 | Mastermind   |        3 |       |
+| y       | 1947 | Stratego     |        3 |       |
+
+* Catan Rising (1995 - 2005)
+
+| played? | year | title               | interest | notes |
+|---------+------+---------------------+----------+-------|
+| y       | 2001 | Zendo               |       10 |       |
+| n       | 2003 | Deduce or Die       |        8 |       |
+| n       | 2002 | Clue: The Card Game |        5 |       |
+| n       | 2005 | Fury of Dracula     |        5 |       |
+| n       | 2002 | Bang!               |        4 |       |
+
+* Catan's Wake (>2005)
+
+| played? | year | title                       | interest | notes |
+|---------+------+-----------------------------+----------+-------|
+| n       | 2014 | Spyfall                     |        9 |       |
+| n       | 2008 | The Name of the Rose        |        9 |       |
+| n       | 2010 | Hanabi                      |        8 |       |
+| n       | 2011 | The Thing                   |        8 |       |
+| y       | 2006 | Clue DVD Game               |        6 |       |
+| y       | 2013 | Coup                        |        6 |       |
+| n       | 2011 | Letters from Whitechapel    |        6 |       |
+| n       | 2010 | Mr. Jack Pocket             |        6 |       |
+| n       | 2014 | One Night Ultimate Werewolf |        6 |       |
+| n       | 2013 | Lost Legacy                 |        5 |       |
+| y       | 2011 | Love Letter                 |        5 |       |
+| n       | 2009 | The Resistance              |        5 |       |
+| n       | 2008 | Battlestar Galactica        |        4 |       |
