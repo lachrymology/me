@@ -3,8 +3,6 @@
 #+EMAIL:     me@fogus.me
 #+LANGUAGE:  en
 
-Deduction games are those that require players to form conclusions based on available premises.  While the conclusion of a deductive argument is supposed to be certain, the truth of the conclusion of an inductive argument is supposed to be probable, based upon the evidence given.
-
 * Pre-Catan (<= 1995)
 
 | played? |  year | title          | interest | notes                              |
