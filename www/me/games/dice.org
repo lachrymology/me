@@ -15,7 +15,11 @@ Deduction games are those that require players to form conclusions based on avai
 | y       | -3000 | Backgammon     |        7 |                                    |
 | y       |  1963 | Kismet         |        5 |                                    |
 | y       |  2012 | Qwixx          |        4 |                                    |
-|         |       |                |          |                                    |
+| n       |  1990 | Igel Ärgern    |        5 | retheme?                           |
+| n       |   600 | Mia            |        5 | retheme?                           |
+| n       |  1983 | Krakatoa       |       10 |                                    |
+| n       |  1993 | Peg Poker      |        7 |                                    |
+| n       |  1989 | Solitaire Dice |        6 | rework?                            |
 
 * Catan Rising (1995 - 2005)
 
