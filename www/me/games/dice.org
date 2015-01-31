@@ -35,12 +35,23 @@ Deduction games are those that require players to form conclusions based on avai
 
 * Catan's Wake (>2005)
 
-| played? | year | title                             | interest | notes |
-|---------+------+-----------------------------------+----------+-------|
-| y       | 2012 | Machi Koro                        |       10 |       |
-| y       | 2006 | Risk Express                      |        6 |       |
-| n       | 2012 | Skyline                           |        7 |       |
-| y       | 2013 | Polterfass                        |        9 |       |
-| n       | 2008 | Roll through the ages: Bronze age |        8 |       |
-| n       | 2008 | Omba                              |        7 |       |
-|         |      |                                   |          |       |
+| played? | year | title                                    | interest | notes |
+|---------+------+------------------------------------------+----------+-------|
+| y       | 2012 | Machi Koro                               |       10 |       |
+| y       | 2006 | Risk Express                             |        6 |       |
+| n       | 2012 | Skyline                                  |        7 |       |
+| y       | 2013 | Polterfass                               |        9 |       |
+| n       | 2008 | Roll through the ages: Bronze age        |        8 |       |
+| n       | 2008 | Omba                                     |        7 |       |
+| n       | 2014 | Rolling Japan                            |        9 |       |
+| n       | 2012 | D-Day Dice                               |        5 |       |
+| n       | 2014 | Roll for the Galaxy                      |        6 |       |
+| n       | 2012 | Zooloretto: The Dice Game                |        7 |       |
+| n       | 2012 | Würfel Bohnanza                          |        7 |       |
+| n       | 2014 | VivaJava: The Coffee Game: The Dice Game |        6 |       |
+| y       | 2011 | IceDice                                  |        7 |       |
+| y       | 2008 | Sixis                                    |        5 |       |
+| y       | 2008 | World War 5                              |        8 |       |
+| n       | 2014 | Ciúb                                     |        8 |       |
+| y       | 2014 | CarboniteDice                            |        7 | Mine  |
+| n       | 2014 | Cubo                                     |        8 |       |
