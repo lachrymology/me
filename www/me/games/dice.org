@@ -32,7 +32,6 @@ Deduction games are those that require players to form conclusions based on avai
 | y       | 2004 | EinStein würfelt nicht! |        7 |       |
 | n       | 1998 | Excape                  |        6 |       |
 | n       | 1999 | Zocken                  |        5 |       |
-|         |      |                         |          |       |
 
 * Catan's Wake (>2005)
 
