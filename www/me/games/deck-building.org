@@ -1,0 +1,33 @@
+#+TITLE:     Deck-building games of interest
+#+AUTHOR:    Fogus
+#+EMAIL:     me@fogus.me
+#+LANGUAGE:  en
+
+* Pre-Catan (<= 1995)
+
+| played? | year | title | interest | notes |
+|---------+------+-------+----------+-------|
+|         |      |       |          |       |
+
+* Catan Rising (1995 - 2005)
+
+| played? | year | title | interest | notes |
+|---------+------+-------+----------+-------|
+|         |      |       |          |       |
+
+* Catan's Wake (>2005)
+
+| played? | year | title                        | interest | notes |
+|---------+------+------------------------------+----------+-------|
+| n       | 2014 | Paperback                    |       10 |       |
+| y       | 2008 | Dominion                     |        9 |       |
+| n       | 2012 | Puzzle Strike                |        8 |       |
+| y       | 2011 | Friday                       |        7 |       |
+| y       | 2014 | Star Realms                  |        7 |       |
+| n       | 2011 | A Few Acres of Snow          |        6 |       |
+| n       | 2012 | DC Comics Deck-Building Game |        6 |       |
+| n       | 2012 | Legendary                    |        6 |       |
+| n       | 2012 | Pathfinder                   |        6 |       |
+| n       | 2012 | Trains                       |        6 |       |
+| n       | 2014 | Legendary Encounters         |        5 |       |
+| n       | 2009 | Thunderstone                 |        4 |       |
