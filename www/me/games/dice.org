@@ -7,18 +7,37 @@ Deduction games are those that require players to form conclusions based on avai
 
 * Pre-Catan (<= 1995)
 
-| played? | year | title | interest | notes |
-|---------+------+-------+----------+-------|
-|         |      |       |          |       |
+| played? |  year | title          | interest | notes                              |
+|---------+-------+----------------+----------+------------------------------------|
+| y       |  1956 | Yahtzee        |        2 | First game I bought w/my own money |
+| y       |  1975 | Cosmic Wimpout |        8 |                                    |
+| y       |  1980 | Cant' Stop     |        5 |                                    |
+| y       | -3000 | Backgammon     |        7 |                                    |
+| y       |  1963 | Kismet         |        5 |                                    |
+| y       |  2012 | Qwixx          |        4 |                                    |
+|         |       |                |          |                                    |
 
 * Catan Rising (1995 - 2005)
 
-| played? | year | title | interest | notes |
-|---------+------+-------+----------+-------|
-|         |      |       |          |       |
+| played? | year | title                   | interest | notes |
+|---------+------+-------------------------+----------+-------|
+| y       | 2003 | Cinq-O                  |        7 |       |
+| y       | 2005 | Pickomino               |        6 |       |
+| y       | 1999 | Button Men              |        8 |       |
+| n       | 2000 | Knights                 |        6 |       |
+| y       | 2004 | EinStein würfelt nicht! |        7 |       |
+| n       | 1998 | Excape                  |        6 |       |
+| n       | 1999 | Zocken                  |        5 |       |
+|         |      |                         |          |       |
 
 * Catan's Wake (>2005)
 
-| played? | year | title | interest | notes |
-|---------+------+-------+----------+-------|
-|         |      |       |          |       |
+| played? | year | title                             | interest | notes |
+|---------+------+-----------------------------------+----------+-------|
+| y       | 2012 | Machi Koro                        |       10 |       |
+| y       | 2006 | Risk Express                      |        6 |       |
+| n       | 2012 | Skyline                           |        7 |       |
+| y       | 2013 | Polterfass                        |        9 |       |
+| n       | 2008 | Roll through the ages: Bronze age |        8 |       |
+| n       | 2008 | Omba                              |        7 |       |
+|         |      |                                   |          |       |
