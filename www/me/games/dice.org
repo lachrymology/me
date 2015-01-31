@@ -9,28 +9,28 @@ Deduction games are those that require players to form conclusions based on avai
 
 | played? |  year | title          | interest | notes                              |
 |---------+-------+----------------+----------+------------------------------------|
-| y       |  1956 | Yahtzee        |        2 | First game I bought w/my own money |
-| y       |  1975 | Cosmic Wimpout |        8 |                                    |
-| y       |  1980 | Cant' Stop     |        5 |                                    |
-| y       | -3000 | Backgammon     |        7 |                                    |
-| y       |  1963 | Kismet         |        5 |                                    |
-| y       |  2012 | Qwixx          |        4 |                                    |
-| n       |  1990 | Igel Ärgern    |        5 | retheme?                           |
-| n       |   600 | Mia            |        5 | retheme?                           |
 | n       |  1983 | Krakatoa       |       10 |                                    |
+| y       |  1975 | Cosmic Wimpout |        9 |                                    |
+| y       | -3000 | Backgammon     |        8 |                                    |
 | n       |  1993 | Peg Poker      |        7 |                                    |
 | n       |  1989 | Solitaire Dice |        6 | rework?                            |
+| y       |  1980 | Cant' Stop     |        5 |                                    |
+| n       |  1990 | Igel Ärgern    |        5 | retheme?                           |
+| y       |  1963 | Kismet         |        5 |                                    |
+| n       |   600 | Mia            |        5 | retheme?                           |
+| y       |  2012 | Qwixx          |        4 |                                    |
+| y       |  1956 | Yahtzee        |        2 | First game I bought w/my own money |
 
 * Catan Rising (1995 - 2005)
 
 | played? | year | title                   | interest | notes |
 |---------+------+-------------------------+----------+-------|
-| y       | 2003 | Cinq-O                  |        7 |       |
-| y       | 2005 | Pickomino               |        6 |       |
 | y       | 1999 | Button Men              |        8 |       |
-| n       | 2000 | Knights                 |        6 |       |
+| y       | 2003 | Cinq-O                  |        7 |       |
 | y       | 2004 | EinStein würfelt nicht! |        7 |       |
 | n       | 1998 | Excape                  |        6 |       |
+| n       | 2000 | Knights                 |        6 |       |
+| y       | 2005 | Pickomino               |        6 |       |
 | n       | 1999 | Zocken                  |        5 |       |
 
 * Catan's Wake (>2005)
@@ -38,20 +38,20 @@ Deduction games are those that require players to form conclusions based on avai
 | played? | year | title                                    | interest | notes |
 |---------+------+------------------------------------------+----------+-------|
 | y       | 2012 | Machi Koro                               |       10 |       |
-| y       | 2006 | Risk Express                             |        6 |       |
-| n       | 2012 | Skyline                                  |        7 |       |
 | y       | 2013 | Polterfass                               |        9 |       |
-| n       | 2008 | Roll through the ages: Bronze age        |        8 |       |
-| n       | 2008 | Omba                                     |        7 |       |
 | n       | 2014 | Rolling Japan                            |        9 |       |
-| n       | 2012 | D-Day Dice                               |        5 |       |
-| n       | 2014 | Roll for the Galaxy                      |        6 |       |
-| n       | 2012 | Zooloretto: The Dice Game                |        7 |       |
-| n       | 2012 | Würfel Bohnanza                          |        7 |       |
-| n       | 2014 | VivaJava: The Coffee Game: The Dice Game |        6 |       |
-| y       | 2011 | IceDice                                  |        7 |       |
-| y       | 2008 | Sixis                                    |        5 |       |
-| y       | 2008 | World War 5                              |        8 |       |
 | n       | 2014 | Ciúb                                     |        8 |       |
-| y       | 2014 | CarboniteDice                            |        7 | Mine  |
 | n       | 2014 | Cubo                                     |        8 |       |
+| n       | 2008 | Roll through the ages: Bronze age        |        8 |       |
+| y       | 2008 | World War 5                              |        8 |       |
+| y       | 2014 | CarboniteDice                            |        7 | Mine  |
+| y       | 2011 | IceDice                                  |        7 |       |
+| n       | 2008 | Omba                                     |        7 |       |
+| n       | 2012 | Skyline                                  |        7 |       |
+| n       | 2012 | Würfel Bohnanza                          |        7 |       |
+| n       | 2012 | Zooloretto: The Dice Game                |        7 |       |
+| y       | 2006 | Risk Express                             |        6 |       |
+| n       | 2014 | Roll for the Galaxy                      |        6 |       |
+| n       | 2014 | VivaJava: The Coffee Game: The Dice Game |        6 |       |
+| n       | 2012 | D-Day Dice                               |        5 |       |
+| y       | 2008 | Sixis                                    |        5 |       |
