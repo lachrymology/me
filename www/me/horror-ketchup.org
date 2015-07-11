@@ -5,81 +5,66 @@ filemdate: 2012.11.08
 
 *bierce*
 
-Pre-1800s
-=========
+* Pre-1800s
 
-*
+TODO
 
-1800s
-=====
+* 1800s
 
-* Stoker: [Dracula]()
+- Stoker: [Dracula]()
 
-1900 - 1920
-===========
+* 1900 - 1920
 
-* Hodgson: [The House on the Borderland]() (wf)
-* Hodgson: [The Night Land]()
+- Hodgson: [The House on the Borderland]() (wf)
+- Hodgson: [The Night Land]()
 
-1920s
-=====
+* 1920s
 
-*
+TODO
 
-1930s
-=====
+* 1930s
 
-* Endor: [The Werewolf of Paris]()
-* Lovecraft: [At the Mountains of Madness]()
+- Endor: [The Werewolf of Paris]()
+- Lovecraft: [At the Mountains of Madness]()
 
-1940s
-=====
+* 1940s
 
-* Leiber: [Conjure Wife](http://www.amazon.com/dp/B001KWLC36/?tag=fogus-20)
+- Leiber: [Conjure Wife](http://www.amazon.com/dp/B001KWLC36/?tag=fogus-20)
 
-1950s
-=====
+* 1950s
 
-* Jackson: [The Haunting of Hill House]()
+- Jackson: [The Haunting of Hill House]()
 
-1960s
-=====
+* 1960s
 
-* Amis: [The Green Man]()
-* Bradbury: [Something Wicked This Way Comes]()
-* Levin: [Rosemary's Baby]()
+- Amis: [The Green Man]()
+- Bradbury: [Something Wicked This Way Comes]()
+- Levin: [Rosemary's Baby]()
 
-1970s
-=====
+* 1970s
 
-*
+TODO
 
-1980s
-=====
+* 1980s
 
-* Barker: [Weaveworld]()
-* Bishop: [Who Made Stevie Crye?]()
-* Charnas: [The Vampire Tapestry]()
-* Disch: [The Businessman]()
-* King: [The Skeleton Crew]()
-* Martin, GRR: [Fevre Dream]()
-* Priest: [The Glamour]()
-* Simmons: [Song of Kali]()
-* Updike: [The Witches of Eastwick]()
+- Barker: [Weaveworld]()
+- Bishop: [Who Made Stevie Crye?]()
+- Charnas: [The Vampire Tapestry]()
+- Disch: [The Businessman]()
+- King: [The Skeleton Crew]()
+- Martin, GRR: [Fevre Dream]()
+- Priest: [The Glamour]()
+- Simmons: [Song of Kali]()
+- Updike: [The Witches of Eastwick]()
 
-1990s
-=====
+* 1990s
 
-*
+TODO
 
-2000s
-=====
+* 2000s
 
-*
+TODO
 
-2010s
-=====
+* 2010s
 
-*
-
-:F
+TODO
